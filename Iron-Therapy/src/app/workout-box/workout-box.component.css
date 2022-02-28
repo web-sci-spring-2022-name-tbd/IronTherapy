@@ -1,0 +1,29 @@
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+#container {
+  background-color: aquamarine;
+  border-radius: 25px;
+  width: 25vw;
+  height: 25vh;
+  box-shadow: 5px 5px burlywood;
+}
+
+#name {
+  padding-top: 2vh;
+  padding-left: 1vw;
+}
+
+#parent {
+  padding-top: 10vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15vw;
+  width: 50%;
+}
+
+.child {
+  margin: 2vh;
+}
