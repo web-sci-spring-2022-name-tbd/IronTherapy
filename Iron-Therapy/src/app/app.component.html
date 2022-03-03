@@ -1,10 +1,11 @@
 
 
 <div id="content">
-    <app-analysis num="1" id="analysis" #analysis></app-analysis>
-    <app-dummy id="dummy" #dummy></app-dummy>
+    <app-analysis num="1"></app-analysis>
+    <app-dummy></app-dummy>
 </div>
 
-<app-nav (changeNavEvent)="changePage($event)"></app-nav>
+<app-nav></app-nav>
+
 
 <router-outlet></router-outlet>
