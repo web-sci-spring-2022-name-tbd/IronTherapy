@@ -45,6 +45,12 @@ h1 {
     padding: 12px 15px;
 }
 
+
+/* 
+#exercise-table td:hover {
+    background: #e99bff;
+} */
+
 #exercise-table tbody tr {
     border-bottom: 1px solid #dddddd;
 }
@@ -64,6 +70,10 @@ h1 {
 #exercise-table tbody tr.active-row {
     font-weight: bold;
     color: #009879;
+}
+
+#exercise-table tbody tr:hover {
+    background: #efb5ff;
 }
 
 .exercise-button {
