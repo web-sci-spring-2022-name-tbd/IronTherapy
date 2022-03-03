@@ -105,3 +105,4 @@ dist
 
 # intellij stuff
 .idea
+.vscode/settings.json

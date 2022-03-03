@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EChartsOption } from 'echarts';
 
 @Component({
   selector: 'app-chart',
@@ -7,23 +8,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChartComponent implements OnInit {
 
-  dummyData = [
-    {name:"2022-03-03" , value: 25},
-    {name:"2022-03-02" , value: 21},
-    {name:"2022-03-01" , value: 20},
-    {name:"2022-02-28" , value: 20},
-    {name:"2022-02-27" , value: 17},
-    {name:"2022-02-26" , value: 15},
-    {name:"2022-02-25" , value: 12},
-    {name:"2022-02-24" , value: 10},
-
-
-  ]
-
   constructor() { }
 
   ngOnInit(): void {
+
   }
+
+
+  chartOption: EChartsOption = {
+    legend: {
+      data: ['achieved', 'goal']
+    },
+    xAxis: {
+      type: 'category',
+      data: ['2/25', '2/26', '2/27', '2/28', '3/01', '3/02', '3/03'],
+      axisTick: {
+        alignWithLabel: true
+      }
+    },
+    yAxis: {
+      type: 'value',
+    },
+    series: [
+      {
+        name: 'goal',
+        data: [5, 5, 7, 10, 10, 13, 15],
+        type: 'line',
+      },
+      {
+        name: 'achieved',
+        data: [7, 7, 10, 11, 12, 15, 15],
+        type: 'line',
+      }
+    ],
+  };
 
   
 

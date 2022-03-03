@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { DummyComponent } from './dummy/dummy.component';
 import { AnalysisComponent } from './analysis/analysis.component';
-
-import { NgxChartsModule }from '@swimlane/ngx-charts';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartComponent } from './chart/chart.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import * as echarts from 'echarts';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { ChartComponent } from './chart/chart.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    NgxChartsModule
+    NgxEchartsModule.forRoot({
+      echarts
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
