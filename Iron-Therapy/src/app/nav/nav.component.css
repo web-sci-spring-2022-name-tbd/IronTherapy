@@ -1,9 +1,9 @@
 ::ng-deep :root {
     font-size: 16px;
     font-family: 'Open Sans';
-    --text-primary: #b6b6b6;
-    --text-secondary: #ececec;
-    --bg-primary: #2E3440;
+    --text-primary: black;
+    --text-secondary: darkgray;
+    --bg-primary: #C69AD6;
     --bg-secondary: #4C566A;
     --transition-speed: 600ms;
 }
@@ -35,9 +35,9 @@ main {
 .navbar {
     position: fixed;
     background-color: var(--bg-primary);
-    width: 5rem;
+    width: max-content;
     height: 100vh;
-    transition: width 600ms ease;
+    transition: width var(--transition-speed) ease;
     left: 0px;
 
 }
@@ -53,16 +53,10 @@ main {
 }
 
 .nav-item {
+    transition: width var(--transition-speed) ease;
     width: 100%;
-    transition: 300ms fade;
+
 }
-
-
-/* .nav-item:last-child {
-    margin-top: auto;
-    visibility: hidden;
-} */
-
 
 
 .nav-link {
@@ -72,7 +66,9 @@ main {
     color: var(--text-primary);
     text-decoration: none;
     filter: grayscale(100%) opacity(0.7);
-    transition: var(--transition-speed) fade;
+    transition: var(--transition-speed) ease;
+
+    /* transition: var(--transition-speed) fade; */
     
 }
 
@@ -85,6 +81,8 @@ main {
 .link-text {
     display: none;
     margin-left: 1rem;
+    transition: var(--transition-speed) ease;
+
 }
 
 .nav-link svg {
@@ -138,6 +136,6 @@ main {
         display: inline;
     }
     .navbar:hover {
-        width: 16rem;
+        width: max-content;
     }
 }
