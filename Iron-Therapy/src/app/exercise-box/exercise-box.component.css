@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+
+#exercise_box {
+    
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+
+    background: #e99bff;
+    opacity:80%;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    padding: 20px;
+
+    margin-top: .2%;
+    margin-bottom: 2%;
+    margin-right: auto;
+    margin-left: auto;
+    width: fit-content;
+}
+
+h1 {
+    text-decoration: underline;
+}
+
+#exercise-table {
+    margin-bottom: 1%;
+    margin-top: 0;
+    margin-right: auto;
+    margin-left: auto;
+    border-collapse: collapse;
+    /* margin: 25px 0; */
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+#exercise-table thead tr {
+    background-color: rgb(145, 57, 228);
+    color: #ffffff;
+    text-align: left;
+}
+
+#exercise-table th,
+#exercise-table td {
+    padding: 12px 15px;
+}
+
+#exercise-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+#exercise-table tbody tr:nth-of-type(even) {
+    background-color: #d0d0d0;
+}
+
+#exercise-table tbody tr:nth-of-type(odd) {
+    background-color: #ffffff;
+}
+
+#exercise-table tbody tr:last-of-type {
+    border-bottom: 2px solid rgb(145, 57, 228);
+}
+
+#exercise-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+
+.exercise-button {
+    color: white;
+    background-color: rgb(162, 93, 226);
+    border-radius: 15px;
+    padding-top: .8%;
+    padding-bottom: .8%;
+    padding-left: 1%;
+    padding-right: 1%;
+    margin-left: .5%;
+    margin-right: .5%;
+    transition: 0.3s;
+}
+
+
+.exercise-button:hover{
+    background-color: rgb(122, 5, 255);
+}
