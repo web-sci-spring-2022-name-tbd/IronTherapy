@@ -4,7 +4,7 @@
     --text-primary: black;
     --text-secondary: darkgray;
     --bg-primary: #C69AD6;
-    --bg-secondary: #4C566A;
+    --bg-secondary: #8f669f;
     --transition-speed: 600ms;
 }
 
@@ -82,10 +82,11 @@ main {
     display: none;
     margin-left: 1rem;
     transition: var(--transition-speed) ease;
-
+    width:75px;
 }
 
 .nav-link svg {
+    margin-left: auto;
     width: 2rem;
     min-width: 2rem;
     margin: 0 1.5rem;
