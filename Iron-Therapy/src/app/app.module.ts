@@ -7,16 +7,23 @@ import { NavComponent } from './nav/nav.component';
 import { DummyComponent } from './dummy/dummy.component';
 import { AnalysisComponent } from './analysis/analysis.component';
 
+import { NgxChartsModule }from '@swimlane/ngx-charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChartComponent } from './chart/chart.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     DummyComponent,
-    AnalysisComponent
+    AnalysisComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    NgxChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

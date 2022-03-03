@@ -11,5 +11,8 @@ export class AnalysisComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  chart() {
+
+  }
 
 }
