@@ -20,7 +20,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
     AppComponent,
     NavComponent,
     WorkoutBoxComponent,
-    HistoryBoxComponent
+    HistoryBoxComponent,
     DummyComponent,
     AnalysisComponent,
     ChartComponent
