@@ -54,6 +54,7 @@ main {
 .nav-item {
     transition: width var(--transition-speed) ease;
     width: 100%;
+    display: flex;
 }
 
 .nav-link {
@@ -108,9 +109,14 @@ main {
         bottom: 0;
         width: 100vw;
         height: 5rem;
+        justify-content: space-evenly;
     }
+    
     .navbar-nav {
         flex-direction: row;
+    }
+    .nav-item {
+        justify-content: space-between;
     }
     .nav-link {
         justify-content: center;

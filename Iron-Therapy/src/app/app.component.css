@@ -9,9 +9,9 @@
 /* Smaller screens */
 
 @media only screen and (max-width: 800px) {
-    #content {
+    /* #content {
         bottom: 5rem;
-    }
+    } */
 }
 
 
