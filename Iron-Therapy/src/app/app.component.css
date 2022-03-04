@@ -1,17 +1,19 @@
 #content {
-    position:relative;
-    left:5rem;
+    position: relative;
+    left: 5rem;
     width: 95vw;
-    /* width:calc(100vw-5rem); */
+    overflow-x: hidden;
 }
 
+
 /* Smaller screens */
+
 @media only screen and (max-width: 800px) {
     #content {
         bottom: 5rem;
     }
-
 }
+
 
 /* Large screens */
 
@@ -19,5 +21,4 @@
     #content {
         left: 5rem;
     }
-
 }
