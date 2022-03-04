@@ -20,13 +20,24 @@ export class ChartComponent implements OnInit {
       data: ['achieved', 'goal']
     },
     xAxis: {
-      type: 'category',
+      name: 'date',
+      nameTextStyle: {
+        verticalAlign: "top",
+        padding: [15, 0, 0, 0]
+      },
+      nameLocation: 'middle',
       data: ['2/25', '2/26', '2/27', '2/28', '3/01', '3/02', '3/03'],
       axisTick: {
         alignWithLabel: true
       }
     },
     yAxis: {
+      name: 'weight (lbs)',
+      nameLocation: "middle",
+      nameTextStyle: {
+        verticalAlign: "bottom",
+        padding: [0, 0, 15, 0]
+      },
       type: 'value',
     },
     series: [
