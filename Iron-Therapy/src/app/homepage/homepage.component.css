@@ -1,0 +1,22 @@
+#content {
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  position: absolute;
+  background-color: #c076e6;
+  background-image: linear-gradient(150deg, #c076e6 0%, #b903b9 100%);
+}
+
+#welcome-message {
+  width: 70vw;
+  text-align: center;
+}
+
+#next-workout {
+  width: 80vw;
+  text-align: center;
+}
+
+#workout-button {
+  text-align: center;
+}
