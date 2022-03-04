@@ -9,6 +9,7 @@
   width: 25vw;
   height: 25vh;
   box-shadow: 5px 5px burlywood;
+  overflow: hidden;
 }
 
 #name {
@@ -26,4 +27,15 @@
 
 .child {
   margin: 2vh;
+  z-index: 4;
+}
+
+#graphic {
+  margin-top: -26vh;
+  margin-left: 3vw;
+  z-index: -7;
+  width: 23vw;
+  height: 26vh;
+  background-color: plum;
+  clip-path: polygon(70% 0, 100% 0, 30% 100%, 0 100%);
 }
