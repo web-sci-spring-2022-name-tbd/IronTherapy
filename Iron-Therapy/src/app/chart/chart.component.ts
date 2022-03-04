@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { EChartsOption } from 'echarts';
 
 @Component({
@@ -7,7 +7,7 @@ import { EChartsOption } from 'echarts';
   styleUrls: ['./chart.component.css']
 })
 export class ChartComponent implements OnInit {
-
+  @Input() name: string = "graph -1";
   constructor() { }
 
   ngOnInit(): void {
@@ -17,6 +17,7 @@ export class ChartComponent implements OnInit {
 
   chartOption: EChartsOption = {
     legend: {
+      top:10,
       data: ['achieved', 'goal']
     },
     xAxis: {

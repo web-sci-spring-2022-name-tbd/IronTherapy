@@ -14,6 +14,7 @@ import { ChartComponent } from './chart/chart.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
 
@@ -35,7 +36,9 @@ import { NgxEchartsModule } from 'ngx-echarts';
     BrowserAnimationsModule,
     NgxEchartsModule.forRoot({
       echarts
-    })
+    }),
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]
