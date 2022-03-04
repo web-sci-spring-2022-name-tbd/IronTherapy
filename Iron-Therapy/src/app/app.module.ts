@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { WorkoutBoxComponent } from './workout-box/workout-box.component';
+import { HistoryBoxComponent } from './history-box/history-box.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
-    WorkoutBoxComponent
+    WorkoutBoxComponent,
+    HistoryBoxComponent
   ],
   imports: [
     BrowserModule,
