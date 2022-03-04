@@ -6,6 +6,14 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { WorkoutBoxComponent } from './workout-box/workout-box.component';
 import { HistoryBoxComponent } from './history-box/history-box.component';
+import { DummyComponent } from './dummy/dummy.component';
+import { AnalysisComponent } from './analysis/analysis.component';
+import { ChartComponent } from './chart/chart.component';
+
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import * as echarts from 'echarts';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
   declarations: [
@@ -13,10 +21,17 @@ import { HistoryBoxComponent } from './history-box/history-box.component';
     NavComponent,
     WorkoutBoxComponent,
     HistoryBoxComponent
+    DummyComponent,
+    AnalysisComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    NgxEchartsModule.forRoot({
+      echarts
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
