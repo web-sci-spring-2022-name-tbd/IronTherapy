@@ -9,12 +9,12 @@ import { NavComponent } from './nav/nav.component';
 })
 export class AppComponent implements OnInit {
   title = 'Iron-Therapy';
-  pages = ['analysis', 'dummy', 'history', 'exercise','workout-plans'];
+  pages = ['analysis', 'dummy', 'history', 'exercise','workout-plans', 'home'];
 
 
 
   ngOnInit(): void {
-    this.changePage('dummy');
+    this.changePage('home');
   }
 
   // hide all of the other pages
