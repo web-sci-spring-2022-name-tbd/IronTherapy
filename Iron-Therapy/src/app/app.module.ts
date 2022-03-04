@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
+import { WorkoutBoxComponent } from './workout-box/workout-box.component';
+import { HistoryBoxComponent } from './history-box/history-box.component';
 import { DummyComponent } from './dummy/dummy.component';
 import { AnalysisComponent } from './analysis/analysis.component';
 import { ChartComponent } from './chart/chart.component';
@@ -17,6 +19,8 @@ import { NgxEchartsModule } from 'ngx-echarts';
   declarations: [
     AppComponent,
     NavComponent,
+    WorkoutBoxComponent,
+    HistoryBoxComponent
     DummyComponent,
     AnalysisComponent,
     ChartComponent
