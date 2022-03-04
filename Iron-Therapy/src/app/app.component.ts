@@ -9,7 +9,7 @@ import { NavComponent } from './nav/nav.component';
 })
 export class AppComponent implements OnInit{
   title = 'Iron-Therapy';
-  pages = ['analysis', 'dummy'];
+  pages = ['analysis', 'dummy', 'exercise'];
 
   ngOnInit(): void {
     this.changePage('dummy');
