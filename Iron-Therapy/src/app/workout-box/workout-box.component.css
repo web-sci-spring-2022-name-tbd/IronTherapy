@@ -1,0 +1,52 @@
+.center {
+  display: flex;
+  justify-content: center;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
+}
+
+#container {
+  background-color: whitesmoke;
+  border-radius: 25px;
+  width: 25vw;
+  height: 25vh;
+  box-shadow: 5px 5px burlywood;
+  overflow: hidden;
+}
+
+#name {
+  padding-top: 2vh;
+  padding-left: 1vw;
+}
+
+#sug {
+  font-size: larger;
+}
+
+#parent {
+  padding-top: 10vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 12vw;
+  width: 50%;
+}
+
+.child {
+  margin-top: 10vh;
+  margin: 2vh;
+  z-index: 4;
+}
+
+#graphic {
+  margin-top: -25vh;
+  margin-left: 5vw;
+  z-index: -7;
+  width: 23vw;
+  height: 29vh;
+  background-color: plum;
+  clip-path: polygon(70% 0, 100% 0, 30% 100%, 0 100%);
+}
+
+#min {
+  font-size: x-large;
+}
