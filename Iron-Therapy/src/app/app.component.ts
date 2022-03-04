@@ -7,9 +7,9 @@ import { NavComponent } from './nav/nav.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'Iron-Therapy';
-  pages = ['analysis', 'dummy'];
+  pages = ['analysis', 'dummy', 'workout-plans'];
 
   ngOnInit(): void {
     this.changePage('dummy');
@@ -34,11 +34,11 @@ export class AppComponent implements OnInit{
 
 
 // Show an element
-function show (elem: HTMLElement) {
-	elem.style.display = 'block';
+function show(elem: HTMLElement) {
+  elem.style.display = 'block';
 };
 
 // Hide an element
-function hide (elem: HTMLElement) {
-	elem.style.display = 'none';
+function hide(elem: HTMLElement) {
+  elem.style.display = 'none';
 };
