@@ -7,7 +7,7 @@ import { EChartsOption } from 'echarts';
   styleUrls: ['./chart.component.css']
 })
 export class ChartComponent implements OnInit {
-  @Input() name: string = "graph -1";
+  @Input() name: string = "Graph";
   constructor() { }
 
   ngOnInit(): void {
