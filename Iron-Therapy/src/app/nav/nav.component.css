@@ -1,10 +1,10 @@
-:root {
+::ng-deep :root {
     font-size: 16px;
     font-family: 'Open Sans';
-    --text-primary: #b6b6b6;
-    --text-secondary: #ececec;
-    --bg-primary: #23232e;
-    --bg-secondary: #141418;
+    --text-primary: black;
+    --text-secondary: darkgray;
+    --bg-primary: #C69AD6;
+    --bg-secondary: #8f669f;
     --transition-speed: 600ms;
 }
 
@@ -35,9 +35,10 @@ main {
 .navbar {
     position: fixed;
     background-color: var(--bg-primary);
-    width: 5rem;
+    width: max-content;
     height: 100vh;
-    transition: width 600ms ease;
+    transition: width var(--transition-speed) ease;
+    left: 0px;
 }
 
 .navbar-nav {
@@ -51,16 +52,8 @@ main {
 }
 
 .nav-item {
+    transition: width var(--transition-speed) ease;
     width: 100%;
-}
-
-
-/* .nav-item:last-child {
-    margin-top: auto;
-} */
-
-.navbar:hover {
-    width: 16rem;
 }
 
 .nav-link {
@@ -70,7 +63,8 @@ main {
     color: var(--text-primary);
     text-decoration: none;
     filter: grayscale(100%) opacity(0.7);
-    transition: var(--transition-speed);
+    transition: var(--transition-speed) ease;
+    /* transition: var(--transition-speed) fade; */
 }
 
 .nav-link:hover {
@@ -82,9 +76,12 @@ main {
 .link-text {
     display: none;
     margin-left: 1rem;
+    transition: var(--transition-speed) ease;
+    width: 75px;
 }
 
 .nav-link svg {
+    margin-left: auto;
     width: 2rem;
     min-width: 2rem;
     margin: 0 1.5rem;
@@ -103,46 +100,14 @@ main {
     transition: var(--transition-speed);
 }
 
-.logo {
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    text-align: center;
-    color: var(--text-secondary);
-    background: var(--bg-secondary);
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.3ch;
-    width: 100%;
-}
-
-.logo svg {
-    transform: rotate(0deg);
-    transition: var(--transition-speed);
-}
-
-.logo-text {
-    display: inline;
-    position: absolute;
-    left: -999px;
-    transition: var(--transition-speed);
-}
-
-.navbar:hover .logo svg {
-    transform: rotate(-180deg);
-}
-
 
 /* Small screens */
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
     .navbar {
         bottom: 0;
         width: 100vw;
         height: 5rem;
-    }
-    .logo {
-        display: none;
     }
     .navbar-nav {
         flex-direction: row;
@@ -158,7 +123,7 @@ main {
 
 /* Large screens */
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 800px) {
     .navbar {
         top: 0;
         width: 5rem;
@@ -167,10 +132,7 @@ main {
     .navbar:hover .link-text {
         display: inline;
     }
-    .navbar:hover .logo svg {
-        margin-left: 11rem;
-    }
-    .navbar:hover .logo-text {
-        left: 0px;
+    .navbar:hover {
+        width: max-content;
     }
 }
