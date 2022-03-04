@@ -6,9 +6,11 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'Iron-Therapy';
-  pages = ['analysis', 'dummy'];
+  pages = ['analysis', 'dummy', 'history', 'exercise','workout-plans', 'home'];
+
+
 
   loggedIn: boolean = false;
   signUp: boolean = false;
@@ -20,7 +22,7 @@ export class AppComponent implements OnInit{
   ngOnInit(): void {
     this.loginService.loggedIn$.subscribe((logged) => {
       this.loggedIn = logged;
-      if (this.firstLog) this.changePage('dummy');
+      if (this.firstLog) this.changePage('home');
       this.firstLog = true;
     });
   }
@@ -49,11 +51,11 @@ export class AppComponent implements OnInit{
 
 
 // Show an element
-function show (elem: HTMLElement) {
-	elem.style.display = 'block';
+function show(elem: HTMLElement) {
+  elem.style.display = 'block';
 };
 
 // Hide an element
-function hide (elem: HTMLElement) {
-	elem.style.display = 'none';
+function hide(elem: HTMLElement) {
+  elem.style.display = 'none';
 };
