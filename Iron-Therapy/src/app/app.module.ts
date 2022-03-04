@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
+import { HomepageComponent } from './homepage/homepage.component';
+import { GoalComponent } from './goal/goal.component';
 
 import { ExerciseBoxComponent } from './exercise-box/exercise-box.component';
 import { WorkoutBoxComponent } from './workout-box/workout-box.component';
@@ -23,6 +25,8 @@ import { NgxEchartsModule } from 'ngx-echarts';
   declarations: [
     AppComponent,
     NavComponent,
+    HomepageComponent,
+    GoalComponent,
     ExerciseBoxComponent,
     WorkoutBoxComponent,
     HistoryBoxComponent,
