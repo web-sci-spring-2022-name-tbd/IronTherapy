@@ -26,7 +26,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
     AppComponent,
     NavComponent,
     HomepageComponent,
-    GoalComponent
+    GoalComponent,
     ExerciseBoxComponent,
     WorkoutBoxComponent,
     HistoryBoxComponent,
