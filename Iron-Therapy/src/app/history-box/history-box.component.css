@@ -1,10 +1,11 @@
 .center {
   display: flex;
   justify-content: center;
+  padding-bottom: 5vh;
 }
 
 #container {
-  background-color: aquamarine;
+  background-color: lightgrey;
   border-radius: 25px;
   width: 25vw;
   height: 25vh;
@@ -13,6 +14,7 @@
 }
 
 #name {
+  padding-top: 1vh;
   padding-left: 1vw;
   font-style: bold;
 }
@@ -38,7 +40,7 @@
 }
 
 .exercise {
-  margin: 0;
+  padding-top: 2px;
   font-size: smaller;
 }
 
@@ -47,7 +49,7 @@
   margin-left: -15vw;
   z-index: 1;
   width: 23vw;
-  height: 27vh;
+  height: 29vh;
   background-color: plum;
   clip-path: polygon(70% 0, 100% 0, 30% 100%, 0 100%);
 }
