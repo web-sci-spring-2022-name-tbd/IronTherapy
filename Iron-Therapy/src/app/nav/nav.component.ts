@@ -7,14 +7,14 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class NavComponent implements OnInit {
   @Output() changeNavEvent = new EventEmitter<string>();
-  
+
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  emitScore(page: string) {
+  visit(page: string) {
     this.changeNavEvent.next(page);
   }
 

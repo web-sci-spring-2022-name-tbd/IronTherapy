@@ -3,8 +3,8 @@
     <div class="inner-wrap">
       <h2 class="center-txt header purp fnt-bold">Iron Therapy</h2>
       <h2 class="purp center-txt">Login</h2>
-      <p class="no-account center-txt">Don't have an account? <a href="/">Create an account</a></p>
-      <form method="post" action="" class="login-form">
+      <p class="no-account center-txt">Don't have an account? <a (click)="goSignUp()" href="javascript:void(0);">Create an account</a></p>
+      <form #loginForm="ngForm" (ngSubmit)="logIn($event)" action="" class="login-form">
         <fieldset>
           <div class="input-group">
             <label for="email">Email Address</label>

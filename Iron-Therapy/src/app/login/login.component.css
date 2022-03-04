@@ -2,6 +2,7 @@
 :host {
   --main-color: #613194;
   --main-color-faded: #8251b6;
+  --off-color: #ed5101;
   color: rgb(95, 95, 95);
 }
 
@@ -30,9 +31,9 @@ input {
 }
 
 textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
-  border-color: var(--main-color);
-  box-shadow: 0 1px 1px var(--main-color);
-  inset: 0 0 8px var(--main-color);
+  border-color: var(--off-color);
+  box-shadow: 0 1px 1px var(--off-color);
+  inset: 0 0 8px var(--off-color);
   outline: 0 none !important;
 }
 
@@ -62,7 +63,7 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
   max-width: 55vw;
   word-wrap: break-word;
   color: white;
-  text-shadow: -2px 5px #ed5101;
+  text-shadow: -2px 5px var(--off-color);
 }
 
 .login-left {
@@ -124,6 +125,10 @@ textarea:focus, input:focus, input[type]:focus, .uneditable-input:focus {
 
 .no-account {
   margin: 20px 0;
+}
+
+.no-account a {
+  color: var(--off-color);
 }
 
 .input-group {

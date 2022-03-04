@@ -1,3 +1,4 @@
+import { LoginService } from './login.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -16,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import * as echarts from 'echarts';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,12 +34,13 @@ import { NgxEchartsModule } from 'ngx-echarts';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     BrowserAnimationsModule,
     NgxEchartsModule.forRoot({
       echarts
     })
   ],
-  providers: [],
+  providers: [LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
