@@ -1,0 +1,53 @@
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+#container {
+  background-color: aquamarine;
+  border-radius: 25px;
+  width: 25vw;
+  height: 25vh;
+  box-shadow: 5px 5px burlywood;
+  overflow: hidden;
+}
+
+#name {
+  padding-left: 1vw;
+  font-style: bold;
+}
+
+#parent {
+  margin-top: 10vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15vw;
+  width: 50%;
+}
+
+#sug {
+  margin-top: -10vh;
+}
+
+#taken {
+  margin-top: 20vh;
+}
+
+.child {
+  margin: 2vh;
+}
+
+.exercise {
+  margin: 0;
+  font-size: smaller;
+}
+
+#min {
+  margin-top: -16vh;
+  margin-left: -15vw;
+  z-index: 1;
+  width: 23vw;
+  height: 27vh;
+  background-color: plum;
+  clip-path: polygon(70% 0, 100% 0, 30% 100%, 0 100%);
+}
