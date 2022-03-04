@@ -1,6 +1,5 @@
+import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
-import { DummyComponent } from './dummy/dummy.component';
-import { NavComponent } from './nav/nav.component';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +12,19 @@ export class AppComponent implements OnInit {
 
 
 
+  loggedIn: boolean = false;
+  signUp: boolean = false;
+
+  constructor(private loginService: LoginService) { }
+
+  private firstLog: boolean = false;
+
   ngOnInit(): void {
-    this.changePage('home');
+    this.loginService.loggedIn$.subscribe((logged) => {
+      this.loggedIn = logged;
+      if (this.firstLog) this.changePage('home');
+      this.firstLog = true;
+    });
   }
 
   // hide all of the other pages
@@ -24,13 +34,18 @@ export class AppComponent implements OnInit {
       if (page_ !== page) {
         console.log(`hiding ${page_}`)
         let el = document.getElementById(page_) as HTMLElement;
-        hide(el);
+        if (el) hide(el);
       }
     });
 
     // show the specific page
     let el = document.getElementById(page) as HTMLElement;
-    show(el);
+    if (el) show(el);
+  }
+
+  showSignUp(signUp: boolean) {
+    console.log("here");
+    this.signUp = signUp;
   }
 }
 

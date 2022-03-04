@@ -1,29 +1,30 @@
-<div id="content">
-    <app-analysis num="1" id="analysis"></app-analysis>
-    <app-dummy id="dummy"></app-dummy>
-    <div id="workout-plans">
-        <app-workout-box></app-workout-box>
-        <app-workout-box></app-workout-box>
-        <app-workout-box></app-workout-box>
-        <app-workout-box></app-workout-box>
-    </div>
-    <div id="exercise">
-        <app-exercise-box exercise_name="Lunges"></app-exercise-box>
-        <app-exercise-box exercise_name="Curl Up"></app-exercise-box>
-        <app-exercise-box exercise_name="Bench Press"></app-exercise-box>
-    </div>
-    <div id="history">
-        <app-history-box></app-history-box>
-        <app-history-box></app-history-box>
-        <app-history-box></app-history-box>
-        <app-history-box></app-history-box>
-        <app-history-box></app-history-box>
-    </div>
+<div [hidden]="!loggedIn" id="content">
+  <app-analysis num="1" id="analysis"></app-analysis>
+  <app-dummy id="dummy"></app-dummy>
+  <div id="workout-plans">
+    <app-workout-box></app-workout-box>
+    <app-workout-box></app-workout-box>
+    <app-workout-box></app-workout-box>
+    <app-workout-box></app-workout-box>
+  </div>
+  <div id="exercise">
+    <app-exercise-box exercise_name="Lunges"></app-exercise-box>
+    <app-exercise-box exercise_name="Curl Up"></app-exercise-box>
+    <app-exercise-box exercise_name="Bench Press"></app-exercise-box>
+  </div>
+  <div id="history">
+    <app-history-box></app-history-box>
+    <app-history-box></app-history-box>
+    <app-history-box></app-history-box>
+    <app-history-box></app-history-box>
+    <app-history-box></app-history-box>
+  </div>
 </div>
 
-<app-homepage id="home"></app-homepage>
+<app-homepage [hidden]="!loggedIn" id="home"></app-homepage>
+<app-nav [hidden]="!loggedIn" (changeNavEvent)="changePage($event)"></app-nav>
 
+<app-login (signUp)="showSignUp($event)" [hidden]="signUp" *ngIf="!loggedIn"></app-login>
+<app-signup (login)="showSignUp($event)" [hidden]="!signUp" *ngIf="!loggedIn"></app-signup>
 
-
-
-<app-nav (changeNavEvent)="changePage($event)"></app-nav>
+<router-outlet></router-outlet>
