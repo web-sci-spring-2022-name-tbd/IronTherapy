@@ -7,11 +7,11 @@
   background-image: linear-gradient(150deg, #c076e6 0%, #b303b9 100%);
 }
 
-#logoutImage {
+#logout-image {
   width: 40px;
 }
 
-#logoutImage:hover {
+#logout-image:hover {
   cursor: pointer;
 }
 

@@ -4,6 +4,14 @@ body {
   background:#d2eaf1;
 }
 
+#edit-image{
+  width: 30px;
+}
+
+#edit-image:hover{
+  cursor: pointer;
+}
+
 .circle-wrap {
   margin-bottom: 35px;
   width: 250px;
@@ -28,13 +36,13 @@ body {
 }
 
 .circle-wrap .inside-circle {
-  width: 195px;
-  height: 195px;
+  width: 199px;
+  height: 199px;
   border-radius: 50%;
   background: #f8e6e6;
-  line-height: 50px;
+  line-height: 42px;
   text-align: center;
-  margin-top: 26px;
+  margin-top: 27px;
   margin-left: 26px;
   color: #000000;
   position: absolute;
