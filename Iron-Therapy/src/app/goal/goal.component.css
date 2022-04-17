@@ -6,8 +6,8 @@ body {
 
 .circle-wrap {
   margin-bottom: 35px;
-  width: 150px;
-  height: 150px;
+  width: 250px;
+  height: 250px;
   background: #fefcff;
   border-radius: 50%;
   border: 1px solid #cdcbd0;
@@ -16,26 +16,26 @@ body {
 
 .circle-wrap .circle .mask,
 .circle-wrap .circle .fill {
-  width: 150px;
-  height: 150px;
+  width: 250px;
+  height: 250px;
   position: absolute;
   border-radius: 50%;
 }
 
 
 .circle-wrap .circle .mask {
-  clip: rect(0px, 150px, 150px, 75px);
+  clip: rect(0px, 250px, 250px, 125px);
 }
 
 .circle-wrap .inside-circle {
-  width: 122px;
-  height: 122px;
+  width: 195px;
+  height: 195px;
   border-radius: 50%;
   background: #f8e6e6;
   line-height: 120px;
   text-align: center;
-  margin-top: 14px;
-  margin-left: 14px;
+  margin-top: 26px;
+  margin-left: 26px;
   color: #000000;
   position: absolute;
   z-index: 100;
@@ -47,7 +47,7 @@ body {
 
 /* 3rd progress bar */
 .mask .fill {
-  clip: rect(0px, 75px, 150px, 0px);
+  clip: rect(0px, 125px, 250px, 0px);
   background-color: #1a44ce;
 }
 
