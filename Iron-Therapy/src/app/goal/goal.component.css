@@ -11,6 +11,7 @@ body {
   background: #fefcff;
   border-radius: 50%;
   border: 1px solid #cdcbd0;
+  box-shadow: 7px 7px 10px;
 }
 
 .circle-wrap .circle .mask,
@@ -20,6 +21,7 @@ body {
   position: absolute;
   border-radius: 50%;
 }
+
 
 .circle-wrap .circle .mask {
   clip: rect(0px, 150px, 150px, 75px);
