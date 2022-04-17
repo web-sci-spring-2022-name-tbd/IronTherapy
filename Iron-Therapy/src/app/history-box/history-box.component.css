@@ -1,7 +1,8 @@
 .center {
   display: flex;
   justify-content: center;
-  padding-bottom: 5vh;
+  padding-top: 2vh;
+  padding-bottom: 2vh;
 }
 
 #container {
@@ -20,7 +21,8 @@
 }
 
 #parent {
-  margin-top: 10vh;
+  position:relative;
+  margin-top: -40%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 15vw;
@@ -28,7 +30,7 @@
 }
 
 #sug {
-  margin-top: -10vh;
+  padding-top: 1vh;
 }
 
 #taken {
@@ -40,16 +42,15 @@
 }
 
 .exercise {
-  padding-top: 2px;
+  margin:0;
   font-size: smaller;
 }
 
 #min {
-  margin-top: -16vh;
-  margin-left: -15vw;
-  z-index: 1;
-  width: 23vw;
-  height: 29vh;
+  margin-top:-12%;
+  z-index: 3;
+  width: 100%;
+  height: 102%;
   background-color: plum;
   clip-path: polygon(70% 0, 100% 0, 30% 100%, 0 100%);
 }
