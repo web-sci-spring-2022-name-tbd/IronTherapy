@@ -1,56 +1,97 @@
-.center {
-  display: flex;
-  justify-content: center;
-  padding-top: 2vh;
-  padding-bottom: 2vh;
+@import url(https://fonts.googleapis.com/css?family=Work+Sans:400,300,200,100);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
+body {
+  background: #EDF7FA;
 }
 
-#container {
-  background-color: lightgrey;
-  border-radius: 25px;
-  width: 25vw;
-  height: 25vh;
-  box-shadow: 5px 5px burlywood;
-  overflow: hidden;
+.card {
+  position: relative;
+  top: 20vh;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 0.75em;
+  padding: 0;
+  transition: all 0.2s ease-in-out;
+}
+.card:nth-child(even) {
+  margin: 0 1em;
 }
 
-#name {
-  padding-top: 1vh;
-  padding-left: 1vw;
-  font-style: bold;
+.card-top {
+  background: #8251b6;
+  padding: 3em;
+  border-top-left-radius: 0.75em;
+  border-top-right-radius: 0.75em;
+}
+.card-top .card-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 20em;
+  width: auto;
 }
 
-#parent {
-  position:relative;
-  margin-top: -40%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 15vw;
-  width: 50%;
+.triangle {
+  position: relative;
+  height: 0;
+  width: 0;
+  border-left: 1.5em solid transparent;
+  border-right: 1.5em solid transparent;
+  border-top: 1.5em solid #8251b6;
+  margin: 0 auto -1.75em auto;
+  top: -0.25em;
+  z-index: 20;
 }
 
-#sug {
-  padding-top: 1vh;
+.card-middle {
+  display: none;
+  background: #efefef;
+  padding: 2em 1em 1em 1em;
+}
+.card-middle .more {
+  font-family: Open Sans;
+  font-weight: 400;
 }
 
-#taken {
-  margin-top: 20vh;
+.card-bottom {
+  background: #f7f7f7;
+  padding: 1.75em 1em 1em 1em;
+  border-bottom-left-radius: 0.75em;
+  border-bottom-right-radius: 0.75em;
+}
+.card-bottom .card-title {
+  font-weight: 100;
 }
 
-.child {
-  margin: 2vh;
+.circle-button {
+  position: absolute;
+  bottom: 0;
+  right: 3.5em;
+  width: 70px;
+  height: 70px;
+  font-size: 1.5em;
+  color: #fff;
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.275);
+  outline: none;
+  cursor: pointer;
+  transition: all 300ms ease;
+}
+.circle-button .close {
+  transition: transform 400ms ease;
+}
+.circle-button:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.275);
 }
 
-.exercise {
-  margin:0;
-  font-size: smaller;
+.closeRotate {
+  transform: rotate(45deg);
+}
+.openRotate {
+  transform:rotate(-90deg);
 }
 
-#min {
-  margin-top:-12%;
-  z-index: 3;
-  width: 100%;
-  height: 102%;
-  background-color: plum;
-  clip-path: polygon(70% 0, 100% 0, 30% 100%, 0 100%);
+body, h1, h2, h3, h4, h5, h6, p {
+  font-family: Work Sans;
 }
