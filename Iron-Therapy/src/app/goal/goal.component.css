@@ -1,3 +1,11 @@
+:host {
+  --main-color: #613194;
+  --main-color-faded: #8251b6;
+  --off-color: #ed5101;
+  color: rgb(95, 95, 95);
+}
+
+
 body {
   --amount: 270deg / 2;
   font-family: "Roboto", sans-serif;
@@ -39,7 +47,7 @@ body {
   width: 199px;
   height: 199px;
   border-radius: 50%;
-  background: #f8e6e6;
+  background: var(--off-color);
   line-height: 42px;
   text-align: center;
   margin-top: 27px;
@@ -56,7 +64,7 @@ body {
 /* 3rd progress bar */
 .mask .fill {
   clip: rect(0px, 125px, 250px, 0px);
-  background-color: #1a44ce;
+  background-color: var(--main-color);
 }
 
 .mask.full,
