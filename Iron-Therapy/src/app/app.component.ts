@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'Iron-Therapy';
-  pages = ['analysis', 'dummy', 'history', 'exercise','workout-plans', 'home'];
+  pages = ['analysis', 'history', 'exercise','workout-plans', 'home'];
 
 
 

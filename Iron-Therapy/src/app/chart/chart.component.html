@@ -1,6 +1,10 @@
 <h1>
     {{name}}
 </h1>
-<div echarts [options]="chartOption" class="demo-chart" style="height:50vh;">
+<div echarts [options]="chartOption" class="chart" style="height:50vh;">
 
+</div>
+
+<div *ngFor="let data of dataParsed;let i = index">
+  {{i}}: {{data}}
 </div>

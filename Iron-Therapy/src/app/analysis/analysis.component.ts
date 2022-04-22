@@ -7,6 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AnalysisComponent implements OnInit {
   graphs: number = 3;
+  show = [true, false, false];
+  data: any[] = [{
+    "ExerciseName1": [{
+        "Pounds": 10,
+        "Reps": 5
+      },
+      {
+        "Pounds": 15,
+        "Reps": 5
+      },
+      {
+        "Pounds": 10,
+        "Reps": 5
+      }
+  ]}];
+
   constructor() { }
 
   ngOnInit(): void {
@@ -14,23 +30,9 @@ export class AnalysisComponent implements OnInit {
   }
 
   showGraph(num: number) {
-    for (let i = 0; i < 3; i++) {
-      let graph = document.getElementById(`graph-${i}`) as HTMLElement;
-      if (i === num) {
-        show(graph);
-      } else {
-        hide(graph);
-      }
+    for (let i = 0; i < this.graphs; i++) {
+      this.show[i] = i == num;
     }
   }
 
 }
-// Show an element
-function show (elem: HTMLElement) {
-	elem.style.display = 'block';
-};
-
-// Hide an element
-function hide (elem: HTMLElement) {
-	elem.style.display = 'none';
-};

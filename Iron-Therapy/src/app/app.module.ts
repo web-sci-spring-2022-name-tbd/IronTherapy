@@ -13,7 +13,6 @@ import { GoalComponent } from './goal/goal.component';
 import { ExerciseBoxComponent } from './exercise-box/exercise-box.component';
 import { WorkoutBoxComponent } from './workout-box/workout-box.component';
 import { HistoryBoxComponent } from './history-box/history-box.component';
-import { DummyComponent } from './dummy/dummy.component';
 import { AnalysisComponent } from './analysis/analysis.component';
 import { ChartComponent } from './chart/chart.component';
 
@@ -36,7 +35,6 @@ import { FormsModule } from '@angular/forms';
     ExerciseBoxComponent,
     WorkoutBoxComponent,
     HistoryBoxComponent,
-    DummyComponent,
     AnalysisComponent,
     ChartComponent
   ],
