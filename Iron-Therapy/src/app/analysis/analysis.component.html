@@ -9,7 +9,8 @@
         <li role="menuitem"><a class="dropdown-item" href="#" (click)="showGraph(2)">Graph 3</a></li>
     </ul>
 </div>
-<div *ngFor="let item of [].constructor(show.length);let i = index">
+<div *ngFor="let item of data;let i = index">
 <!--  <p>thing: {{i + 1}}</p>-->
+  <p>key: {{data}} object: {{data}}</p>
   <app-chart id="graph-{{i+1}}" name="graph {{i+1}}" *ngIf="show[i]"></app-chart>
 </div>

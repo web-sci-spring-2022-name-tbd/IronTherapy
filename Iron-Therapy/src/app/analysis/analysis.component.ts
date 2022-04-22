@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./analysis.component.css']
 })
 export class AnalysisComponent implements OnInit {
+  Object = Object;
   graphs: number = 3;
   show = [true, false, false];
+  // data2: ;
   data: any[] = [{
-    "ExerciseName1": [{
+    "ExerciseName1": [
+      {
         "Pounds": 10,
         "Reps": 5
       },
@@ -20,8 +23,25 @@ export class AnalysisComponent implements OnInit {
       {
         "Pounds": 10,
         "Reps": 5
-      }
-  ]}];
+      }],
+    "ExerciseName2": [
+      {
+        "Pounds": 20,
+        "Reps": 10,
+      },
+      {
+        "Pounds": 20,
+        "Reps": 12,
+      },
+      {
+        "Pounds": "25",
+        "Reps": 10,
+      },
+    ]
+  },
+
+
+  ];
 
   constructor() { }
 
