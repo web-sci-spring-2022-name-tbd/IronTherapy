@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-workout-box',
@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./workout-box.component.css']
 })
 export class WorkoutBoxComponent implements OnInit {
-
+  @Input() photo: String;
+  @Input() workout_name: String;
   constructor() { }
 
   ngOnInit(): void {
