@@ -3,11 +3,6 @@
 body {
   background: #EDF7FA;
 }
-@media only screen and (max-width: 768px) {
-  body {
-    background-color: lightblue;
-  }
-}
 .card {
   position: relative;
   top: 20vh;
