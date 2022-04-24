@@ -15,6 +15,7 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     children: [
+      { path: '', redirectTo: 'homepage', pathMatch: 'full' },
       { path: 'homepage', component: HomepageComponent },
       { path: 'analysis', component: AnalysisComponent },
       { path: 'exercises', component: ExercisesComponent },
