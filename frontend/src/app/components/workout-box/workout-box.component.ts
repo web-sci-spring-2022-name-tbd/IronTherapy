@@ -8,7 +8,10 @@ import { Component, OnInit, Input } from '@angular/core';
 export class WorkoutBoxComponent implements OnInit {
   @Input() photo: String;
   @Input() workout_name: String;
-  constructor() { }
+  constructor() {
+    this.photo = "";
+    this.workout_name = "";
+  }
 
   ngOnInit(): void {
   }

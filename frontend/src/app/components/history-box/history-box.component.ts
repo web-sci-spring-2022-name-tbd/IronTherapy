@@ -10,7 +10,9 @@ export class HistoryBoxComponent implements OnInit {
   @Input() photo: String;
   @Input() workout_name: String;
   constructor() {
-
+    this.num_id = "";
+    this.photo = "";
+    this.workout_name = "";
   }
 
   openArea() {
