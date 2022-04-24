@@ -15,11 +15,9 @@ export class ChartComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  // console.log(this.dataRaw)
-  //   console.log(JSON.parse(this.dataRaw))
     console.log(this.data)
     this.data.forEach(el => {
-      this.dataParsed.push([el["Pounds"], el["Reps"]])
+      this.dataParsed.push([el["Pounds"], el["Reps"], el["Date"]])
     })
     this.show = true;
 
@@ -35,7 +33,8 @@ export class ChartComponent implements OnInit {
       transitionDuration: 0.2,
       formatter: function (params) {
         let data = JSON.parse(JSON.stringify(params));
-        return `<span><b>Weight:</b>  ${data["value"][0]}</span> <br/><span><b>Reps:</b>  ${data["value"][1]}</span>`;
+        console.log(params)
+        return `<span>${data["value"][2]}</span><br/><span><b>Weight:</b>${data["value"][0]} lbs</brspan> <br/><span><b>Reps:</b>  ${data["value"][1]}</span>`;
       }
     },
     series: [

@@ -1,19 +1,19 @@
 <div class="content">
 
-<h1>Analysis Component</h1>
+<!--<h1>Analysis Component</h1>-->
 <div class="btn-group" dropdown>
     <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic">
-      Graphs <span class="caret"></span>
+      Select workout <span class="caret"></span>
     </button>
   <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
-    <ng-container *ngFor="let item of [].constructor(Object.keys(data[0]).length); let i = index">
-              <li role="menuitem"><span class="dropdown-item" href="#" (click)="showGraph(i)">Graph {{i+1}}</span></li>
+    <ng-container *ngFor="let key of Object.keys(data[0]); let i = index">
+              <li role="menuitem"><span class="dropdown-item" href="#" (click)="showGraph(i)">{{key}}</span></li>
     </ng-container>
   </ul>
 </div>
 
 
 <div *ngFor="let key of Object.keys(data[0]);let i = index">
-  <app-chart id="graph-{{i+1}}" name="graph {{i+1}}" [data]=data[0][key] *ngIf="show[i]"></app-chart>
+  <app-chart id="graph-{{i+1}}" name="{{key}}" [data]=data[0][key] *ngIf="show[i]"></app-chart>
 </div>
 </div>

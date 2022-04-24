@@ -14,81 +14,103 @@ export class AnalysisComponent implements OnInit {
     "ExerciseName1": [
       {
         "Pounds": 10,
-        "Reps": 5
+        "Reps": 5,
+        "Date": "2/1/22"
       },
       {
         "Pounds": 15,
-        "Reps": 5
+        "Reps": 5,
+        "Date": "2/3/22"
       },
       {
         "Pounds": 10,
-        "Reps": 5
+        "Reps": 5,
+        "Date": "2/5/22"
       }],
     "ExerciseName2": [
       {
         "Pounds": 20,
         "Reps": 10,
+        "Date": "2/1/22"
       },
       {
         "Pounds": 20,
         "Reps": 12,
+        "Date": "2/1/22"
       },
       {
         "Pounds": "25",
         "Reps": 10,
+        "Date": "2/1/22"
       },
     ],
     "ExerciseName3": [
       {
         "Pounds": 20,
         "Reps": 10,
+        "Date": "2/1/22"
       },
       {
         "Pounds": 20,
         "Reps": 12,
+        "Date": "2/1/22"
       },
       {
         "Pounds": "25",
         "Reps": 10,
+        "Date": "2/1/22"
       },
     ]
   }];
-  data2: any[] = [{
+  dataRaw: any[] = [{
+    "uid": 12521315,
+    "name": "Workout One",
+    "exercises": [{
       "name": "Bench Press",
       "sets": [{
         "pounds": 150,
         "reps": 10,
+        "date": "2/1/22",
       }, {
         "pounds": 150,
         "reps": 10,
+        "date": "2/5/22",
       }, {
         "pounds": 150,
         "reps": 10,
+        "date": "2/9/22",
       }],
     }, {
       "name": "Overhead Squat",
       "sets": [{
         "pounds": 150,
         "reps": 10,
+        "date": "2/2/22",
       }, {
         "pounds": 150,
         "reps": 10,
+        "date": "2/6/22",
       }, {
         "pounds": 150,
         "reps": 10,
+        "date": "2/10/22",
       }],
     }, {
       "name": "Bicep Curl",
       "sets": [{
         "pounds": 150,
         "reps": 10,
+        "date": "2/3/22",
       }, {
         "pounds": 150,
         "reps": 10,
+        "date": "2/7/22",
       }, {
         "pounds": 150,
         "reps": 10,
+        "date": "2/11/22",
       }]
+    }]
   }]
   constructor() { }
 
