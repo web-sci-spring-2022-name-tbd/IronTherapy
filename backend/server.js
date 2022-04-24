@@ -23,15 +23,12 @@ database.once("connected", () => {
 
 const app = express();
 
-app.use(cors());
-
-app.use(express.static(path.join(__dirname, "../frontend/dist/iron-therapy")));
-
-app.use(bodyParser.json());
-
-app.use('/workouts', workoutRoutes);
-app.use("/goals", goalRoutes);
-app.use("/exercises", exerciseRoutes);
+app.use(cors())
+   .use(express.static(path.join(__dirname, "../frontend/dist/iron-therapy")))
+   .use(bodyParser.json())
+   .use('/workouts', workoutRoutes)
+   .use("/goals", goalRoutes)
+   .use("/exercises", exerciseRoutes);
 
 // server route handler
 app.get('/', function(req, res) {

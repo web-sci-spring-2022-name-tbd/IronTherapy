@@ -33,6 +33,7 @@ main {
 }
 
 .navbar {
+  z-index: 100;
     position: fixed;
     background-color: var(--bg-primary);
     width: max-content;
