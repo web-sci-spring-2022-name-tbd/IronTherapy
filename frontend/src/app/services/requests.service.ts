@@ -58,12 +58,16 @@ export class RequestsService {
   getGoals(): Observable<Goal[]> {
     let url: string = 'http://localhost:3000/goals';
 
-    return this.http.get<Goal[]>(url, {
-      headers: {
-        'Content-Type': 'application/json',
-        // need to put the auth header in here
-      },
-    });
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.get<Goal[]>(url, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
   }
 
   // Get a specific goal for a user
