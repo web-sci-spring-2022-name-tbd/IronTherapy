@@ -8,21 +8,11 @@
                 <th>Number of Reps</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody *ngFor="let set of data; let i = index;">
             <tr>
-                <td>1</td>
-                <td>10</td>
-                <td>5</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>15</td>
-                <td>5</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>10</td>
-                <td>5</td>
+               <td>{{i+1}}</td> 
+               <td>{{set.pounds}}</td>
+               <td>{{set.reps}}</td>
             </tr>
         </tbody>
       </table>

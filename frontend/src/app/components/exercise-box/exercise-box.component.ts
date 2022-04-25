@@ -9,6 +9,20 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 })
 export class ExerciseBoxComponent implements OnInit {
   @Input() exercise_name: string = "";
+  @Input() data = [
+                    {
+                        "pounds": 150,
+                        "reps": 10
+                    },
+                    {
+                        "pounds": 150,
+                        "reps": 10
+                    },
+                    {
+                        "pounds": 150,
+                        "reps": 10
+                    }
+                  ]
   // @Input() color: string = "";
  
 
@@ -16,6 +30,8 @@ export class ExerciseBoxComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log("This is data in " + this.exercise_name + ": ");
+    console.log(this.data);
   }
 
 

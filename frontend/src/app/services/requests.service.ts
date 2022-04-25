@@ -24,9 +24,7 @@ export class RequestsService {
     });
   }
 
-  testing() {
-    return "this works";
-  }
+
 
   // Get all the workouts for a user
   getWorkouts(): Observable<Workout[]> {
