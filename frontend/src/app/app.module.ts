@@ -46,6 +46,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { WorkoutsComponent } from './components/workouts/workouts.component';
 import { ExercisesComponent } from './components/exercises/exercises.component';
 import { HistoryComponent } from './components/history/history.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { HistoryComponent } from './components/history/history.component';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
