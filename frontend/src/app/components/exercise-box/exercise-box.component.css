@@ -11,10 +11,10 @@
     padding: 20px;
 
     margin-top: .2%;
-    margin-bottom: 2%;
     margin-right: auto;
     margin-left: auto;
     width: fit-content;
+    margin-bottom: 10vh;
 }
 
 h1 {
@@ -32,6 +32,7 @@ h1 {
     font-family: sans-serif;
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    
 }
 
 #exercise-table thead tr {
@@ -78,7 +79,7 @@ h1 {
 
 .exercise-button {
     color: white;
-    background-color: rgb(162, 93, 226);
+    background-color: var(--main-color-faded);
     border-radius: 15px;
     padding-top: .8%;
     padding-bottom: .8%;
@@ -91,5 +92,5 @@ h1 {
 
 
 .exercise-button:hover{
-    background-color: rgb(122, 5, 255);
+    background-color: var(--main-color);
 }

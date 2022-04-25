@@ -7,3 +7,10 @@
   margin: 0;
   padding: 0;
 }
+
+
+:root {
+  --main-color: #613194;
+  --main-color-faded: #8251b6;
+  --seconday-color: #ed5101;
+}
