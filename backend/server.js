@@ -6,6 +6,7 @@ const workoutRoutes = require('./routes/workout-routes');
 const goalRoutes = require('./routes/goal-routes');
 const exerciseRoutes = require('./routes/exercise-routes');
 const cors = require('cors');
+const path = require('path');
 
 mongoose.connect(
   "mongodb+srv://root:Password123@irontherapy.fxgip.mongodb.net/irontherapy?retryWrites=true&w=majority"
@@ -24,7 +25,7 @@ const app = express();
 
 app.use(cors());
 
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, "../frontend/dist/iron-therapy")));
 
 app.use(bodyParser.json());
 

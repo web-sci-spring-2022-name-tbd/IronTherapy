@@ -42,6 +42,11 @@ import { ChartComponent } from './components/chart/chart.component';
 import { AuthService } from './services/auth.service';
 import { LoginService } from './services/login.service';
 import { RequestsService } from './services/requests.service';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { WorkoutsComponent } from './components/workouts/workouts.component';
+import { ExercisesComponent } from './components/exercises/exercises.component';
+import { HistoryComponent } from './components/history/history.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -57,6 +62,10 @@ import { RequestsService } from './services/requests.service';
     DummyComponent,
     AnalysisComponent,
     ChartComponent,
+    DashboardComponent,
+    WorkoutsComponent,
+    ExercisesComponent,
+    HistoryComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -64,6 +73,7 @@ import { RequestsService } from './services/requests.service';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
