@@ -22,12 +22,6 @@
   cursor: pointer;
 }
 
-h1 {
-  font-size: 35px;
-  color: black;
-  margin: 0 !important;
-}
-
 h2 {
   font-size: 30px;
   color: black;
@@ -39,6 +33,10 @@ h5 {
 
 #welcome-message {
   text-align: center;
+  font-size: 35px;
+  color: black;
+  margin: 0 !important;
+  padding-top: 40px;
 }
 
 #next-workout {
@@ -49,7 +47,7 @@ h5 {
 #workout-button {
   width: 300px;
   text-align: center;
-  background: linear-gradient(145deg, lighten( #2D3142, 10%), darken(#2D3142, 10%));
+  background: linear-gradient(145deg, lighten(#2D3142, 10%), darken(#2D3142, 10%));
   box-shadow: 3px 3px 2px var(--main-color-faded);
   background-color: var(--main-color);
   border: none;
@@ -59,7 +57,7 @@ h5 {
 .carousel-control-next,
 .carousel-control-prev,
 .carousel-indicators {
-    filter: invert(100%);
+  filter: invert(100%);
 }
 
 

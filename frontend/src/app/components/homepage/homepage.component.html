@@ -1,6 +1,6 @@
 <div id="content">
   <!-- Logout button -->
-  <img src="../../assets/images/logout.svg" alt="Logout" class="position-absolute" id="logout-image" />
+  <img src="../../assets/images/logout.svg" alt="Logout" class="position-absolute" id="logout-image" (click)="logout()" />
 
   <!-- Modal Stuff -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -40,7 +40,7 @@
   <h5 class="m-auto mt-4" id="next-workout">Your next workout is <p>tomorrow morning.</p>
   </h5>
   <div class="d-flex justify-content-center">
-    <button type="button" class="p-3 rounded-3 fs-4" id="workout-button">
+    <button type="button" class="p-3 rounded-3 fs-4" id="workout-button" routerLink="../workouts">
       Start workout
     </button>
   </div>
