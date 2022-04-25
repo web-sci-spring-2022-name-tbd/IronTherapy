@@ -23,6 +23,18 @@ export class HomepageComponent implements OnInit {
     this.auth.SignOut();
   }
 
+  // Make a new goal
+  // makeGoal(goal: Goal) {
+  makeGoal() { 
+    let goal: Object = {
+      exercise: "anExercise",
+      target: 100,
+      current: 20
+    };
+    this.request.postGoal(goal).subscribe((data) => {
+      console.log(data);
+    });
+  }
 
 
 }

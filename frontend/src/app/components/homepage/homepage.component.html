@@ -2,6 +2,7 @@
   <!-- Logout button -->
   <img src="../../assets/images/logout.svg" alt="Logout" class="position-absolute" id="logout-image"
     (click)="logout()" />
+    
 
   <!-- Modal Stuff -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -46,6 +47,7 @@
     <button type="button" class="p-3 rounded-3 fs-4" id="workout-button" routerLink="../workouts">
       Start workout
     </button>
+    <button type="button" (click)="makeGoal()">Test</button>
   </div>
 
   <!-- Goals -->

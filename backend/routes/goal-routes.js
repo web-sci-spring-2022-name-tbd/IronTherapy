@@ -8,8 +8,10 @@ router.get('/', async (req, res) => {
     const data = await Goal.find({
       // stuff with uid from firebase here
     });
+    console.log("Returned all the goals");
     res.json(data);
   } catch (error) {
+    console.log("Error getting goals: " + error.message);
     res.status(500).json({message: error.message});
   }
 });
@@ -23,6 +25,22 @@ router.get('/:exercise', async (req, res) => {
     });
     res.json(data);
   } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+router.post('/', async (req, res) => {
+  try {
+    const data = await Goal.create({
+      uid: req.user.user_id,
+      exercise: req.body.exercise,
+      target: req.body.target,
+      current: req.body.current,
+    });
+    console.log("Made a goal for " + req.user.name);
+    res.status(201).json({message: "Goal created"});
+  } catch (error) {
+    console.log("Error making a goal: " + error.message);
     res.status(500).json({ message: error.message });
   }
 });

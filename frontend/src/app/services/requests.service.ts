@@ -74,11 +74,31 @@ export class RequestsService {
   getGoal(exerciseName: string): Observable<Goal> {
     let url: string = `http://localhost:3000/goals/${exerciseName}`;
 
-    return this.http.get<Goal>(url, {
-      headers: {
-        'Content-Type': 'application/json',
-        // need to put the auth header in here
-      },
-    });
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.get<Goal>(url, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
+  }
+
+  // Post a new goal for a user
+  postGoal(goal: Object): Observable<string> {
+    let url: string = 'http://localhost:3000/goals';
+
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.post<string>(url, goal, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
   }
 }
