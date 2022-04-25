@@ -4,8 +4,8 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
-    console.log(req.user.uid);
     console.log(req.user);
+    console.log(req.user.uid);
     // Need to put in firebase auth stuff
     const data = await Exercise.find({
       uid: req.user.uid

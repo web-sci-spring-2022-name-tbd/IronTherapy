@@ -7,19 +7,22 @@ import { EChartsOption } from 'echarts';
   styleUrls: ['./chart.component.css']
 })
 export class ChartComponent implements OnInit {
-  @Input() name: string = "graph -1";
-  @Input() dataRaw: string = "";
+  @Input() name: string = "";
   @Input() data: any[] = [];
   dataParsed: any = [];
   show = false;
+
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.data)
+    // console.log(`data for ${this.name}: `)
+    // console.log(this.data)
     this.data.forEach(el => {
-      this.dataParsed.push([el["Pounds"], el["Reps"], el["Date"]])
+      this.dataParsed.push([el["pounds"], el["reps"]])
+      // this.dataParsed.push([el["Pounds"], el["Reps"], el["Date"]])
     })
     this.show = true;
+    // console.log(this.dataParsed)
 
 
   }
@@ -33,8 +36,10 @@ export class ChartComponent implements OnInit {
       transitionDuration: 0.2,
       formatter: function (params) {
         let data = JSON.parse(JSON.stringify(params));
-        console.log(params)
-        return `<span>${data["value"][2]}</span><br/><span><b>Weight:</b>${data["value"][0]} lbs</brspan> <br/><span><b>Reps:</b>  ${data["value"][1]}</span>`;
+        // console.log(params)
+        return `<span><b>Weight:</b>${data["value"][0]} lbs</brspan> <br/><span><b>Reps:</b>  ${data["value"][1]}</span>`;
+
+        // return `<span>${data["value"][2]}</span><br/><span><b>Weight:</b>${data["value"][0]} lbs</brspan> <br/><span><b>Reps:</b>  ${data["value"][1]}</span>`;
       }
     },
     series: [
