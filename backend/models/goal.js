@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const goalSchema = new Schema({
-  uid: Number,
+  uid: String,
   exercise: String,
   target: Number,
   current: Number,
