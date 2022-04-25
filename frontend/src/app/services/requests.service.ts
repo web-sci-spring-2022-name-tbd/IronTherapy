@@ -12,7 +12,6 @@ import { Goal } from './../interfaces/goal';
 })
 export class RequestsService {
   constructor(private http: HttpClient, private authService: AuthService) {}
-  private idToken: Promise<string> | undefined;
 
   // Subscribe to the return of this method to access the values in the observable
   // Get all exercises

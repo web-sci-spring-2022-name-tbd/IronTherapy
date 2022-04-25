@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 // Firebase Imports for Auth
 import { AngularFireModule } from '@angular/fire/compat';
@@ -41,12 +42,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { WorkoutsComponent } from './components/workouts/workouts.component';
 import { ExercisesComponent } from './components/exercises/exercises.component';
 import { HistoryComponent } from './components/history/history.component';
-import { HttpClientModule } from '@angular/common/http';
 
 // Services
 import { AuthService } from './services/auth.service';
 import { RequestsService } from './services/requests.service';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
