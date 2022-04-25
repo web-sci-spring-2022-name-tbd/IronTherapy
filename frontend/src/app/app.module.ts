@@ -41,6 +41,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { WorkoutsComponent } from './components/workouts/workouts.component';
 import { ExercisesComponent } from './components/exercises/exercises.component';
 import { HistoryComponent } from './components/history/history.component';
+import { HttpClientModule } from '@angular/common/http';
 
 // Services
 import { AuthService } from './services/auth.service';
@@ -73,6 +74,7 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    HttpClientModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
