@@ -12,14 +12,11 @@ import { Goal } from '../../interfaces/goal';
 export class HomepageComponent implements OnInit {
   constructor(private auth: AuthService, private request: RequestsService) {}
   public currentGoals?: Goal[];
-  public firstGoal?: Goal;
 
   ngOnInit(): void {
     // Get the goals and load them into currentGoals
     this.request.getGoals().subscribe((goals) => {
-      this.firstGoal = goals.shift();
       this.currentGoals = goals;
-      console.log(this.currentGoals);
     });
   }
 
@@ -32,7 +29,7 @@ export class HomepageComponent implements OnInit {
   // makeGoal(goal: Goal) {
   makeGoal() {
     let goal: Goal = {
-      exercise: 'test2',
+      exercise: 'test3',
       target: 100,
       current: 20,
     };

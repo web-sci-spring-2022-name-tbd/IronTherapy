@@ -8,13 +8,19 @@ import { Input } from '@angular/core';
   styleUrls: ['./goal.component.css']
 })
 export class GoalComponent implements OnInit {
+  // TODO: set HTML variables from the input form homepage
+  @Input() data?: Goal;
 
   constructor() { }
 
   ngOnInit(): void {
+    if (this.data) {
+      console.log(this.data);
+    } else {
+      console.log("else");
+    }
   }
 
-  // TODO: set HTML variables from the input form homepage
-  @Input() data: Goal = {} as Goal;
+
 
 }

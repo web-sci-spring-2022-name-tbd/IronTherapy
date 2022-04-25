@@ -6,12 +6,12 @@
   <!-- Modal Stuff -->
   <!-- TODO: Move modal to goals compoent. 
         When you submit the modal refresh the goals after you update the goal (don't subscripe to it tho) or delete the goal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="exampleModal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Edit goalName</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <form onsubmit="updateGoal()">
           <div class="modal-body">
@@ -54,30 +54,27 @@
 
   <!-- Goals -->
   <h2 class="mx-auto w-75 text-center mt-5" id="goals-text"><b>Goals:</b></h2>
-  <div class="container" *ngIf="currentGoals && firstGoal">
+  <div class="container" *ngIf="currentGoals">
     <div id="carouselIndicators" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active"
-          aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselIndicators" [attr.data-bs-slide-to]="i"
+          [ngClass]="isFirst ? 'active' : ''" 
+          *ngFor="let goal of currentGoals; let i=index; first as isFirst"></button>
       </div>
       <!-- TODO: *ngfor to generate app-goals dynamically. When you geneate app-goal put in some input data.  -->
       <div class="carousel-inner">
-        <div class="carousel-item active">
-          <app-goal class="d-flex justify-content-center" [data]="firstGoal"></app-goal>
-        </div>
-        <div class="carousel-item" *ngFor="let goal of currentGoals">
+        <div [ngClass]="isFirst ? 'carousel-item active' : 'carousel-item'"
+          *ngFor="let goal of currentGoals; first as isFirst">
           <app-goal class="d-flex justify-content-center" [data]="goal"></app-goal>
         </div>
         <!-- TODO: Add a "plus" icon to make a new goal, will use the modal we have here -->
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="carousel-control-prev-icon" ></span>
         <span class="visually-hidden">Previous</span>
       </button>
       <button class="carousel-control-next" type="button" data-bs-target="#carouselIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="carousel-control-next-icon" ></span>
         <span class="visually-hidden">Next</span>
       </button>
     </div>
