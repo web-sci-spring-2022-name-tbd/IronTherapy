@@ -1,7 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const axios = require('axios');
 const workoutRoutes = require('./routes/workout-routes');
 const goalRoutes = require('./routes/goal-routes');
 const exerciseRoutes = require('./routes/exercise-routes');
@@ -11,6 +10,7 @@ const rateLimit = require('express-rate-limit');
 
 const decode = require('./decode');
 
+// DB connection stuff
 mongoose.connect(
   "mongodb+srv://root:Password123@irontherapy.fxgip.mongodb.net/irontherapy?retryWrites=true&w=majority"
 );
@@ -33,15 +33,22 @@ const limiter = rateLimit({
 
 const app = express();
 
-app.use(cors());
-
+// Add the static dir from frontend
 app.use(express.static(path.join(__dirname, "../frontend/dist/iron-therapy")));
 
+// Do cors stuff on all requests
+app.use(cors());
+
+// Parse body on all requests
 app.use(bodyParser.json());
 
-app.use('/workouts', limiter, decode.decodeToken, workoutRoutes);
-app.use("/goals", limiter, decode.decodeToken, goalRoutes);
-app.use("/exercises", limiter, decode.decodeToken, exerciseRoutes);
+// Rate limit all requests
+app.use(limiter);
+
+// Requests for workouts, excerises, and goals. All must have auth token and must be decoded
+app.use('/workouts', decode.decodeToken, workoutRoutes);
+app.use("/goals", decode.decodeToken, goalRoutes);
+app.use("/exercises", decode.decodeToken, exerciseRoutes);
 
 // This must be the last get statement, dont put any app.use below it
 app.get("*", (req, res) => {
