@@ -8,6 +8,8 @@ const exerciseRoutes = require('./routes/exercise-routes');
 const cors = require('cors');
 const path = require('path');
 
+const decode = require('./decode');
+
 mongoose.connect(
   "mongodb+srv://root:Password123@irontherapy.fxgip.mongodb.net/irontherapy?retryWrites=true&w=majority"
 );
@@ -29,14 +31,13 @@ app.use(express.static(path.join(__dirname, "../frontend/dist/iron-therapy")));
 
 app.use(bodyParser.json());
 
-app.use('/workouts', workoutRoutes);
-app.use("/goals", goalRoutes);
-app.use("/exercises", exerciseRoutes);
+app.use('/workouts', decode.decodeToken, workoutRoutes);
+app.use("/goals", decode.decodeToken, goalRoutes);
+app.use("/exercises", decode.decodeToken, exerciseRoutes);
 
-// server route handler
-app.get('/', function(req, res) {
-  console.log("Base endpoint hit");
-  res.send({ data: 'null' });
+// This must be the last get statement, dont put any app.use below it
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dist/iron-therapy/index.html"));
 });
 
 // start server

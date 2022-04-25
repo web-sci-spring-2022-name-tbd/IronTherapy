@@ -32,6 +32,10 @@ export class AuthService {
       }
     });
   }
+  async getToken(): Promise<string | undefined> {
+    const user = await this.afAuth.currentUser;
+    return await user?.getIdToken(true);
+  }
   // Sign in with email/password
   SignIn(email: string, password: string) {
     return this.afAuth
