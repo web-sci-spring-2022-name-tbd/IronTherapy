@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 import { RequestsService } from "../../services/requests.service";
+import { Goal } from "../../interfaces/goal";
 
 @Component({
   selector: 'app-homepage',
@@ -26,7 +27,7 @@ export class HomepageComponent implements OnInit {
   // Make a new goal
   // makeGoal(goal: Goal) {
   makeGoal() { 
-    let goal: Object = {
+    let goal: Goal = {
       exercise: "anExercise",
       target: 100,
       current: 20

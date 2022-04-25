@@ -31,13 +31,13 @@ router.get('/:exercise', async (req, res) => {
 
 router.post('/', async (req, res) => {
   try {
-    const data = await Goal.create({
+    await Goal.create({
       uid: req.user.user_id,
       exercise: req.body.exercise,
       target: req.body.target,
       current: req.body.current,
     });
-    console.log("Made a goal for " + req.user.name);
+    console.log("Made a new goal for " + req.user.name);
     res.status(201).json({message: "Goal created"});
   } catch (error) {
     console.log("Error making a goal: " + error.message);
