@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Goal } from '../../interfaces/goal';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-goal',
@@ -13,4 +15,6 @@ export class GoalComponent implements OnInit {
   }
 
   // TODO: set HTML variables from the input form homepage
+  @Input() data: Goal = {} as Goal;
+
 }

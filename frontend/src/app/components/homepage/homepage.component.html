@@ -49,12 +49,12 @@
     <button type="button" class="p-3 rounded-3 fs-4" id="workout-button" routerLink="../workouts">
       Start workout
     </button>
-    <button type="button" class="p-3 rounded-3 fs-4" (click)="deleteGoal('')" >Test</button>
+    <button type="button" class="p-3 rounded-3 fs-4" (click)="deleteGoal('')">Test</button>
   </div>
 
   <!-- Goals -->
   <h2 class="mx-auto w-75 text-center mt-5" id="goals-text"><b>Goals:</b></h2>
-  <div class="container">
+  <div class="container" *ngIf="currentGoals && firstGoal">
     <div id="carouselIndicators" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active"
@@ -65,14 +65,10 @@
       <!-- TODO: *ngfor to generate app-goals dynamically. When you geneate app-goal put in some input data.  -->
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <app-goal class="d-flex justify-content-center"></app-goal>
+          <app-goal class="d-flex justify-content-center" [data]="firstGoal"></app-goal>
         </div>
-        <div class="carousel-item">
-          <!-- <app-goal class="d-flex justify-content-center" [data]="tsVar"></app-goal> -->
-          <app-goal class="d-flex justify-content-center"></app-goal>
-        </div>
-        <div class="carousel-item">
-          <app-goal class="d-flex justify-content-center"></app-goal>
+        <div class="carousel-item" *ngFor="let goal of currentGoals">
+          <app-goal class="d-flex justify-content-center" [data]="goal"></app-goal>
         </div>
         <!-- TODO: Add a "plus" icon to make a new goal, will use the modal we have here -->
       </div>
