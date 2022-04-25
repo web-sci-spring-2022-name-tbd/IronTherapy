@@ -1,6 +1,8 @@
+import { AuthService } from './auth.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
+import { catchError, switchMap } from 'rxjs/operators';
 
 import { Workout } from './../interfaces/workout';
 import { Goal } from './../interfaces/goal';
@@ -9,19 +11,23 @@ import { Goal } from './../interfaces/goal';
   providedIn: 'root',
 })
 export class RequestsService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   // Subscribe to the return of this method to access the values in the observable
   // Get all exercises
   getExercises(): Observable<string[]> {
     let url: string = 'http://localhost:3000/exercises';
 
-    return this.http.get<string[]>(url, {
-      headers: {
-        'Content-Type': 'application/json',
-        // need to put the auth header in here
-      },
-    });
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.get<string[]>(url, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
   }
 
   // Get all the workouts for a user

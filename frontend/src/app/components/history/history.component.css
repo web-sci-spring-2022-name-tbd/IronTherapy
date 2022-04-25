@@ -1,0 +1,25 @@
+#history {
+    position: relative;
+    left: 5rem;
+    width: 95vw;
+    overflow-x: hidden;
+}
+
+
+/* Smaller screens */
+
+@media only screen and (max-width: 800px) {
+    #history {
+        bottom: 5rem;
+        left: 0rem;
+    }
+}
+
+
+/* Large screens */
+
+@media only screen and (min-width: 800px) {
+    #history {
+        left: 5rem;
+    }
+}

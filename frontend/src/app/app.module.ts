@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 // Firebase Imports for Auth
 import { AngularFireModule } from '@angular/fire/compat';
@@ -37,16 +38,14 @@ import { HistoryBoxComponent } from './components/history-box/history-box.compon
 import { DummyComponent } from './components/dummy/dummy.component';
 import { AnalysisComponent } from './components/analysis/analysis.component';
 import { ChartComponent } from './components/chart/chart.component';
-
-// Services
-import { AuthService } from './services/auth.service';
-import { LoginService } from './services/login.service';
-import { RequestsService } from './services/requests.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { WorkoutsComponent } from './components/workouts/workouts.component';
 import { ExercisesComponent } from './components/exercises/exercises.component';
 import { HistoryComponent } from './components/history/history.component';
-import { HttpClientModule } from '@angular/common/http';
+
+// Services
+import { AuthService } from './services/auth.service';
+import { RequestsService } from './services/requests.service';
 
 @NgModule({
   declarations: [
@@ -68,6 +67,7 @@ import { HttpClientModule } from '@angular/common/http';
     HistoryComponent,
   ],
   imports: [
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
@@ -84,7 +84,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
   ],
-  providers: [LoginService, AuthService, RequestsService],
+  providers: [AuthService, RequestsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

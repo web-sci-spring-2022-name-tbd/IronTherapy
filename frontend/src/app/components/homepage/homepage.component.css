@@ -1,22 +1,42 @@
+:host {
+  --main-color: #613194;
+  --main-color-faded: #8251b6;
+  --off-color: #ed5101;
+  color: rgb(95, 95, 95);
+}
+
 #content {
   width: 100vw;
   height: 100vh;
   font-family: "Roboto", sans-serif;
-  background-color: #c076e6;
-  background-image: linear-gradient(150deg, #c076e6 0%, #b303b9 100%);
+  background-color: rgb(245, 245, 245);
 }
 
-h1 {
-  font-size: 35px;
-  margin: 0 !important;
+#logout-image {
+  width: 40px;
+  top: 3px;
+  right: 3px;
+}
+
+#logout-image:hover {
+  cursor: pointer;
 }
 
 h2 {
   font-size: 30px;
+  color: black;
+}
+
+h5 {
+  color: black;
 }
 
 #welcome-message {
   text-align: center;
+  font-size: 35px;
+  color: black;
+  margin: 0 !important;
+  padding-top: 40px;
 }
 
 #next-workout {
@@ -27,16 +47,19 @@ h2 {
 #workout-button {
   width: 300px;
   text-align: center;
-  background: linear-gradient(
-    145deg,
-    lighten(#2d3142, 10%),
-    darken(#2d3142, 10%)
-  );
-  box-shadow: 3px 3px 2px rgba(120, 36, 177, 0.712);
-  background-color: #9735f3;
+  background: linear-gradient(145deg, lighten(#2D3142, 10%), darken(#2D3142, 10%));
+  box-shadow: 3px 3px 2px var(--main-color-faded);
+  background-color: var(--main-color);
   border: none;
   margin-top: 50px;
 }
+
+.carousel-control-next,
+.carousel-control-prev,
+.carousel-indicators {
+  filter: invert(100%);
+}
+
 
 #goals-text {
   margin-bottom: 40px;

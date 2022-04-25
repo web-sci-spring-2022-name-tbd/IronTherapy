@@ -40,6 +40,7 @@ main {
     height: 100vh;
     transition: width var(--transition-speed) ease;
     left: 0px;
+    z-index: 20;
 }
 
 .navbar-nav {
