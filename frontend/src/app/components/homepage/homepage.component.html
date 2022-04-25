@@ -2,7 +2,6 @@
   <!-- Logout button -->
   <img src="../../assets/images/logout.svg" alt="Logout" class="position-absolute" id="logout-image"
     (click)="logout()" />
-    
 
   <!-- Modal Stuff -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -12,7 +11,7 @@
           <h5 class="modal-title" id="exampleModalLabel">Edit goalName</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form>
+        <form onsubmit="updateGoal()">
           <div class="modal-body">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Exercise</label>
@@ -47,7 +46,7 @@
     <button type="button" class="p-3 rounded-3 fs-4" id="workout-button" routerLink="../workouts">
       Start workout
     </button>
-    <button type="button" class="p-3 rounded-3 fs-4" (click)="deleteGoal('test')">Test</button>
+    <button type="button" class="p-3 rounded-3 fs-4" (click)="updateGoal()">Test</button>
   </div>
 
   <!-- Goals -->

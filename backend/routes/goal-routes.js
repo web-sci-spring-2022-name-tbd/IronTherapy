@@ -44,6 +44,25 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.put('/:exercise', async (req, res) => {
+  try {
+    await Goal.findOneAndUpdate({
+      uid: req.user.user_id,
+      exercise: req.params.exercise,
+    }, {
+      $set: {
+        target: req.body.target,
+        current: req.body.current,
+      },
+    });
+    console.log("Updated a goal for " + req.user.name);
+    res.status(200).json({ message: "Goal updated" });
+  } catch (error) {
+    console.log("Error updating a goal: " + error.message);
+    res.status(500).json({ message: error.message });
+  }
+});
+
 router.delete('/:exercise', async (req, res) => {
   try {
     await Goal.deleteOne({

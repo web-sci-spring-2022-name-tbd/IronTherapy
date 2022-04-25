@@ -1,8 +1,8 @@
 import { Exercise } from './../../interfaces/workout';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from "../../services/auth.service";
-import { RequestsService } from "../../services/requests.service";
-import { Goal } from "../../interfaces/goal";
+import { AuthService } from '../../services/auth.service';
+import { RequestsService } from '../../services/requests.service';
+import { Goal } from '../../interfaces/goal';
 
 @Component({
   selector: 'app-homepage',
@@ -10,7 +10,6 @@ import { Goal } from "../../interfaces/goal";
   styleUrls: ['./homepage.component.css'],
 })
 export class HomepageComponent implements OnInit {
-  
   constructor(private auth: AuthService, private request: RequestsService) {}
 
   ngOnInit(): void {
@@ -27,20 +26,34 @@ export class HomepageComponent implements OnInit {
 
   // Make a new goal
   // makeGoal(goal: Goal) {
-  makeGoal() { 
+  makeGoal() {
     let goal: Goal = {
-      exercise: "Bench",
+      exercise: 'test',
       target: 100,
-      current: 20
+      current: 20,
     };
     this.request.postGoal(goal).subscribe((data) => {
       console.log(data);
     });
   }
 
+  // Update a goal
+  // updateGoal(goal: Goal) {
+  updateGoal() {
+    let goal: Goal = {
+      exercise: 'test',
+      target: 420,
+      current: 20,
+    };
+
+    this.request.updateGoal(goal).subscribe((data) => {
+      console.log(data);
+    });
+  }
+
   // Delete a goal
   deleteGoal(exerciseName: string) {
-    let exercise = "Bench";
+    let exercise = 'test';
     this.request.deleteGoal(exercise).subscribe((data) => {
       console.log(data);
     });

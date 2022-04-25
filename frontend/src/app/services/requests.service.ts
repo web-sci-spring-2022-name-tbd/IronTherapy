@@ -87,7 +87,7 @@ export class RequestsService {
   }
 
   // Post a new goal for a user
-  postGoal(goal: Object): Observable<string> {
+  postGoal(goal: Goal): Observable<string> {
     let url: string = 'http://localhost:3000/goals';
 
     return from(this.authService.getToken()).pipe(
@@ -101,6 +101,23 @@ export class RequestsService {
       })
     );
   }
+
+  // Update a goal for a user
+  updateGoal(goal: Goal): Observable<string> {
+    let url: string = `http://localhost:3000/goals/${goal.exercise}`;
+
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.put<string>(url, goal, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
+  }
+
 
   // Delete a goal for a user
   deleteGoal(exerciseName: string): Observable<string> {
