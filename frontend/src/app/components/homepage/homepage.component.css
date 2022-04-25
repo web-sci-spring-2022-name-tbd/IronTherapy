@@ -9,7 +9,6 @@
   width: 100vw;
   height: 100vh;
   font-family: "Roboto", sans-serif;
-  position: absolute;
   background-color: rgb(245, 245, 245);
 }
 
@@ -24,6 +23,7 @@
 h1 {
   font-size: 35px;
   color: black;
+  margin: 0 !important;
 }
 
 h2 {
