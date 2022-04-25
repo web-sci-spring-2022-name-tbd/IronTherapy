@@ -118,7 +118,6 @@ export class RequestsService {
     );
   }
 
-
   // Delete a goal for a user
   deleteGoal(exerciseName: string): Observable<string> {
     let url: string = `http://localhost:3000/goals/${exerciseName}`;

@@ -12,4 +12,5 @@ export class GoalComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // TODO: set HTML variables from the input form homepage
 }

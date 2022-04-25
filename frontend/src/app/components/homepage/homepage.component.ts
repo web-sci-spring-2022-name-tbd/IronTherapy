@@ -15,7 +15,8 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
     // Get the goals and load them into the page
     this.request.getGoals().subscribe((goals) => {
-      console.log(goals);
+      console.log(goals)
+      // TODO: set public variable goals outside of oninit
     });
   }
 
