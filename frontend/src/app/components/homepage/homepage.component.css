@@ -14,6 +14,8 @@
 
 #logout-image {
   width: 40px;
+  top: 3px;
+  right: 3px;
 }
 
 #logout-image:hover {
