@@ -1,39 +1,57 @@
+:host {
+  --main-color: #613194;
+  --main-color-faded: #8251b6;
+  --off-color: #ed5101;
+  color: rgb(95, 95, 95);
+}
+
+
 body {
   --amount: 270deg / 2;
   font-family: "Roboto", sans-serif;
   background:#d2eaf1;
 }
 
+#edit-image{
+  width: 30px;
+}
+
+#edit-image:hover{
+  cursor: pointer;
+}
+
 .circle-wrap {
   margin-bottom: 35px;
-  width: 150px;
-  height: 150px;
+  width: 250px;
+  height: 250px;
   background: #fefcff;
   border-radius: 50%;
   border: 1px solid #cdcbd0;
+  box-shadow: 7px 7px 10px;
 }
 
 .circle-wrap .circle .mask,
 .circle-wrap .circle .fill {
-  width: 150px;
-  height: 150px;
+  width: 250px;
+  height: 250px;
   position: absolute;
   border-radius: 50%;
 }
 
+
 .circle-wrap .circle .mask {
-  clip: rect(0px, 150px, 150px, 75px);
+  clip: rect(0px, 250px, 250px, 125px);
 }
 
 .circle-wrap .inside-circle {
-  width: 122px;
-  height: 122px;
+  width: 199px;
+  height: 199px;
   border-radius: 50%;
-  background: #f8e6e6;
-  line-height: 120px;
+  background: var(--off-color);
+  line-height: 42px;
   text-align: center;
-  margin-top: 14px;
-  margin-left: 14px;
+  margin-top: 27px;
+  margin-left: 26px;
   color: #000000;
   position: absolute;
   z-index: 100;
@@ -45,8 +63,8 @@ body {
 
 /* 3rd progress bar */
 .mask .fill {
-  clip: rect(0px, 75px, 150px, 0px);
-  background-color: #1a44ce;
+  clip: rect(0px, 125px, 250px, 0px);
+  background-color: var(--main-color);
 }
 
 .mask.full,
