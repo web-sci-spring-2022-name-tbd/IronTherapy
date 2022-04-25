@@ -7,7 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class WorkoutBoxComponent implements OnInit {
   @Input() photo: String;
-  @Input() workout_name: String;
+  @Input() workout_name: String = "";
+  public data: any = { workout_name: this.workout_name }
   constructor() {
     this.photo = "";
     this.workout_name = "";
