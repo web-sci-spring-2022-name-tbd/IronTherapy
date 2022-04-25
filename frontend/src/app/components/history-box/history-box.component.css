@@ -28,7 +28,32 @@ body {
   height: 20em;
   width: auto;
 }
-
+.card-top .overlay {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25.75em;
+  width: 100%;
+  border-top-left-radius: 0.75em;
+  border-top-right-radius: 0.75em;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+  transition: all 700ms ease;
+  opacity: 0;
+}
+.card-top .overlay h1 {
+  text-align: center;
+  font-weight: 500;
+  color: #fff;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.card-top .overlay:hover, .card-top .overlay:focus {
+  opacity: 1;
+}
 .triangle {
   position: relative;
   height: 0;
