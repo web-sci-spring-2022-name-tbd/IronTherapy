@@ -4,11 +4,10 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
   try {
-    // Need to put in firebase auth stuff
     const data = await Goal.find({
-      // stuff with uid from firebase here
+      uid: req.user.user_id,
     });
-    console.log("Returned all the goals");
+    console.log("Returned all the goals for user: " + req.user.name);
     res.json(data);
   } catch (error) {
     console.log("Error getting goals: " + error.message);
@@ -18,11 +17,11 @@ router.get('/', async (req, res) => {
 
 router.get('/:exercise', async (req, res) => {
   try {
-    // Need to put in firebase auth stuff
     const data = await Goal.findOne({
-      // stuff with uid from firebase here
+      uid: req.user.user_id,
       exercise: req.params.exercise,
     });
+    console.log("Returned a goal for user: " + req.user.name);
     res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });
