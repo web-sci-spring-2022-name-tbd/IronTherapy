@@ -32,6 +32,10 @@ export class AuthService {
       }
     });
   }
+  async getToken(): Promise<string | undefined> {
+    const user = await this.afAuth.currentUser;
+    return await user?.getIdToken(true);
+  }
   // Sign in with email/password
   SignIn(email: string, password: string) {
     return this.afAuth
@@ -128,7 +132,7 @@ export class AuthService {
   SignOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['sign-in']);
+      this.router.navigate(['login']);
     });
   }
 }

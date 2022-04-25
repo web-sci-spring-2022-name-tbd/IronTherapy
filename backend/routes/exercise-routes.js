@@ -4,8 +4,12 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
+    console.log(req.user.uid);
+    console.log(req.user);
     // Need to put in firebase auth stuff
-    const data = await Exercise.find({});
+    const data = await Exercise.find({
+      uid: req.user.uid
+    });
     res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });
