@@ -8,11 +8,11 @@ import { Component, OnInit, Input } from '@angular/core';
 export class HistoryBoxComponent implements OnInit {
   @Input() num_id: String;
   @Input() photo: String;
-  @Input() workout_name: String;
+  @Input() workout_name: String = "";
+  public data: any = { workout_name: this.workout_name }
   constructor() {
     this.num_id = "";
     this.photo = "";
-    this.workout_name = "";
   }
 
   openArea() {

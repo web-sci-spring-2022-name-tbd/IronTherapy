@@ -1,10 +1,10 @@
 <div class="row">
     <div class="small-7 medium-5 large-4 column end small-centered card">
-        <div class="card-top"><a href="http://localhost:4200/{{workout_name}}">
+        <div class="card-top"><a routerLink="/exercises"  [state]="data">
                 <div class="overlay">
                     <h1>Start This Workout</h1>
                 </div>
-            </a><img class="card-img" src={{photo}} /></div>
+            </a><img class="card-img" [src]="photo" /></div>
         <div class="triangle">
         </div>
         <div class="card-bottom text-center">

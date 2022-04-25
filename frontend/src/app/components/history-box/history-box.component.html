@@ -1,7 +1,10 @@
 <div class="row">
     <div class="small-7 medium-5 large-4 column end small-centered card">
-        <div class="card-top"><a href="#0">
-            </a><img class="card-img" src={{photo}} /></div>
+        <div class="card-top"><a routerLink="/exercises" [state]="data">
+             <div class="overlay">
+                    <h1>Review This Workout</h1>
+            </div>
+        </a><img class="card-img" [src]="photo" /></div>
         <div class="triangle">
             <button class="circle-button" id="circleDrop" (click)="openArea()"><img id="close_btn_{{num_id}}" class="close" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/324479/close.svg" /></button>
         </div>
