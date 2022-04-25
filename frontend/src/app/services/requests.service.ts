@@ -101,4 +101,20 @@ export class RequestsService {
       })
     );
   }
+
+  // Delete a goal for a user
+  deleteGoal(exerciseName: string): Observable<string> {
+    let url: string = `http://localhost:3000/goals/${exerciseName}`;
+
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.delete<string>(url, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
+  }
 }

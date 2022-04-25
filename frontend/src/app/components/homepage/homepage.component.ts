@@ -1,3 +1,4 @@
+import { Exercise } from './../../interfaces/workout';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from "../../services/auth.service";
 import { RequestsService } from "../../services/requests.service";
@@ -28,7 +29,7 @@ export class HomepageComponent implements OnInit {
   // makeGoal(goal: Goal) {
   makeGoal() { 
     let goal: Goal = {
-      exercise: "anExercise",
+      exercise: "Bench",
       target: 100,
       current: 20
     };
@@ -37,5 +38,11 @@ export class HomepageComponent implements OnInit {
     });
   }
 
-
+  // Delete a goal
+  deleteGoal(exerciseName: string) {
+    let exercise = "Bench";
+    this.request.deleteGoal(exercise).subscribe((data) => {
+      console.log(data);
+    });
+  }
 }
