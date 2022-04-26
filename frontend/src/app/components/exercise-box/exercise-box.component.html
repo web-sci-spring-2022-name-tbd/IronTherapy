@@ -14,7 +14,7 @@
                <td>{{i+1}}</td> 
                <td>{{set.pounds}}</td>
                <td>{{set.reps}}</td>
-               <td><button class = "exercise-button">REMOVE SET</button></td>
+               <td><button (click)="delete(i)" class = "exercise-button">REMOVE SET</button></td>
             </tr>
         </tbody>
       </table>
@@ -22,25 +22,27 @@
       <button class = "exercise-button" (click)="this.formShow = true">ADD A SET</button>
 </div>
 
+
 <!-- The Modal -->
 <div id="id01" class="modal" *ngIf="formShow">
     <span (click)="this.formShow = false" class="close" title="Close Modal">&times;</span>
   
     <!-- Modal Content -->
-    <form class="modal-content animate" action="/action_page.php">
+    <form class="modal-content animate">
         
       <div class="container">
         <br/>
         <h1 class="setHeader">Add a Set</h1>
         <label for="Pounds"><b>Pounds</b></label>
-        <input type="text" placeholder="42" name="Pounds" required #pounds>
+        <input type="text" placeholder="Number of Pounds" name="Pounds" required #pounds>
   
         <label for="Reps"><b>Reps</b></label>
-        <input type="text" placeholder="10" name="Reps" required #reps>
+        <input type="text" placeholder="Number of Reps" name="Reps" required #reps>
         
         
-        <button type="button" id ="setbtn" class="btn btn-primary" (click)="submitAdd(pounds.value, reps.value)">Add</button>
+        <button type="button" id ="setbtn" class="btn btn-primary" (click)="submitAdd(pounds.value, reps.value)">Add Set</button>
       </div>
 
     </form>
   </div>
+

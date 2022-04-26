@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { from, Observable } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
 
-import { Workout } from './../interfaces/workout';
+import { Workout, Exercise } from './../interfaces/workout';
 import { Goal } from './../interfaces/goal';
 
 @Injectable({
@@ -106,6 +106,71 @@ export class RequestsService {
       })
     );
   }
+
+  // Update a sets for a user
+  updateSet(name: string, exercise_name: string, update: { pounds: Number, reps: Number}): Observable<{message: string, exercise: Exercise}> {
+    let url: string = `http://localhost:3000/workouts/`;
+
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.put<{message: string, exercise: Exercise}>(url, {update: update, exercise_name: exercise_name, name: name} , {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
+  }
+
+  // Delete a set from a specific exercise
+  deleteSet(name: string, exercise_name: string, update: Exercise[]): Observable<string> {
+    let url: string = `http://localhost:3000/workouts/deleteSet`;
+
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.put<string>(url, {update: update, exercise_name: exercise_name, name: name} , {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
+  }
+
+  // Delete an exercise
+  deleteExercise(workout: string, exercise: string) {
+    let url: string = `http://localhost:3000/workouts/deleteExercise?name=${workout}&exercise=${exercise}`;
+
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.delete<string>(url, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
+  }
+
+  // Update a sets for a user
+  AddExercise(name: string, exercise_name: string): Observable<{message: string, exercise: Exercise}> {
+    let url: string = `http://localhost:3000/workouts/addExercise`;
+
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.put<{message: string, exercise: Exercise}>(url, {exercise_name: exercise_name, name: name} , {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
+  }
+
 
   // Get all goals for a user
   getGoals(): Observable<Goal[]> {
