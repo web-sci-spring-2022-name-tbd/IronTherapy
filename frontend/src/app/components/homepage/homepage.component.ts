@@ -43,20 +43,6 @@ export class HomepageComponent implements OnInit {
     });
   }
 
-  // Update a goal
-  // updateGoal(goal: Goal) {
-  updateGoal() {
-    let goal: Goal = {
-      exercise: 'test',
-      target: 420,
-      current: 20,
-    };
-
-    this.request.updateGoal(goal).subscribe((data) => {
-      console.log(data);
-    });
-  }
-
   // Delete a goal
   deleteGoal(exerciseName: string) {
     let exercise = 'test';

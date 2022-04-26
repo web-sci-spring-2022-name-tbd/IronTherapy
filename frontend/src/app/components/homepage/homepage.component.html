@@ -60,7 +60,6 @@
         <button type="button" data-bs-target="#carouselIndicators" [attr.data-bs-slide-to]="i"
           [ngClass]="isFirst ? 'active' : ''" *ngFor="let goal of currentGoals; let i=index; first as isFirst"></button>
       </div>
-      <!-- TODO: *ngfor to generate app-goals dynamically. When you geneate app-goal put in some input data.  -->
       <div class="carousel-inner">
         <div [ngClass]="isFirst ? 'carousel-item active' : 'carousel-item'"
           *ngFor="let goal of currentGoals; first as isFirst; let i=index">
