@@ -30,8 +30,6 @@ export class RequestsService {
     );
   }
 
-
-
   // Get all the workouts for a user
   getWorkouts(): Observable<Workout[]> {
     let url: string = 'http://localhost:3000/workouts';
@@ -113,23 +111,95 @@ export class RequestsService {
   getGoals(): Observable<Goal[]> {
     let url: string = 'http://localhost:3000/goals';
 
-    return this.http.get<Goal[]>(url, {
-      headers: {
-        'Content-Type': 'application/json',
-        // need to put the auth header in here
-      },
-    });
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.get<Goal[]>(url, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
   }
 
   // Get a specific goal for a user
   getGoal(exerciseName: string): Observable<Goal> {
     let url: string = `http://localhost:3000/goals/${exerciseName}`;
 
-    return this.http.get<Goal>(url, {
-      headers: {
-        'Content-Type': 'application/json',
-        // need to put the auth header in here
-      },
-    });
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.get<Goal>(url, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
+  }
+
+  // Post a new goal for a user
+  postGoal(goal: Goal): Observable<string> {
+    let url: string = 'http://localhost:3000/goals';
+
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.post<string>(url, goal, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
+  }
+
+  // Update a goal for a user
+  updateGoal(goal: Goal): Observable<string> {
+    let url: string = `http://localhost:3000/goals/${goal.exercise}`;
+
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.put<string>(url, goal, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
+  }
+
+  // Delete a goal for a user
+  deleteGoal(exerciseName: string): Observable<string> {
+    let url: string = `http://localhost:3000/goals/${exerciseName}`;
+
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.delete<string>(url, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
+  }
+
+  // Call default goals endpoint
+  checkDefaultGoals(): Observable<Goal[]> {
+    let url: string = 'http://localhost:3000/goals/default';
+
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.post<Goal[]>(url, {}, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
   }
 }
