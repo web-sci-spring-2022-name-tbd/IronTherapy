@@ -77,4 +77,50 @@ router.delete('/:exercise', async (req, res) => {
   }
 });
 
+// Make default goals endpoint here that checks to see if they have 
+//  any goals for the exercise, if not, make the three default goals
+router.post('/default', async (req, res) => {
+  try {
+    const data = await Goal.find({
+      uid: req.user.user_id,
+    });
+    if (data.length === 0) {
+      await Goal.create({
+        uid: req.user.user_id,
+        exercise: "Bench",
+        target: "150",
+        current: "0",
+      });
+      await Goal.create({
+        uid: req.user.user_id,
+        exercise: "Squat",
+        target: "150",
+        current: "0",
+      });
+      await Goal.create({
+        uid: req.user.user_id,
+        exercise: "Deadlift",
+        target: "150",
+        current: "0",
+      });
+
+      const allGoals = await Goal.find({
+        uid: req.user.user_id,
+      });
+      console.log("Made default goals for " + req.user.name);
+      res.status(200).json(allGoals);
+    } else {
+      console.log("Default goals already exist for " + req.user.name);
+
+      const allGoals = await Goal.find({
+        uid: req.user.user_id,
+      });
+      res.status(200).json(allGoals);
+    }
+  } catch {
+    console.log("Error making default goals: " + error.message);
+    res.status(500).json({ message: error.message });
+  }
+});
+
 module.exports = router;

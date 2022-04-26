@@ -18,6 +18,11 @@ export class HomepageComponent implements OnInit {
     this.request.getGoals().subscribe((goals) => {
       this.currentGoals = goals;
     });
+
+    // Get default goals
+    this.request.checkDefaultGoals().subscribe((goals) => {
+      this.currentGoals = goals;
+    });
   }
 
   // Call the sign out method from the auth service

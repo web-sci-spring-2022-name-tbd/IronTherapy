@@ -133,4 +133,20 @@ export class RequestsService {
       })
     );
   }
+
+  // Call default goals endpoint
+  checkDefaultGoals(): Observable<Goal[]> {
+    let url: string = 'http://localhost:3000/goals/default';
+
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.post<Goal[]>(url, {}, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
+  }
 }
