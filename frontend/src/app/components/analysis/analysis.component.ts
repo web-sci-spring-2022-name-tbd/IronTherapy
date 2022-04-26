@@ -13,72 +13,26 @@ export class AnalysisComponent implements OnInit {
   dataGot = false;
   workoutSelected = false;
   dataRaw: any[] = [{
-    "uid": 12521315,
-    "name": "Workout One",
-    "date": "2/1/22",
+    "uid": "",
+    "name": "",
+    "date": "",
     "exercises": [{
-      "name": "Bench Press",
+      "name": "",
       "sets": [{
-        "pounds": 150,
-        "reps": 10,
-      }, {
-        "pounds": 150,
-        "reps": 10,
-      }, {
         "pounds": 150,
         "reps": 10,
       }],
-    }, {
-      "name": "Overhead Squat",
-      "sets": [{
-        "pounds": 150,
-        "reps": 10,
-      }, {
-        "pounds": 150,
-        "reps": 10,
-      }, {
-        "pounds": 150,
-        "reps": 10,
-      }],
-    }, {
-      "name": "Bicep Curl",
-      "sets": [{
-        "pounds": 150,
-        "reps": 10,
-      }, {
-        "pounds": 150,
-        "reps": 10,
-      }, {
-        "pounds": 150,
-        "reps": 10,
-      }]
     }]
   }]
+
   workout: any[] = [{
-    "name": "Bench Press",
+    "name": "",
     "sets": [{
-      "pounds": 150,
-      "reps": 10,
-    }, {
-      "pounds": 150,
-      "reps": 10,
-    }, {
-      "pounds": 150,
-      "reps": 10,
-    }],
-  }, {
-    "name": "Overhead Squat",
-    "sets": [{
-      "pounds": 150,
-      "reps": 10,
-    }, {
-      "pounds": 150,
-      "reps": 10,
-    }, {
       "pounds": 150,
       "reps": 10,
     }],
   }]
+
   data: any[] = [];
   exercises: Array<string> = [];
   constructor(private http: RequestsService) { }
