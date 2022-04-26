@@ -55,12 +55,34 @@ export class RequestsService {
     //   headers: {
     //     'Content-Type': 'application/json',
     //     // need to put the auth header in here
-        
+
     //   },
     // });
     return from(this.authService.getToken()).pipe(
       switchMap((token) => {
         return this.http.get<Workout>(url, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
+  }
+  // Get a specific workout for a user
+  postWorkout(workoutName: String): Observable<Workout> {
+    let url: string = `http://localhost:3000/workouts/${workoutName}`;
+
+    // return this.http.get<Workout>(url, {
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     // need to put the auth header in here
+
+    //   },
+    // });
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.post<Workout>(url, {
           headers: {
             'Content-Type': 'application/json',
             Authorization: 'Bearer ' + token,
