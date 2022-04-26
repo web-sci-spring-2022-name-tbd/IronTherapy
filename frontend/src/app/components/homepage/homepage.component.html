@@ -17,7 +17,7 @@
               <label for="exampleInputEmail1" class="form-label">Exercise</label>
               <select class="form-select" aria-label="Default select example" #exerciseInput>
                 <option selected>Select Exercise</option>
-                <option>One</option>
+                <option *ngFor="let exer of exercises;">{{exer}}</option>
               </select>
               <div class="form-text">The exercise you wish to set as your goal</div>
             </div>

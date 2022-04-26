@@ -30,8 +30,6 @@ export class RequestsService {
     );
   }
 
-
-
   // Get all the workouts for a user
   getWorkouts(): Observable<Workout[]> {
     let url: string = 'http://localhost:3000/workouts';

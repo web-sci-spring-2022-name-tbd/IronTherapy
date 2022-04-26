@@ -11,7 +11,11 @@ import { Goal } from '../../interfaces/goal';
   styleUrls: ['./homepage.component.css'],
 })
 export class HomepageComponent implements OnInit {
-  constructor(private auth: AuthService, private request: RequestsService,  private router: Router) {}
+  constructor(
+    private auth: AuthService,
+    private request: RequestsService,
+    private router: Router
+  ) { }
   public currentGoals?: Goal[];
   public exercises?: string[];
 
@@ -29,13 +33,13 @@ export class HomepageComponent implements OnInit {
     // Get the exercises and load them into exercises
     this.request.getExercises().subscribe((exercises) => {
       this.exercises = exercises;
-      console.log(this.exercises);
     });
   }
 
   reload() {
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
-      this.router.navigate(['dashboard/homepage']));
+    this.router
+      .navigateByUrl('/', { skipLocationChange: true })
+      .then(() => this.router.navigate(['dashboard/homepage']));
   }
 
   // Call the sign out method from the auth service
@@ -43,12 +47,27 @@ export class HomepageComponent implements OnInit {
     this.auth.SignOut();
   }
 
+  async tryGoal(goalExercise: string) {
+    try {
+      this.request.getGoal(goalExercise).subscribe((goal) => {
+        if (goal) {
+          window.alert('Please choose a unique exercise');
+        }
+      });
+    } catch (error) { 
+      return true;
+    }
+    return false;
+  }
+
   // Make a new goal
-  makeGoal(goalExercise: string, goalTarget: string, goalCurrent: string = '0') {
+  async makeGoal(goalExercise: string, goalTarget: string, goalCurrent: string = '0') {
     if (goalExercise === 'Select Exercise' || goalTarget === '') {
       window.alert('Please enter an exercise and a target');
       return;
     }
+
+    if (! await this.tryGoal(goalExercise)) { return; }
 
     let goal: Goal = {
       exercise: goalExercise,
