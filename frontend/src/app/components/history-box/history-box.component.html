@@ -1,6 +1,6 @@
 <div class="row">
     <div class="small-7 medium-5 large-4 column end small-centered card">
-        <div class="card-top"><a routerLink="/exercises" [state]="data">
+        <div class="card-top"><a (click) = "visitExercises()">
              <div class="overlay">
                     <h1>Review This Workout</h1>
             </div>
@@ -9,8 +9,7 @@
             <button class="circle-button" id="circleDrop" (click)="openArea()"><img id="close_btn_{{num_id}}" class="close" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/324479/close.svg" /></button>
         </div>
         <div id='message_{{num_id}}' class="card-middle">
-            <h5 class="more">Fill with Exercises</h5>
-            <!--Possibly include table with exercise|set|rep|weight when generating-->
+            <h5 class="more" *ngFor="let exercise of exercises">{{exercise}}</h5>
         </div>
         <div class="card-bottom text-center">
             <h2 class="card-title">{{workout_name}}</h2>

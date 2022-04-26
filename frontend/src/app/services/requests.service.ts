@@ -11,7 +11,7 @@ import { Goal } from './../interfaces/goal';
   providedIn: 'root',
 })
 export class RequestsService {
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   // Subscribe to the return of this method to access the values in the observable
   // Get all exercises
@@ -30,28 +30,83 @@ export class RequestsService {
     );
   }
 
+
+
   // Get all the workouts for a user
   getWorkouts(): Observable<Workout[]> {
     let url: string = 'http://localhost:3000/workouts';
-
-    return this.http.get<Workout[]>(url, {
-      headers: {
-        'Content-Type': 'application/json',
-        // need to put the auth header in here
-      },
-    });
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.get<Workout[]>(url, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
   }
 
   // Get a specific workout for a user
   getWorkout(workoutName: string): Observable<Workout> {
     let url: string = `http://localhost:3000/workouts/${workoutName}`;
 
-    return this.http.get<Workout>(url, {
-      headers: {
-        'Content-Type': 'application/json',
-        // need to put the auth header in here
-      },
-    });
+    // return this.http.get<Workout>(url, {
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     // need to put the auth header in here
+
+    //   },
+    // });
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.get<Workout>(url, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
+  }
+  // Get a specific workout for a user
+  postWorkout(workoutName: String): Observable<Workout> {
+    let url: string = `http://localhost:3000/workouts/${workoutName}`;
+
+    // return this.http.get<Workout>(url, {
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     // need to put the auth header in here
+
+    //   },
+    // });
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.post<Workout>(url, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
+  }
+
+
+  // Update a goal for a user
+  updateExercise(goal: Goal): Observable<string> {
+    let url: string = `http://localhost:3000/goals/${goal.exercise}`;
+
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.put<string>(url, goal, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
   }
 
   // Get all goals for a user
