@@ -14,11 +14,19 @@ export class ExercisesComponent implements OnInit {
 
   constructor(private ReqService: RequestsService, private router: ActivatedRoute) { }
 
+  formShow2 = false;
+  formShow3 = false;
   Workout_name: any = "";
   uid = "";
   exercise_data: any = {};
   show = false;
   Object = Object;
+  toDelete: string = "";
+  deleted = true;
+
+  test() {
+    console.log(this.exercise_data)
+  }
 
   
   ngOnInit(): void {
@@ -39,7 +47,7 @@ export class ExercisesComponent implements OnInit {
       // console.log("Req service output:");
       console.log(data);
       this.exercise_data = JSON.parse(JSON.stringify(data));
-      // console.log(this.exercise_data);
+      console.log(this.exercise_data.exercises);
       this.show = true;
     });
     // console.log(this.ReqService);
@@ -48,5 +56,49 @@ export class ExercisesComponent implements OnInit {
     content += "";
   //   for ()
   }
+
+  AddExercise(exercise_name: string) {
+    
+    this.ReqService.AddExercise(this.Workout_name, exercise_name).subscribe((data) =>{
+      // console.log(data);
+      let update = {
+        name: exercise_name,
+        set: []
+      }
+      this.exercise_data.exercises.push(update);
+      // this.exercise_data.push(update);
+
+      this.formShow2 = false;
+    });
+  }
+
+
+  DeleteExercise() {
+
+    this.ReqService.deleteExercise(this.Workout_name, this.toDelete).subscribe((data) => {
+      this.deleted = true;
+      this.formShow3 = false; 
+      let temp: any[] = [];
+      this.exercise_data.exercises.forEach((el: any) => {
+        if (el.name != this.toDelete) {
+          temp.push(el);
+        }
+      })
+      this.exercise_data.exercises = temp;
+      // delete this.exercise_data.exercises[this.toDelete]
+      
+
+      this.toDelete = "";
+    })
+
+
+  }
+
+  setDelete(name: string) {
+    this.toDelete = name;
+    this.deleted = false;
+  }
+
+
 
 }

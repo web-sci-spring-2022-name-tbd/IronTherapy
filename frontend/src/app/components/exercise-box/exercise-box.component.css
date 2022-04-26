@@ -14,7 +14,7 @@
     margin-right: auto;
     margin-left: auto;
     width: fit-content;
-    margin-bottom: 10vh;
+    margin-bottom: 5vh;
 }
 
 #exercise_header {
@@ -152,7 +152,7 @@ input {
       text-align: center;
   }
 
-  #setbtn {
+  .setbtn {
       
     padding: 14px 20px;
     margin: 1vh 0;
