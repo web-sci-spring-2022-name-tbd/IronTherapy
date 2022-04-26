@@ -1,5 +1,59 @@
 
-
 <div id = "exercise" *ngFor="let item of exercise_data.exercises">
-  <app-exercise-box exercise_name = {{item.name}} [data]= item.sets></app-exercise-box>
+  <app-exercise-box workout_name= {{Workout_name}} exercise_name = {{item.name}} [data]= item.sets></app-exercise-box>
+</div>
+
+<div id = "exerciseButtons">
+  <button class = "exercise-button" (click)="this.formShow2 = true">ADD AN EXERCISE</button>
+  <button class = "exercise-button" (click)="this.formShow3 = true">DELETE AN EXERCISE</button>
+</div>
+<button class="btn btn-primary" (click)="test()">click me</button>
+
+<div id="id02" class="modal" *ngIf="formShow2">
+  <span (click)="this.formShow2 = false" class="close" title="Close Modal">&times;</span>
+
+  <!-- Modal Content -->
+  <form class="modal-content animate">
+      
+    <div class="container">
+      <br/>
+      <h1 class="setHeader">Add an Exercise</h1>
+      <label for="Pounds"><b>Exercise Name</b></label>
+      <input type="text" placeholder="Enter the new Exercise name" name="exercise_name" required #exercise_name>
+      
+      <button type="button"  class="btn btn-primary setbtn" (click)="AddExercise(exercise_name.value)">Add this Exercise</button>
+    </div>
+
+  </form>
+</div>
+
+
+<div id="id02" class="modal" *ngIf="formShow3">
+  <span (click)="this.formShow3 = false" class="close" title="Close Modal">&times;</span>
+
+  <!-- Modal Content -->
+  <form class="modal-content animate">
+      
+    <div class="container">
+      <br/>
+      <h1 class="setHeader">Delete an Exercise</h1>
+      <label for="Pounds"><b>Select below which exercise you would like to delete: </b></label>
+      <!-- <input type="text" placeholder="42" name="Pounds" required #exercise_name> -->
+      <!-- <button type="button"  class="btn btn-primary setbtn" (click)="DeleteExercise(exercise_name.value)">Delete this Exercise</button> -->
+      <br/>
+      <div class="btn-group" dropdown>
+        <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic">
+          Select exercise to delete<span class="caret"></span>
+        </button>
+        <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
+          <ng-container *ngFor="let item of exercise_data.exercises">
+              <li role="menuitem"><span class="dropdown-item" (click)="setDelete(item.name)">{{item.name}}</span></li>
+          </ng-container>
+        </ul>
+      </div>
+    </div>
+    
+    <button type="button"  class="btn btn-primary setbtn" (click)="DeleteExercise()">Delete this Exercise</button>
+
+  </form>
 </div>

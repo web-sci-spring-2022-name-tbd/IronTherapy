@@ -28,3 +28,5 @@ router.get('/:exercise', async (req, res) => {
 });
 
 module.exports = router;
+
+
