@@ -11,22 +11,29 @@ router.get('/', async (req, res) => {
     res.json(data);
   } catch (error) {
     console.log("Error getting goals: " + error.message);
-    res.status(500).json({message: error.message});
-  }
-});
-
-router.get('/:exercise', async (req, res) => {
-  try {
-    const data = await Goal.findOne({
-      uid: req.user.user_id,
-      exercise: req.params.exercise,
-    });
-    console.log("Returned a goal for user: " + req.user.name);
-    res.json(data);
-  } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
+
+// router.get('/:exercise', async (req, res) => {
+//   try {
+//     const data = await Goal.findOne({
+//       uid: req.user.user_id,
+//       exercise: req.params.exercise,
+//     });
+//     if (data == null) {
+//       console.log("Didn't find a goal for user: " + req.user.name);
+//       res.status(500).json({ message: error.message });
+//     } else {
+//       console.log("Returned a goal for user: " + req.user.name);
+//       console.log("Data: " + data);
+//       res.json(data);
+//     }
+//   } catch (error) {
+//     console.log("Error getting goal: " + error.message);
+//     res.status(500).json({ message: error.message });
+//   }
+// });
 
 router.post('/', async (req, res) => {
   try {

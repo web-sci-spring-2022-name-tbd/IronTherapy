@@ -42,17 +42,17 @@ export class GoalComponent implements OnInit {
 
     this.request.updateGoal(goal).subscribe((data) => {
       console.log(data);
+      this.reload();
     });
 
-    this.reload();
   }
 
   // Delete a goal
   deleteGoal(exerciseName: string) {
     this.request.deleteGoal(exerciseName).subscribe((data) => {
       console.log(data);
+      this.reload();
     });
     
-    this.reload();
   }
 }

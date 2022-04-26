@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { RequestsService } from '../../services/requests.service';
 import { Goal } from '../../interfaces/goal';
+import { time } from 'console';
 
 @Component({
   selector: 'app-homepage',
@@ -55,9 +56,9 @@ export class HomepageComponent implements OnInit {
         }
       });
     } catch (error) { 
-      return true;
+      return false;
     }
-    return false;
+    return true;
   }
 
   // Make a new goal
@@ -67,7 +68,11 @@ export class HomepageComponent implements OnInit {
       return;
     }
 
-    if (! await this.tryGoal(goalExercise)) { return; }
+    if (goalCurrent == '') {
+      goalCurrent = '0';
+    }
+
+    // if (await this.tryGoal(goalExercise)) { return; }
 
     let goal: Goal = {
       exercise: goalExercise,
@@ -77,8 +82,8 @@ export class HomepageComponent implements OnInit {
 
     this.request.postGoal(goal).subscribe((data) => {
       console.log(data);
+      this.reload(); 
     });
 
-    this.reload();
   }
 }

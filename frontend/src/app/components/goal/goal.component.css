@@ -47,7 +47,7 @@ body {
   height: 199px;
   border-radius: 50%;
   background: var(--fill-color);
-  line-height: 42px;
+  line-height: 38px;
   text-align: center;
   margin-top: 27px;
   margin-left: 26px;
@@ -56,6 +56,10 @@ body {
   z-index: 100;
   font-weight: 700;
   font-size: 2em;
+}
+
+.inner-text {
+  margin-top: 20px;
 }
 
 /* color animation */
