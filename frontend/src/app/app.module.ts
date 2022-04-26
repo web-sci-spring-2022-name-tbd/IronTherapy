@@ -46,6 +46,8 @@ import { HistoryComponent } from './components/history/history.component';
 // Services
 import { AuthService } from './services/auth.service';
 import { RequestsService } from './services/requests.service';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +67,8 @@ import { RequestsService } from './services/requests.service';
     WorkoutsComponent,
     ExercisesComponent,
     HistoryComponent,
+    ForgotPasswordComponent,
+    VerifyEmailComponent,
   ],
   imports: [
     HttpClientModule,

@@ -22,3 +22,10 @@
         left: 5rem;
     }
 }
+
+
+:root {
+  --main-color: #613194;
+  --main-color-faded: #8251b6;
+  --seconday-color: #ed5101;
+}
