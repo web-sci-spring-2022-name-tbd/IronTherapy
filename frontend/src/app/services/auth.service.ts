@@ -32,6 +32,12 @@ export class AuthService {
       }
     });
   }
+  async reloadUser() {
+    const user = await this.afAuth.currentUser;
+    await user?.reload();
+    localStorage.setItem('user', JSON.stringify(this.userData));
+    JSON.parse(localStorage.getItem('user')!);
+  }
   async getToken(): Promise<string | undefined> {
     const user = await this.afAuth.currentUser;
     return await user?.getIdToken(true);
@@ -42,7 +48,7 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['dashboard/homepage']);
+          this.router.navigate(['dashboard']);
         });
         this.SetUserData(result.user);
       })
@@ -69,7 +75,7 @@ export class AuthService {
     return this.afAuth.currentUser
       .then((u: any) => u.sendEmailVerification())
       .then(() => {
-        this.router.navigate(['verify-email-address']);
+        this.router.navigate(['verify-email']);
       });
   }
   // Reset Forggot password
@@ -92,7 +98,7 @@ export class AuthService {
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
       if (res) {
-        this.router.navigate(['dashboard/homepage']);
+        this.router.navigate(['dashboard']);
       }
     });
   }
@@ -102,7 +108,7 @@ export class AuthService {
       .signInWithPopup(provider)
       .then((result) => {
         this.ngZone.run(() => {
-          this.router.navigate(['dashboard/homepage']);
+          this.router.navigate(['dashboard']);
         });
         this.SetUserData(result.user);
       })

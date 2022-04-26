@@ -7,3 +7,36 @@
   margin: 0;
   padding: 0;
 }
+
+.flex-cont {
+  display: flex;
+}
+
+.col {
+  flex-flow: column;
+}
+
+.alg-cnt {
+  align-items: center;
+}
+
+.center-txt {
+  text-align: center;
+}
+
+.text-lg {
+  font-size: 4rem;
+}
+
+.header {
+  font-size: 6.5rem;
+  margin: 0;
+}
+
+.purp {
+  color: var(--main-color);
+}
+
+.fnt-bold {
+  font-weight: bold;
+}

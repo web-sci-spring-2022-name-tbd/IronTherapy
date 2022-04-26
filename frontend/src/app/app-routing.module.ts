@@ -1,3 +1,6 @@
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { VerifyEmailComponent } from './components/verify-email/verify-email.component';
+import { AuthGuard } from './guards/auth.guard';
 import { WorkoutsComponent } from './components/workouts/workouts.component';
 import { HistoryComponent } from './components/history/history.component';
 import { ExercisesComponent } from './components/exercises/exercises.component';
@@ -14,6 +17,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', redirectTo: 'homepage', pathMatch: 'full' },
       { path: 'homepage', component: HomepageComponent },
@@ -25,7 +29,9 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
-  { path: 'homepage', component: HomepageComponent }
+  { path: 'homepage', component: HomepageComponent },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
+  { path: 'verify-email', component: VerifyEmailComponent },
 ];
 
 @NgModule({
