@@ -39,6 +39,7 @@ router.put('/', async (req, res) => {
     // console.log(update)
     // console.log(exercise_name)
     const { name } = req.body;
+    console.log(req.body)
     // console.log(name)
     // const { exercise_name } = req.params.exercise_name;
     // res.status(200).json(req.body);
@@ -53,15 +54,16 @@ router.put('/', async (req, res) => {
     data.exercises.forEach(exercise => {
       
       if (exercise.name == exercise_name) {
-        console.log("updating")
-        console.log(temp[count]["sets"])
+        // console.log("updating")
+        // console.log(temp[count]["sets"])
         temp[count]["sets"].push({pounds: update.pounds, reps: update.reps})  // or maybe update[0] depending on what update turns out to be
-        console.log("after")
-        console.log(temp[count]["sets"])
+        // console.log("after")
+        // console.log(temp[count]["sets"])
         return;
       }
       count++;
     })
+    
 
     await Workout.findOneAndUpdate({
       // uid: req.user.user_id,
@@ -69,7 +71,8 @@ router.put('/', async (req, res) => {
     }, {
         exercises: temp,
     });
-    console.log(`updated exercise ${exercise_name} for ${req.user.name}`)
+    
+    // console.log(`updated exercise ${exercise_name} for ${req.user.name}`)
     // console.log("Updated a exercise for " + req.user.name);
     res.status(200).json({ message: "exercise updated", exercise: temp });
   } catch (error) {
