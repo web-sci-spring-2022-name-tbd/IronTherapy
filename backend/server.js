@@ -26,24 +26,26 @@ database.once("connected", () => {
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
-  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
-  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+  max: 100,                 // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+  standardHeaders: true,    // Return rate limit info in the `RateLimit-*` headers
+  legacyHeaders: false,     // Disable the `X-RateLimit-*` headers
 });
 
 const app = express();
 
-// Add the static dir from frontend
-app.use(express.static(path.join(__dirname, "../frontend/dist/iron-therapy")));
+    // Do cors stuff on all requests
+app.use(cors())
+    // Add the static dir from frontend
+   .use(express.static(path.join(__dirname, "../frontend/dist/iron-therapy")))
+   // Parse body on all requests
+   .use(bodyParser.json())
+   // Rate limit all requests
+   .use(limiter)
+   // Endpoints
+   .use('/workouts', workoutRoutes)
+   .use("/goals", goalRoutes)
+   .use("/exercises", exerciseRoutes);
 
-// Do cors stuff on all requests
-app.use(cors());
-
-// Parse body on all requests
-app.use(bodyParser.json());
-
-// Rate limit all requests
-app.use(limiter);
 
 // Requests for workouts, excerises, and goals. All must have auth token and must be decoded
 app.use('/workouts', decode.decodeToken, workoutRoutes);

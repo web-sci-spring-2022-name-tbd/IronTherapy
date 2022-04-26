@@ -1,14 +1,53 @@
-<h1>Analysis Component</h1>
-<div class="btn-group" dropdown>
-    <button id="button-basic" dropdownToggle type="button" class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic">
-      Graphs <span class="caret"></span>
-    </button>
-    <ul id="dropdown-basic" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic">
-        <li role="menuitem"><a class="dropdown-item" href="#" (click)="showGraph(0)">Graph 1</a></li>
-        <li role="menuitem"><a class="dropdown-item" href="#" (click)="showGraph(1)">Graph 2</a></li>
-        <li role="menuitem"><a class="dropdown-item" href="#" (click)="showGraph(2)">Graph 3</a></li>
-    </ul>
+<div class="content">
+
+<div class="btn-group" dropdown *ngIf="dataGot">
+  <button id="button-basic1" dropdownToggle type="button" class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic1">
+    Select Exercise <span class="caret"></span>
+  </button>
+  <ul id="dropdown-basic1" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic1">
+    <ng-container *ngFor="let key of Object.keys(data[0]); let i = index">
+      <li role="menuitem"><span class="dropdown-item" href="#" (click)="showGraph(i)">{{key}}</span></li>
+    </ng-container>
+  </ul>
 </div>
-<app-chart id="graph-0" name="graph 0"></app-chart>
-<app-chart id="graph-1" name="graph 1"></app-chart>
-<app-chart id="graph-2" name="graph 2"></app-chart>
+
+<ng-container *ngIf="dataGot">
+  <div *ngFor="let key of Object.keys(data[0]); let i = index">
+<!--      <p>{{key}}</p>-->
+      <app-chart id="graph-{{key}}" name="{{key}}" [data]=data[0][key] *ngIf="show[i]"></app-chart>
+  </div>
+</ng-container>
+
+
+
+<!--<div class="btn-group" dropdown>-->
+<!--  <button id="button-basic1" dropdownToggle type="button" class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic">-->
+<!--    Select Workout <span class="caret"></span>-->
+<!--  </button>-->
+<!--  <ul id="dropdown-basic1" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic1">-->
+<!--    <ng-container *ngFor="let item of dataRaw; let i = index">-->
+<!--      <li role="menuitem"><span class="dropdown-item" href="#" (click)="showWorkout(i)">{{item.name}} | {{item.date}}</span></li>-->
+<!--    </ng-container>-->
+<!--  </ul>-->
+<!--</div>-->
+
+<!--  <div class="btn-group" dropdown *ngIf="workoutSelected">-->
+<!--    <button id="button-basic2" dropdownToggle type="button" class="btn btn-primary dropdown-toggle" aria-controls="dropdown-basic2">-->
+<!--      Select exercise <span class="caret"></span>-->
+<!--    </button>-->
+<!--    <ul id="dropdown-basic2" *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="button-basic2">-->
+<!--      <ng-container *ngFor="let item of workout; let i = index">-->
+<!--        <li role="menuitem"><span class="dropdown-item" href="#" (click)="showGraph(i)">{{item.name}}</span></li>-->
+<!--      </ng-container>-->
+<!--    </ul>-->
+<!--  </div>-->
+
+<!--  <div *ngFor="let item of workout; let i = index">-->
+<!--    <app-chart id="graph-{{item.name}}" name="{{item.name}}" [data]=item.sets *ngIf="show[i]"></app-chart>-->
+<!--  </div>-->
+
+
+
+
+
+</div>

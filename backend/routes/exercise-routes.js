@@ -4,6 +4,7 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   try {
+
     let toReturn = (await Exercise.find({})).map((exercise) => exercise.name);
     console.log("Got all exercises");
     res.status(200).json(toReturn);
