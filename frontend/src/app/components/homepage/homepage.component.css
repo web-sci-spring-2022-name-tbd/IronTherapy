@@ -54,6 +54,13 @@ h5 {
   margin-top: 50px;
 }
 
+#add-goal-btn {
+  color: var(--off-color);
+}
+#add-goal-btn:hover {
+  cursor: pointer;
+}
+
 .carousel-control-next,
 .carousel-control-prev,
 .carousel-indicators {
