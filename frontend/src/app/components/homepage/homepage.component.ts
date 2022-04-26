@@ -42,12 +42,4 @@ export class HomepageComponent implements OnInit {
       console.log(data);
     });
   }
-
-  // Delete a goal
-  deleteGoal(exerciseName: string) {
-    let exercise = 'test';
-    this.request.deleteGoal(exercise).subscribe((data) => {
-      console.log(data);
-    });
-  }
 }

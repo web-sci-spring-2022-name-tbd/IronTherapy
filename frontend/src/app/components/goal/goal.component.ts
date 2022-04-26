@@ -27,14 +27,13 @@ export class GoalComponent implements OnInit {
     }
   }
 
-  redirectTo(uri:string){
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-    this.router.navigate([uri]));
- }
+  reload() {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+      this.router.navigate(['dashboard/homepage']));
+  }
 
   // Update a goal
   updateGoal(goalExercise: string, goalTarget: string) {
-    console.log("updated goal " + goalExercise + " to " + goalTarget);
     let goal: Goal = {
       exercise: goalExercise,
       target: parseInt(goalTarget),
@@ -45,6 +44,15 @@ export class GoalComponent implements OnInit {
       console.log(data);
     });
 
-    this.redirectTo('dashboard/homepage');
+    this.reload();
+  }
+
+  // Delete a goal
+  deleteGoal(exerciseName: string) {
+    this.request.deleteGoal(exerciseName).subscribe((data) => {
+      console.log(data);
+    });
+    
+    this.reload();
   }
 }
