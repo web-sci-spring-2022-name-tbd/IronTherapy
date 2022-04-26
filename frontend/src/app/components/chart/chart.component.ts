@@ -18,8 +18,8 @@ export class ChartComponent implements OnInit {
     // console.log(`data for ${this.name}: `)
     // console.log(this.data)
     this.data.forEach(el => {
-      this.dataParsed.push([el["pounds"], el["reps"]])
-      // this.dataParsed.push([el["Pounds"], el["Reps"], el["Date"]])
+      // this.dataParsed.push([el["pounds"], el["reps"]])
+      this.dataParsed.push([el["pounds"], el["reps"], el["date"]])
     })
     this.show = true;
     // console.log(this.dataParsed)
@@ -37,9 +37,8 @@ export class ChartComponent implements OnInit {
       formatter: function (params) {
         let data = JSON.parse(JSON.stringify(params));
         // console.log(params)
-        return `<span><b>Weight:</b>${data["value"][0]} lbs</brspan> <br/><span><b>Reps:</b>  ${data["value"][1]}</span>`;
-
-        // return `<span>${data["value"][2]}</span><br/><span><b>Weight:</b>${data["value"][0]} lbs</brspan> <br/><span><b>Reps:</b>  ${data["value"][1]}</span>`;
+        // return `<span><b>Weight:</b>${data["value"][0]} lbs</br<span> <br/><span><b>Reps:</b>  ${data["value"][1]}</span>`;
+        return `<span>${data["value"][2]}</span><br/><span><b>Weight:</b>${data["value"][0]} lbs</brspan> <br/><span><b>Reps:</b>  ${data["value"][1]}</span>`;
       }
     },
     series: [
