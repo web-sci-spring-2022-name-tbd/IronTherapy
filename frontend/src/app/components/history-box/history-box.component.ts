@@ -1,3 +1,4 @@
+import { Exercise } from './../../interfaces/workout';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -9,6 +10,7 @@ export class HistoryBoxComponent implements OnInit {
   @Input() num_id: String;
   @Input() photo: String;
   @Input() workout_name: String = "";
+  @Input() exercises: String[] = [];
   public data: any = { workout_name: this.workout_name }
   constructor() {
     this.num_id = "";
@@ -29,6 +31,7 @@ export class HistoryBoxComponent implements OnInit {
     }
   }
   ngOnInit(): void {
+
   }
 
 }
