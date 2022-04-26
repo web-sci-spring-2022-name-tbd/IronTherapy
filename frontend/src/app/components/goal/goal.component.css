@@ -7,7 +7,6 @@
 
 
 body {
-  --amount: 270deg / 2;
   font-family: "Roboto", sans-serif;
   background:#d2eaf1;
 }
@@ -47,8 +46,8 @@ body {
   width: 199px;
   height: 199px;
   border-radius: 50%;
-  background: var(--off-color);
-  line-height: 42px;
+  background: var(--fill-color);
+  line-height: 38px;
   text-align: center;
   margin-top: 27px;
   margin-left: 26px;
@@ -57,6 +56,10 @@ body {
   z-index: 100;
   font-weight: 700;
   font-size: 2em;
+}
+
+.inner-text {
+  margin-top: 20px;
 }
 
 /* color animation */
@@ -70,7 +73,7 @@ body {
 .mask.full,
 .circle .fill {
   animation: fill ease-in-out 1.5s;
-  transform: rotate(135deg);
+  transform: rotate(var(--rotate));
 }
 
 @keyframes fill{
@@ -78,7 +81,7 @@ body {
     transform: rotate(0deg);
   }
   100% {
-    transform: rotate(135deg);
+    transform: rotate(var(--rotate));
   }
 }
 

@@ -1,3 +1,27 @@
+<div class="modal fade" [id]="'modal-' + index" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" [id]="'modal-' + index + '-label'">Edit {{data!.exercise}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <div class="mb-3">
+            <label [attr.for]="'target-input-' + index" class="form-label">Target Weight</label>
+            <input type="text" class="form-control" [id]="'target-input-' + index" [value]="data!.target" #targetInput>
+            <div class="form-text">The weight you wish to be able to achieve</div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" type="submit" class="btn btn-danger" data-bs-dismiss="modal" (click)="deleteGoal(data!.exercise)">Delete Goal</button>
+          <button type="button" type="submit" class="btn btn-primary" data-bs-dismiss="modal" (click)="updateGoal(data!.exercise, targetInput.value)">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 <div class="circle-wrap">
   <div class="circle">
     <div class="mask full">
@@ -6,6 +30,8 @@
     <div class="mask half">
       <div class="fill"></div>
     </div>
-    <div class="inside-circle"><br>goalName 100/150<br><img src="../../assets/images/edit.svg" alt="Edit" id="edit-image" data-bs-toggle="modal" data-bs-target="#exampleModal"/></div>
+    <div class="inside-circle"><span class="inner-text"><br>{{data!.exercise}}<br>{{data!.current}}/{{data!.target}}<br><img
+        src="../../assets/images/edit.svg" alt="Edit" id="edit-image" data-bs-toggle="modal"
+        [attr.data-bs-target]="'#modal-' + index" /></span></div>
   </div>
 </div>
