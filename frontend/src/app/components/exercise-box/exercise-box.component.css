@@ -11,13 +11,13 @@
     padding: 20px;
 
     margin-top: .2%;
-    margin-bottom: 2%;
     margin-right: auto;
     margin-left: auto;
     width: fit-content;
+    margin-bottom: 10vh;
 }
 
-h1 {
+#exercise_header {
     text-decoration: underline;
 }
 
@@ -32,6 +32,7 @@ h1 {
     font-family: sans-serif;
     min-width: 400px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    
 }
 
 #exercise-table thead tr {
@@ -78,7 +79,7 @@ h1 {
 
 .exercise-button {
     color: white;
-    background-color: rgb(162, 93, 226);
+    background-color: var(--main-color-faded);
     border-radius: 15px;
     padding-top: .8%;
     padding-bottom: .8%;
@@ -91,5 +92,72 @@ h1 {
 
 
 .exercise-button:hover{
-    background-color: rgb(122, 5, 255);
+    background-color: var(--main-color);
 }
+
+
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+/* The Modal (background) */
+.modal {
+    display:block;
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+  }
+  
+  /* Modal Content/Box */
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5px auto; /* 15% from the top and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+  
+  /* The Close Button */
+  .close {
+    /* Position it in the top right corner outside of the modal */
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+  }
+  
+  /* Close button on hover */
+  .close:hover,
+  .close:focus {
+    color: red;
+    cursor: pointer;
+  }
+
+  .setHeader {
+      text-align: center;
+  }
+
+  #setbtn {
+      
+    padding: 14px 20px;
+    margin: 1vh 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 3vh;
+  }

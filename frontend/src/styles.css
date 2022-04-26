@@ -8,6 +8,12 @@
   padding: 0;
 }
 
+
+:root {
+  --main-color: #613194;
+  --main-color-faded: #8251b6;
+  --seconday-color: #ed5101;
+}
 .flex-cont {
   display: flex;
 }
