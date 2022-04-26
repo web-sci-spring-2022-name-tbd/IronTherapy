@@ -4,34 +4,38 @@
     (click)="logout()" />
 
   <!-- Modal Stuff -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="add-modal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Edit goalName</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h5 class="modal-title" id="add-modal-label">Add New Goal</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
         </div>
         <form>
           <div class="modal-body">
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Exercise</label>
-              <input type="text" class="form-control">
+              <select class="form-select" aria-label="Default select example" #exerciseInput>
+                <option selected>Select Exercise</option>
+                <option *ngFor="let exer of exercises;">{{exer}}</option>
+              </select>
               <div class="form-text">The exercise you wish to set as your goal</div>
             </div>
             <div class="mb-3">
               <label for="target-input" class="form-label">Target Weight</label>
-              <input type="text" class="form-control" id="target-input">
+              <input type="text" class="form-control" id="target-input" #targetInput>
               <div class="form-text">The weight you wish to be able to achieve</div>
             </div>
             <div class="mb-3">
               <label for="current-input" class="form-label">Current Weight</label>
-              <input type="text" class="form-control" id="current-input">
+              <input type="text" class="form-control" id="current-input" #currentInput>
               <div class="form-text">The weight you can currently do (Optional)</div>
             </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            <button type="button" type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save</button>
+            <button type="button" type="submit" class="btn btn-success" data-bs-dismiss="modal"
+              (click)="makeGoal(exerciseInput.value, targetInput.value, currentInput.value)">Create</button>
           </div>
         </form>
       </div>
@@ -39,9 +43,8 @@
   </div>
 
   <!-- Text -->
-  <h1 class="m-auto mt-5" id="welcome-message"><i><b>Welcome Yourname!</b></i></h1>
-  <h5 class="m-auto mt-4" id="next-workout">Your next workout is <p>tomorrow morning.</p>
-  </h5>
+  <h1 class="m-auto mt-5" id="welcome-message"><i><b>Welcome to Iron Therapy!</b></i></h1>
+  <h5 class="m-auto mt-4" id="next-workout">Ready to workout?</h5>
   <div class="d-flex justify-content-center">
     <button type="button" class="p-3 rounded-3 fs-4" id="workout-button" routerLink="../workouts">
       Start workout
@@ -50,33 +53,29 @@
 
   <!-- Goals -->
   <h2 class="mx-auto w-75 text-center mt-5" id="goals-text"><b>Goals:</b></h2>
-  <div class="container">
+  <div class="container" *ngIf="currentGoals">
     <div id="carouselIndicators" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="0" class="active"
-          aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselIndicators" [attr.data-bs-slide-to]="i"
+          [ngClass]="isFirst ? 'active' : ''" *ngFor="let goal of currentGoals; let i=index; first as isFirst"></button>
       </div>
       <div class="carousel-inner">
-        <div class="carousel-item active">
-          <app-goal class="d-flex justify-content-center"></app-goal>
+        <div [ngClass]="isFirst ? 'carousel-item active' : 'carousel-item'"
+          *ngFor="let goal of currentGoals; first as isFirst; let i=index">
+          <app-goal class="d-flex justify-content-center" [data]="goal" [index]="i"></app-goal>
         </div>
-        <div class="carousel-item">
-          <app-goal class="d-flex justify-content-center"></app-goal>
-        </div>
-        <div class="carousel-item">
-          <app-goal class="d-flex justify-content-center"></app-goal>
-        </div>
+        <!-- TODO: Add a "plus" icon to make a new goal, will use the modal we have here -->
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="carousel-control-prev-icon"></span>
         <span class="visually-hidden">Previous</span>
       </button>
       <button class="carousel-control-next" type="button" data-bs-target="#carouselIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="carousel-control-next-icon"></span>
         <span class="visually-hidden">Next</span>
       </button>
     </div>
   </div>
+  <p class="mx-auto text-center mt-1" id="add-goal-btn" data-bs-toggle="modal" data-bs-target="#add-modal"><b>Add New
+      Goal</b></p>
 </div>
