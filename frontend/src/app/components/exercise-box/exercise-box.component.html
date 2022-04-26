@@ -1,32 +1,46 @@
 <div id = "exercise_box">
-    <h1>Exercise: {{exercise_name}}</h1>
+    <h1 class = "exercise_header">Exercise: {{exercise_name}}</h1>
     <table id = "exercise-table">
         <thead>
             <tr>
                 <th>Set</th>
                 <th>Pounds (lb)</th>
                 <th>Number of Reps</th>
+                <th>Delete</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody *ngFor="let set of data; let i = index;">
             <tr>
-                <td>1</td>
-                <td>10</td>
-                <td>5</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>15</td>
-                <td>5</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>10</td>
-                <td>5</td>
+               <td>{{i+1}}</td> 
+               <td>{{set.pounds}}</td>
+               <td>{{set.reps}}</td>
+               <td><button class = "exercise-button">REMOVE SET</button></td>
             </tr>
         </tbody>
       </table>
 
-      <button class = "exercise-button">ADD A SET</button>
-      <button class = "exercise-button">REMOVE A SET</button>
+      <button class = "exercise-button" (click)="this.formShow = true">ADD A SET</button>
 </div>
+
+<!-- The Modal -->
+<div id="id01" class="modal" *ngIf="formShow">
+    <span (click)="this.formShow = false" class="close" title="Close Modal">&times;</span>
+  
+    <!-- Modal Content -->
+    <form class="modal-content animate" action="/action_page.php">
+        
+      <div class="container">
+        <br/>
+        <h1 class="setHeader">Add a Set</h1>
+        <label for="Pounds"><b>Pounds</b></label>
+        <input type="text" placeholder="42" name="Pounds" required #pounds>
+  
+        <label for="Reps"><b>Reps</b></label>
+        <input type="text" placeholder="10" name="Reps" required #reps>
+        
+        
+        <button type="button" id ="setbtn" class="btn btn-primary" (click)="submitAdd(pounds.value, reps.value)">Add</button>
+      </div>
+
+    </form>
+  </div>

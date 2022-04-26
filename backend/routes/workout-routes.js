@@ -28,4 +28,33 @@ router.get("/:name", async (req, res) => {
   }
 });
 
+
+router.put('/', async (req, res) => {
+  try {
+    let doc = await Workout.findOneAndUpdate({
+      
+    });
+    console.log("Made a new goal for " + req.user.name);
+    res.status(201).json({ message: "Goal created" });
+  } catch (error) {
+    console.log("Error making a goal: " + error.message);
+    res.status(500).json({ message: error.message });
+  }
+});
+
+
+router.post('/:name', async (req, res) => {
+  try {
+    await Workout.create({
+      uid: req.user.user_id,
+      name: req.params.name,
+      exercises: [],
+    });
+    console.log("Made a new workout for " + req.user.user_id);
+    res.status(201).json({ message: "Goal created" });
+  } catch (error) {
+    console.log("Error making a goal: " + error.message);
+    res.status(500).json({ message: error.message });
+  }
+});
 module.exports = router;

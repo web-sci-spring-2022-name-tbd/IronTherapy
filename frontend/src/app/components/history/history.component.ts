@@ -1,4 +1,6 @@
+import { Workout } from './../../interfaces/workout';
 import { Component, OnInit } from '@angular/core';
+import { RequestsService } from 'src/app/services/requests.service';
 
 @Component({
   selector: 'app-history',
@@ -6,10 +8,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./history.component.css']
 })
 export class HistoryComponent implements OnInit {
-
-  constructor() { }
+  public workouts_data: Workout[] = <Workout[]>{};
+  public exercises_data: String[][] = [];
+  public photo_data: String[] = [];
+  constructor(private request: RequestsService) { }
 
   ngOnInit(): void {
+    this.request.getWorkouts().subscribe(data => {
+      this.workouts_data = data;
+      data.forEach(element => {
+        var name = element.name;
+        if (name.includes("back")) {
+          this.photo_data.push("../../assets/images/back_photo.jpg");
+        } else if (name.includes("chest")) {
+          this.photo_data.push("../../assets/images/chest.jpg");
+        } else if (name.includes("legs")) {
+          this.photo_data.push("../../assets/images/gym-deadlift.jpg");
+        } else if (name.includes("abs")) {
+          this.photo_data.push("../../assets/images/abs.jpg");
+        } else {
+          this.photo_data.push("../../assets/images/c_own.jpg");
+        }
+        var workout_exercises = <String[]>[];
+        element.exercises.forEach(exercise => {
+          workout_exercises.push(exercise.name);
+        });
+        this.exercises_data.push(workout_exercises);
+      });
+    });
   }
 
 }

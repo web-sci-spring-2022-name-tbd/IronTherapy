@@ -1,5 +1,5 @@
 export interface Goal {
-  uid: number;
+  uid: string;
   exercise: string;
   target: number;
   current: number;
