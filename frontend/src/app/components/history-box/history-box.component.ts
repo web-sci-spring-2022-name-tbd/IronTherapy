@@ -1,5 +1,6 @@
 import { Exercise } from './../../interfaces/workout';
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-history-box',
@@ -12,7 +13,7 @@ export class HistoryBoxComponent implements OnInit {
   @Input() workout_name: String = "";
   @Input() exercises: String[] = [];
   public data: any = { workout_name: this.workout_name }
-  constructor() {
+  constructor(private router: Router) {
     this.num_id = "";
     this.photo = "";
   }
@@ -33,5 +34,10 @@ export class HistoryBoxComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
+  visitExercises() {
+    this.router.navigate(["dashboard/exercises", this.workout_name]);
+  }
+
 
 }

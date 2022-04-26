@@ -22,7 +22,7 @@ const routes: Routes = [
       { path: '', redirectTo: 'homepage', pathMatch: 'full' },
       { path: 'homepage', component: HomepageComponent },
       { path: 'analysis', component: AnalysisComponent },
-      { path: 'exercises', component: ExercisesComponent },
+      { path: 'exercises/:workoutname', component: ExercisesComponent },
       { path: 'history', component: HistoryComponent },
       { path: 'workouts', component: WorkoutsComponent },
     ],
