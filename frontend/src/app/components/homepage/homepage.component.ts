@@ -1,10 +1,8 @@
 import { Router } from '@angular/router';
-import { Exercise } from './../../interfaces/workout';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { RequestsService } from '../../services/requests.service';
 import { Goal } from '../../interfaces/goal';
-import { time } from 'console';
 
 @Component({
   selector: 'app-homepage',

@@ -91,4 +91,4 @@ import { VerifyEmailComponent } from './components/verify-email/verify-email.com
   providers: [AuthService, RequestsService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
