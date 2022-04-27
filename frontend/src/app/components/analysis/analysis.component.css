@@ -3,9 +3,13 @@
 }
 
 
+.test {
+  background-color: var(--main-color);
+}
+
+
 .content {
   position:relative;
-  margin: 5%;
 }
 
 
