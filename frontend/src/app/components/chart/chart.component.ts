@@ -37,7 +37,6 @@ export class ChartComponent implements OnInit {
     this.show = true;
 
     this.chartOption = {
-      // color: [],
       tooltip: {
         trigger: 'axis',
         axisPointer: {
@@ -90,24 +89,27 @@ export class ChartComponent implements OnInit {
           type: 'bar',
           barGap: '-100%',
           barCategoryGap: '80%',
+          // yAxisIndex: 2,
           tooltip: {
             formatter: function (params: any) {
               return params.value + ' lbs';
             }
           },
-          data: Array(2).fill(this.goal),
-          color: "#ed5101"
+          // data: Array(Object.keys(this.testData[0]).length).fill(100)
+          data: Array(2).fill(this.goal)
         },
         {
           name: 'Max weight',
           type: 'bar',
+          // yAxisIndex: 1,
           tooltip: {
             formatter: function (params: any) {
               return params.value + ' lbs';
             }
           },
-          data: this.weights,
-          color: "#613194"
+          // data: Object.values(this.testData[0])
+          // data: [150, 160]
+          data: this.weights
         },
       ]
     };
