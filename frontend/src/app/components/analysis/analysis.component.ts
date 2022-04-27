@@ -23,15 +23,8 @@ export class AnalysisComponent implements OnInit {
         "reps": 10,
       }],
     }]
-  }]
-
-  workout: any[] = [{
-    "name": "",
-    "sets": [{
-      "pounds": 150,
-      "reps": 10,
-    }],
-  }]
+  }];
+  goalsParsed: any[] = [{}];
 
   data: any[] = [];
   exercises: Array<string> = [];
@@ -41,45 +34,44 @@ export class AnalysisComponent implements OnInit {
     this.http.getWorkouts().subscribe(dataRaw => {
       let data = JSON.parse(JSON.stringify(dataRaw));
       let result: any = [{}];
-      console.log(data)
 
       data.forEach((workout: {date: string, exercises: any[]; }) => {
         workout.exercises.forEach(exercise => {
           this.exercises.push(exercise.name);
-          // console.log(Object.keys(result[0]))
           let temp: { pounds: any; reps: any; date: string; }[] = []
           exercise.sets.forEach((set: any) => {
             temp.push({pounds: set.pounds, reps: set.reps, date: workout.date})
           })
           if (!(Object.keys(result[0]).includes(exercise.name))) {
             result[0][exercise.name] = temp
-            // console.log(`adding new key to array called ${exercise.name}`)
           } else {
             temp.forEach((set: any) => {
               result[0][exercise.name].push(set);
             })
-            // result[0][exercise.name].push(result[0][exercise.name], exercise.sets);
-            // console.log(`adding to existing key ${exercise.name}`)
           }
         })
       })
-      console.log(result)
+      // console.log(result)
+      this.http.getGoals().subscribe(data => {
+        console.log(data)
+        data.forEach(goal => {
+          this.goalsParsed[0][goal.exercise] = goal.target;
+        })
+        console.log("parsed goals")
+        console.log(this.goalsParsed)
+
+      })
 
       this.data = result;
 
       this.dataRaw = data;
       this.dataGot = true;
-      console.log(Object.keys(this.data[0]))
     })
   }
 
-  showWorkout(index: number) {
-    this.workout = this.dataRaw[index].exercises;
-    this.workoutSelected = true;
-  }
 
   showGraph(num: number) {
-    console.log("showing " + num)
+    // console.log("showing " + num)
     if (this.first) {
       this.show.push(true);
       for (let i = 1; i < Object.keys(this.data[0]).length; i++) {
@@ -91,7 +83,6 @@ export class AnalysisComponent implements OnInit {
         this.show[i] = i == num;
       }
     }
-    // console.log(this.show)
   }
 
 }

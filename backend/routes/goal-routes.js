@@ -69,39 +69,39 @@ router.get('/exists/:exercise', async (req, res) => {
 });
 
 router.post('/', async (req, res) => {
-    // Check to see if goal exists
-    try {
-      const exists = await Goal.exists({
-        uid: req.user.user_id,
-        exercise: req.params.exercise,
-      });
-  
-      // If it doesn't exist make the goal
-      if (!exists) {
-        try {
-          await Goal.create({
-            uid: req.user.user_id,
-            exercise: req.body.exercise,
-            target: req.body.target,
-            current: req.body.current,
-          });
-          console.log("Made a new goal for " + req.user.name);
-          res.status(201).json({ message: "Goal created" });
-        } catch (error) {
-          console.log("Error making a goal: " + error.message);
-          res.status(500).json({ message: error.message });
-        }
+  // Check to see if goal exists
+  try {
+    const exists = await Goal.exists({
+      uid: req.user.user_id,
+      exercise: req.params.exercise,
+    });
+
+    // If it doesn't exist make the goal
+    if (!exists) {
+      try {
+        await Goal.create({
+          uid: req.user.user_id,
+          exercise: req.body.exercise,
+          target: req.body.target,
+          current: req.body.current,
+        });
+        console.log("Made a new goal for " + req.user.name);
+        res.status(201).json({ message: "Goal created" });
+      } catch (error) {
+        console.log("Error making a goal: " + error.message);
+        res.status(500).json({ message: error.message });
       }
-      // If it exists, return a 409
-      else {
-        console.log("Goal already exists");
-        res.status(409).json({ message: "Goal already exists" });
-      }
-  
-    } catch (error) {
-      console.log("Could not check goal in POST: " + error.message);
-      res.status(500).json({ message: error.message });
     }
+    // If it exists, return a 409
+    else {
+      console.log("Goal already exists");
+      res.status(409).json({ message: "Goal already exists" });
+    }
+
+  } catch (error) {
+    console.log("Could not check goal in POST: " + error.message);
+    res.status(500).json({ message: error.message });
+  }
 
 });
 
@@ -148,7 +148,7 @@ router.post('/default', async (req, res) => {
     if (data.length === 0) {
       await Goal.create({
         uid: req.user.user_id,
-        exercise: "Bench",
+        exercise: "Bench Press",
         target: "150",
         current: "0",
       });
