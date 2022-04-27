@@ -1,10 +1,8 @@
 import { Router } from '@angular/router';
-import { Exercise } from './../../interfaces/workout';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { RequestsService } from '../../services/requests.service';
 import { Goal } from '../../interfaces/goal';
-import { time } from 'console';
 
 @Component({
   selector: 'app-homepage',
@@ -48,41 +46,35 @@ export class HomepageComponent implements OnInit {
     this.auth.SignOut();
   }
 
-  async tryGoal(goalExercise: string) {
-    try {
-      this.request.getGoal(goalExercise).subscribe((goal) => {
-        if (goal) {
-          window.alert('Please choose a unique exercise');
-        }
-      });
-    } catch (error) { 
-      return false;
-    }
-    return true;
-  }
-
   // Make a new goal
   async makeGoal(goalExercise: string, goalTarget: string, goalCurrent: string = '0') {
+    // Input checking
     if (goalExercise === 'Select Exercise' || goalTarget === '') {
       window.alert('Please enter an exercise and a target');
       return;
     }
-
     if (goalCurrent == '') {
       goalCurrent = '0';
     }
 
-    // if (await this.tryGoal(goalExercise)) { return; }
+    // Check if the goal already exists
+    this.request.checkGoal(goalExercise).subscribe((exists) => {
+      // If it doesn't, make a new goal
+      if (!exists) {
+        let goal: Goal = {
+          exercise: goalExercise,
+          target: parseInt(goalTarget),
+          current: parseInt(goalCurrent),
+        };
 
-    let goal: Goal = {
-      exercise: goalExercise,
-      target: parseInt(goalTarget),
-      current: parseInt(goalCurrent),
-    };
-
-    this.request.postGoal(goal).subscribe((data) => {
-      console.log(data);
-      this.reload(); 
+        this.request.postGoal(goal).subscribe((data) => {
+          console.log(data);
+          this.reload();
+        });
+      } else {
+        // If it does, alert the user
+        window.alert('Exercise already exists as a goal, please select another exercise or delete the existing goal.'); 
+      }
     });
 
   }

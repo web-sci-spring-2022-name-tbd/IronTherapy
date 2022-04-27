@@ -23,7 +23,7 @@ export class GoalComponent implements OnInit {
   ngOnInit(): void {
     if (this.data) {
       this.fillColor = (this.data!.current < this.data!.target ? 'var(--off-color)' : 'green');
-      this.rotate = `${((this.data!.current / this.data!.target) * 360) / 2}deg`;
+      this.rotate = `${((Math.min(this.data!.current, this.data!.target) / this.data!.target) * 360) / 2}deg`;
     }
   }
 
