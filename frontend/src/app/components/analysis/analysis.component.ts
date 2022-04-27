@@ -26,7 +26,7 @@ export class AnalysisComponent implements OnInit {
   }];
   goalsParsed: any[] = [{}];
 
-  data: any[] = [];
+  data: any[] = [{} ];
   exercises: Array<string> = [];
   constructor(private http: RequestsService) { }
 
@@ -42,6 +42,12 @@ export class AnalysisComponent implements OnInit {
           exercise.sets.forEach((set: any) => {
             temp.push({pounds: set.pounds, reps: set.reps, date: workout.date})
           })
+          console.log(`${exercise.name}: `)
+          console.log(exercise.sets)
+          if (exercise.sets.length == 0) {
+            console.log("skipping")
+            return;
+          }
           if (!(Object.keys(result[0]).includes(exercise.name))) {
             result[0][exercise.name] = temp
           } else {
@@ -51,7 +57,8 @@ export class AnalysisComponent implements OnInit {
           }
         })
       })
-      // console.log(result)
+      console.log('result')
+      console.log(result)
       this.http.getGoals().subscribe(data => {
         console.log(data)
         data.forEach(goal => {
