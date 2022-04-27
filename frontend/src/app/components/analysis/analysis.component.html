@@ -13,8 +13,8 @@
 
 <ng-container *ngIf="dataGot">
   <div *ngFor="let key of Object.keys(data[0]); let i = index">
-      <p>{{key}}</p>
-      <app-chart id="graph-{{key}}" name="{{key}}" [goal]=goalsParsed[0][key] [data]=data[0][key] *ngIf="show[i]"></app-chart>
+<!--      <p>{{key}}</p>-->
+      <app-chart id="graph-{{key}}" name="{{key}}" [data]=data[0][key] *ngIf="show[i]"></app-chart>
   </div>
 </ng-container>
 
