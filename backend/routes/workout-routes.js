@@ -210,8 +210,8 @@ router.put('/deleteSet', async (req, res) => {
     });
 
     console.log(data);
-
-    let temp = data.exercises;
+    let data_2 = data;
+    let temp = data_2.exercises;
     console.log(temp);
     let count = 0;
     data.exercises.forEach(exercise => {
@@ -247,10 +247,13 @@ router.delete('/deleteExercise', async (req, res) => {
     uid: req.user.user_id,
     name: name
   })
+
+  let data_2 = data;
+
   let temp = []
   // console.log(data.exercises)
 
-  data.exercises.forEach(exercise_ => {
+  data_2.exercises.forEach(exercise_ => {
     if (exercise_.name != exercise) {
       temp.push(exercise_)
     } else {
