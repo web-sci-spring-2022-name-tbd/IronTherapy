@@ -148,7 +148,7 @@ router.post('/default', async (req, res) => {
     if (data.length === 0) {
       await Goal.create({
         uid: req.user.user_id,
-        exercise: "Bench",
+        exercise: "Bench Press",
         target: "150",
         current: "0",
       });
