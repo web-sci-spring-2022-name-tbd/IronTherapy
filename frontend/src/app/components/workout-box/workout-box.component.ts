@@ -23,11 +23,13 @@ export class WorkoutBoxComponent implements OnInit {
   submitAdd(workout_rename: string) {
     this.request.postWorkout(this.workout_name).subscribe(data => {
       console.log(data);
+      this.request.putWorkout(this.workout_name, workout_rename).subscribe((data) => {
+        this.formShow = false;
+        this.router.navigate(["dashboard/exercises", workout_rename]);
+      });
     });
-    this.request.putWorkout(this.workout_name, workout_rename).subscribe((data) => {
-      this.formShow = false;
-    });
-    this.router.navigate(["dashboard/exercises", workout_rename]);
+    
+    
     // connect to backend and add here
   }
 

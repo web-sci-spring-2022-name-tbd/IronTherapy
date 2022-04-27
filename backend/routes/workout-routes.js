@@ -10,6 +10,7 @@ router.get("/", async (req, res) => {
     // Need to put in firebase auth stuff
     const data = await Workout.find({
       // stuff with uid from firebase here
+      uid: req.user.user_id
     });
     res.json(data);
   } catch (error) {
@@ -24,6 +25,7 @@ router.get("/:name", async (req, res) => {
     const data = await Workout.findOne({
       // stuff with uid from firebase here
       name: req.params.name,
+      uid: req.user.user_id
     });
     res.json(data);
   } catch (error) {

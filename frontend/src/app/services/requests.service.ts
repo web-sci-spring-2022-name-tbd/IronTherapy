@@ -82,6 +82,7 @@ export class RequestsService {
       })
     );
   }
+  
   putWorkout(workoutName: String, workout_rename: String): Observable<String> {
     let url: string = `http://localhost:3000/workouts/${workoutName}`;
 
