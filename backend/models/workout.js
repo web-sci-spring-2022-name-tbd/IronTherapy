@@ -4,6 +4,7 @@ const { Schema } = mongoose;
 const workoutSchema = new Schema({
   uid: String,
   name: String,
+  date: String,
   exercises: [
     {
       name: String,

@@ -17,6 +17,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+//get workout based on name
 router.get("/:name", async (req, res) => {
   try {
     // Need to put in firebase auth stuff
@@ -26,6 +27,108 @@ router.get("/:name", async (req, res) => {
     });
     res.json(data);
   } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+//Create new workout with that name
+router.post('/:name', async (req, res) => {
+  console.log("Comes Here")
+  var exercise_pool = [];
+  if(req.params.name.includes("Back Workout")){
+    exercise_pool = [
+      {
+        name: "Pull Ups",
+        set: []
+      },
+      {
+        name: "Back Extension",
+        set: []
+      },
+      {
+        name: "Pull-down",
+        set: []
+      },
+      {
+        name: "Rows",
+        set: []
+      },
+      {
+        name: "Bent Over Row",
+        set: []
+      },
+      {
+        name: "Renegade Row",
+        set: []
+      }
+    ]
+  }
+  else if(req.params.name.includes("Chest Workout")){
+    exercise_pool = [
+      {
+        name: "Bench Press",
+        set: []
+      },
+      {
+        name: "Shoulder Press",
+        set: []
+      },
+      {
+        name: "Tricep Extension",
+        set: []
+      },
+    ]
+  }
+  else if(req.params.name.includes("Leg Workout")){
+    exercise_pool = [
+      {
+        name: "Deadlift",
+        set: []
+      },
+      {
+        name: "Overhead Squat",
+        set: []
+      },
+      {
+        name: "Barbell Squat",
+        set: []
+      },
+      {
+        name: "Farmer's Walk",
+        set: []
+      },
+      {
+        name:"Overhead Lunge",
+        set: []
+      },
+      {
+        name:"Weighted Step Up",
+        set: []
+      },
+      {
+        name:"Clean and Jerk",
+        set: []
+      },
+    ]
+  }
+  const date = new Date();
+  // Data about date
+  var dd =date.getDate();
+  var mm= date.getMonth() + 1;
+  var yyyy= date.getFullYear();
+  var year = `${yyyy}`.substring(2);
+  var date_obj = `${mm}/${dd}/${year}`;
+  try {
+    await Workout.create({
+      uid: req.user.user_id,
+      name: req.params.name,
+      exercises: exercise_pool,
+      date:date_obj
+    });
+    console.log("Made a new workout for " + req.user.user_id);
+    res.status(201).json({ message: "Workout created" });
+  } catch (error) {
+    console.log("Error making a Workout: " + error.message);
     res.status(500).json({ message: error.message });
   }
 });
@@ -191,20 +294,7 @@ router.put("/addExercise", async (req, res) => {
 
 });
 
-router.post('/:name', async (req, res) => {
-  try {
-    await Workout.create({
-      uid: req.user.user_id,
-      name: req.params.name,
-      exercises: [],
-    });
-    console.log("Made a new workout for " + req.user.user_id);
-    res.status(201).json({ message: "Goal created" });
-  } catch (error) {
-    console.log("Error making a goal: " + error.message);
-    res.status(500).json({ message: error.message });
-  }
-});
+
 module.exports = router;
 
 // router.put('/:exercise', async (req, res) => {

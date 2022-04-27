@@ -1,6 +1,7 @@
 export interface Workout {
   uid: string;
   name: string;
+  date: String;
   exercises: Exercise[];
 }
 
