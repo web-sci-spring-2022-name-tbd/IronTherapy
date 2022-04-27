@@ -42,10 +42,7 @@ export class AnalysisComponent implements OnInit {
           exercise.sets.forEach((set: any) => {
             temp.push({pounds: set.pounds, reps: set.reps, date: workout.date})
           })
-          console.log(`${exercise.name}: `)
-          console.log(exercise.sets)
           if (exercise.sets.length == 0) {
-            console.log("skipping")
             return;
           }
           if (!(Object.keys(result[0]).includes(exercise.name))) {
