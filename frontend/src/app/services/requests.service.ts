@@ -90,23 +90,6 @@ export class RequestsService {
     );
   }
 
-
-  // Update a goal for a user
-  updateExercise(goal: Goal): Observable<string> {
-    let url: string = `http://localhost:3000/goals/${goal.exercise}`;
-
-    return from(this.authService.getToken()).pipe(
-      switchMap((token) => {
-        return this.http.put<string>(url, goal, {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + token,
-          },
-        });
-      })
-    );
-  }
-
   // Update a sets for a user
   updateSet(name: string, exercise_name: string, update: { pounds: Number, reps: Number }): Observable<{ message: string, exercise: Exercise }> {
     let url: string = `http://localhost:3000/workouts/`;
@@ -171,7 +154,6 @@ export class RequestsService {
     );
   }
 
-
   // Get all goals for a user
   getGoals(): Observable<Goal[]> {
     let url: string = 'http://localhost:3000/goals';
@@ -204,7 +186,7 @@ export class RequestsService {
     );
   }
 
-  // Check to see if a specific goal exists for a user
+  // Check to see if a specific goal exists for a user without erroring
   checkGoal(exerciseName: string): Observable<boolean> {
     let url: string = `http://localhost:3000/goals/exists/${exerciseName}`;
 
