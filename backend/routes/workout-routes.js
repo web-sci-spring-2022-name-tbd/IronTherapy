@@ -22,8 +22,10 @@ router.get("/", async (req, res) => {
 router.get("/:name", async (req, res) => {
   try {
     // Need to put in firebase auth stuff
+    console.log(req.user.user_id);
     const data = await Workout.findOne({
       // stuff with uid from firebase here
+      uid: req.user.user_id,
       name: req.params.name,
     });
     res.json(data);
@@ -135,7 +137,7 @@ router.post('/:name', async (req, res) => {
 });
 
 
-router.put('/', async (req, res) => {
+router.put('/addSet', async (req, res) => {
   try {
 
     const { update } = req.body;
@@ -199,13 +201,18 @@ router.put('/deleteSet', async (req, res) => {
     // const { exercise_name } = req.params.exercise_name;
     // res.status(200).json(req.body);
 
+    console.log("This is the uid: ");
+    console.log(req.user.user_id);
     let data = await Workout.findOne({
       uid: req.user.user_id,
       name: name
       // no auth stuff yet
-    })
+    });
+
+    console.log(data);
 
     let temp = data.exercises;
+    console.log(temp);
     let count = 0;
     data.exercises.forEach(exercise => {
       
@@ -214,7 +221,7 @@ router.put('/deleteSet', async (req, res) => {
         return;
       }
       count++;
-    })
+    });
 
     await Workout.findOneAndUpdate({
       // uid: req.user.user_id,
