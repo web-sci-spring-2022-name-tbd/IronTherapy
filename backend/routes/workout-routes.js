@@ -246,7 +246,6 @@ router.delete('/deleteExercise', async (req, res) => {
   let data = await Workout.findOne({
     uid: req.user.user_id,
     name: name
-    // no auth stuff yet
   })
   let temp = []
   // console.log(data.exercises)
