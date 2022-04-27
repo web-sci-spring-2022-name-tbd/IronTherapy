@@ -15,25 +15,58 @@ router.get('/', async (req, res) => {
   }
 });
 
-// router.get('/:exercise', async (req, res) => {
-//   try {
-//     const data = await Goal.findOne({
-//       uid: req.user.user_id,
-//       exercise: req.params.exercise,
-//     });
-//     if (data == null) {
-//       console.log("Didn't find a goal for user: " + req.user.name);
-//       res.status(500).json({ message: error.message });
-//     } else {
-//       console.log("Returned a goal for user: " + req.user.name);
-//       console.log("Data: " + data);
-//       res.json(data);
-//     }
-//   } catch (error) {
-//     console.log("Error getting goal: " + error.message);
-//     res.status(500).json({ message: error.message });
-//   }
-// });
+router.get('/:exercise', async (req, res) => {
+  // Check to see if goal exists
+  try {
+    const exists = await Goal.exists({
+      uid: req.user.user_id,
+      exercise: req.params.exercise,
+    });
+
+    // If it exists, attempt to return it
+    if (exists) {
+      try {
+        const data = await Goal.findOne({
+          uid: req.user.user_id,
+          exercise: req.params.exercise,
+        });
+        console.log("Returned the goal: " + data.exercise);
+        res.status(200).json(data);
+      } catch (error) {
+        console.log("Could not get goal: " + error.message);
+        res.status(500).json({ message: error.message });
+      }
+    }
+    // If it doesn't exist, return a 404
+    else {
+      console.log("Goal does not exist");
+      res.status(404).json({ message: "Goal does not exist" });
+    }
+
+  } catch (error) {
+    console.log("Could not check goal in GET: " + error.message);
+    res.status(500).json({ message: error.message });
+  }
+});
+
+// Check to see if a goal exists
+router.get('/exists/:exercise', async (req, res) => {
+  try {
+    const data = await Goal.exists({
+      uid: req.user.user_id,
+      exercise: req.params.exercise,
+    });
+    console.log("Checked goal: " + req.params.exercise);
+    if (data === null) {
+      res.status(200).send(false);
+    } else {
+      res.status(200).send(true);
+    }
+  } catch (error) {
+    console.log("Error checking if goal exists: " + error.message);
+    res.status(500).json({ message: error.message });
+  }
+});
 
 router.post('/', async (req, res) => {
   try {

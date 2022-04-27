@@ -61,7 +61,7 @@
       </div>
       <div class="carousel-inner">
         <div [ngClass]="isFirst ? 'carousel-item active' : 'carousel-item'"
-          *ngFor="let goal of currentGoals; first as isFirst; let i=index">
+          *ngFor="let goal of currentGoals; first as isFirst; let i=index" data-bs-interval="100000">
           <app-goal class="d-flex justify-content-center" [data]="goal" [index]="i"></app-goal>
         </div>
         <!-- TODO: Add a "plus" icon to make a new goal, will use the modal we have here -->

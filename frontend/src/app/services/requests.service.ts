@@ -108,12 +108,12 @@ export class RequestsService {
   }
 
   // Update a sets for a user
-  updateSet(name: string, exercise_name: string, update: { pounds: Number, reps: Number}): Observable<{message: string, exercise: Exercise}> {
+  updateSet(name: string, exercise_name: string, update: { pounds: Number, reps: Number }): Observable<{ message: string, exercise: Exercise }> {
     let url: string = `http://localhost:3000/workouts/`;
 
     return from(this.authService.getToken()).pipe(
       switchMap((token) => {
-        return this.http.put<{message: string, exercise: Exercise}>(url, {update: update, exercise_name: exercise_name, name: name} , {
+        return this.http.put<{ message: string, exercise: Exercise }>(url, { update: update, exercise_name: exercise_name, name: name }, {
           headers: {
             'Content-Type': 'application/json',
             Authorization: 'Bearer ' + token,
@@ -129,7 +129,7 @@ export class RequestsService {
 
     return from(this.authService.getToken()).pipe(
       switchMap((token) => {
-        return this.http.put<string>(url, {update: update, exercise_name: exercise_name, name: name} , {
+        return this.http.put<string>(url, { update: update, exercise_name: exercise_name, name: name }, {
           headers: {
             'Content-Type': 'application/json',
             Authorization: 'Bearer ' + token,
@@ -156,12 +156,12 @@ export class RequestsService {
   }
 
   // Update a sets for a user
-  AddExercise(name: string, exercise_name: string): Observable<{message: string, exercise: Exercise}> {
+  AddExercise(name: string, exercise_name: string): Observable<{ message: string, exercise: Exercise }> {
     let url: string = `http://localhost:3000/workouts/addExercise`;
 
     return from(this.authService.getToken()).pipe(
       switchMap((token) => {
-        return this.http.put<{message: string, exercise: Exercise}>(url, {exercise_name: exercise_name, name: name} , {
+        return this.http.put<{ message: string, exercise: Exercise }>(url, { exercise_name: exercise_name, name: name }, {
           headers: {
             'Content-Type': 'application/json',
             Authorization: 'Bearer ' + token,
@@ -195,6 +195,22 @@ export class RequestsService {
     return from(this.authService.getToken()).pipe(
       switchMap((token) => {
         return this.http.get<Goal>(url, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
+  }
+
+  // Check to see if a specific goal exists for a user
+  checkGoal(exerciseName: string): Observable<boolean> {
+    let url: string = `http://localhost:3000/goals/exists/${exerciseName}`;
+
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.get<boolean>(url, {
           headers: {
             'Content-Type': 'application/json',
             Authorization: 'Bearer ' + token,
