@@ -9,6 +9,7 @@ router.get("/", async (req, res) => {
   try {
     // Need to put in firebase auth stuff
     const data = await Workout.find({
+      uid: req.user.user_id
       // stuff with uid from firebase here
     });
     res.json(data);
@@ -148,6 +149,7 @@ router.put('/', async (req, res) => {
     // res.status(200).json(req.body);
 
     let data = await Workout.findOne({
+      uid: req.user.user_id,
       name: name
       // no auth stuff yet
     })
@@ -198,6 +200,7 @@ router.put('/deleteSet', async (req, res) => {
     // res.status(200).json(req.body);
 
     let data = await Workout.findOne({
+      uid: req.user.user_id,
       name: name
       // no auth stuff yet
     })
@@ -215,6 +218,7 @@ router.put('/deleteSet', async (req, res) => {
 
     await Workout.findOneAndUpdate({
       // uid: req.user.user_id,
+      uid: req.user.user_id,
       name: name,
     }, {
         exercises: temp,
@@ -233,6 +237,7 @@ router.delete('/deleteExercise', async (req, res) => {
   const name  = req.query.name;
   const exercise = req.query.exercise;
   let data = await Workout.findOne({
+    uid: req.user.user_id,
     name: name
     // no auth stuff yet
   })
