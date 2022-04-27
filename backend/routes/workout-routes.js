@@ -34,11 +34,15 @@ router.get("/:name", async (req, res) => {
 });
 //update workout name
 router.put("/:name", async (req, res) => {
+  name1 = "Failed_name"
+  if(req.body.name != null){
+    name1 = req.body.name;
+  }
   Workout.findOneAndUpdate({
     name: req.params.name,
     uid: req.user.user_id
   }, {
-    name: req.body.name
+    name: name1
   }, (err, doc, res_) => {
     if (err) return res.status(500).json({error: err.message});
     res.status(200).json({success: true})
