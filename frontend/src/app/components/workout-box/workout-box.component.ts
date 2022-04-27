@@ -1,3 +1,4 @@
+import { Workout } from './../../interfaces/workout';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { RequestsService } from 'src/app/services/requests.service';
@@ -11,6 +12,7 @@ export class WorkoutBoxComponent implements OnInit {
   @Input() photo: String;
   @Input() workout_name: String = "";
   public data: any = { workout_name: this.workout_name }
+  formShow = false;
   constructor(private request: RequestsService, private router: Router) {
     this.photo = "";
     this.workout_name = "";
@@ -18,12 +20,15 @@ export class WorkoutBoxComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  visitExercises() {
+  submitAdd(workout_rename: string) {
     this.request.postWorkout(this.workout_name).subscribe(data => {
       console.log(data);
     });
-    this.router.navigate(["dashboard/exercises", this.workout_name]);
+    this.request.putWorkout(this.workout_name, workout_rename).subscribe((data) => {
+      this.formShow = false;
+    });
+    this.router.navigate(["dashboard/exercises", workout_rename]);
+    // connect to backend and add here
   }
 
 }

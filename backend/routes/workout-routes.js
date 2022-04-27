@@ -30,10 +30,21 @@ router.get("/:name", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+//update workout name
+router.put("/:name", async (req, res) => {
+  Workout.findOneAndUpdate({
+    name: req.params.name,
+    uid: req.user.user_id
+  }, {
+    name: req.body.name
+  }, (err, doc, res_) => {
+    if (err) return res.status(500).json({error: err.message});
+    res.status(200).json({success: true})
+  })
+});
 
 //Create new workout with that name
 router.post('/:name', async (req, res) => {
-  console.log("Comes Here")
   var exercise_pool = [];
   if(req.params.name.includes("Back Workout")){
     exercise_pool = [
