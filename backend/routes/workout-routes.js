@@ -9,7 +9,9 @@ router.get("/", async (req, res) => {
   try {
     // Need to put in firebase auth stuff
     const data = await Workout.find({
+      uid: req.user.user_id
       // stuff with uid from firebase here
+      uid: req.user.user_id
     });
     res.json(data);
   } catch (error) {
@@ -21,19 +23,37 @@ router.get("/", async (req, res) => {
 router.get("/:name", async (req, res) => {
   try {
     // Need to put in firebase auth stuff
+    console.log(req.user.user_id);
     const data = await Workout.findOne({
       // stuff with uid from firebase here
+      uid: req.user.user_id,
       name: req.params.name,
+      uid: req.user.user_id
     });
     res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 });
+//update workout name
+router.put("/:name", async (req, res) => {
+  name1 = "Failed_name"
+  if(req.body.name != null){
+    name1 = req.body.name;
+  }
+  Workout.findOneAndUpdate({
+    name: req.params.name,
+    uid: req.user.user_id
+  }, {
+    name: name1
+  }, (err, doc, res_) => {
+    if (err) return res.status(500).json({error: err.message});
+    res.status(200).json({success: true})
+  })
+});
 
 //Create new workout with that name
 router.post('/:name', async (req, res) => {
-  console.log("Comes Here")
   var exercise_pool = [];
   if(req.params.name.includes("Back Workout")){
     exercise_pool = [
@@ -134,7 +154,7 @@ router.post('/:name', async (req, res) => {
 });
 
 
-router.put('/', async (req, res) => {
+router.put('/addSet', async (req, res) => {
   try {
 
     const { update } = req.body;
@@ -142,12 +162,12 @@ router.put('/', async (req, res) => {
     // console.log(update)
     // console.log(exercise_name)
     const { name } = req.body;
-    console.log(req.body)
     // console.log(name)
     // const { exercise_name } = req.params.exercise_name;
     // res.status(200).json(req.body);
 
     let data = await Workout.findOne({
+      uid: req.user.user_id,
       name: name
       // no auth stuff yet
     })
@@ -198,9 +218,10 @@ router.put('/deleteSet', async (req, res) => {
     // res.status(200).json(req.body);
 
     let data = await Workout.findOne({
+      uid: req.user.user_id,
       name: name
       // no auth stuff yet
-    })
+    });
 
     let temp = data.exercises;
     let count = 0;
@@ -211,10 +232,11 @@ router.put('/deleteSet', async (req, res) => {
         return;
       }
       count++;
-    })
+    });
 
     await Workout.findOneAndUpdate({
       // uid: req.user.user_id,
+      uid: req.user.user_id,
       name: name,
     }, {
         exercises: temp,
@@ -233,9 +255,12 @@ router.delete('/deleteExercise', async (req, res) => {
   const name  = req.query.name;
   const exercise = req.query.exercise;
   let data = await Workout.findOne({
+    uid: req.user.user_id,
     name: name
-    // no auth stuff yet
   })
+
+  
+
   let temp = []
   // console.log(data.exercises)
 
@@ -243,7 +268,7 @@ router.delete('/deleteExercise', async (req, res) => {
     if (exercise_.name != exercise) {
       temp.push(exercise_)
     } else {
-      console.log("deleting")
+      
     }
   })
 

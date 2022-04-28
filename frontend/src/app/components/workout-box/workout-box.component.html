@@ -1,6 +1,6 @@
 <div class="row">
     <div class="small-7 medium-5 large-4 column end small-centered card">
-        <div class="card-top"><a (click) = "visitExercises()">
+        <div class="card-top"><a (click)="this.formShow = true">
                 <div class="overlay">
                     <h1>Start This Workout</h1>
                 </div>
@@ -12,3 +12,23 @@
         </div>
     </div>
 </div>
+
+<!-- The Modal -->
+<div id="id01" class="modal" *ngIf="formShow">
+    <span (click)="this.formShow = false" class="close" title="Close Modal">&times;</span>
+  
+    <!-- Modal Content -->
+    <form class="modal-content animate">
+        
+      <div class="container">
+        <br/>
+        <h1 class="setHeader">Name Your Workout</h1>
+  
+        <label for="Workout Name"><b>Workout Name:</b></label>
+        <input type="text" placeholder="Workout Name" name="Workout Name" required #workout_rename>        
+        
+        <button type="button" id ="setbtn" class="btn btn-primary" (click)="submitAdd(workout_rename.value)">Start Your Workout</button>
+      </div>
+
+    </form>
+  </div>
