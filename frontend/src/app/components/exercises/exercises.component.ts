@@ -36,7 +36,7 @@ export class ExercisesComponent implements OnInit {
     // console.log(this.router.getCurrentNavigation()?.extras.state);
     this.router.params.subscribe((params) => {
       this.Workout_name = params["workoutname"];
-      console.log(this.Workout_name);
+      
       this.create_box();
     });
 
@@ -64,13 +64,13 @@ export class ExercisesComponent implements OnInit {
   }
 
   AddExercise(exercise_name: string) {
-
     this.ReqService.AddExercise(this.Workout_name, exercise_name).subscribe((data) => {
-      // console.log(data);
+      
       let update = {
         name: exercise_name,
         set: []
       }
+
       this.exercise_data.exercises.push(update);
       // this.exercise_data.push(update);
 
@@ -80,7 +80,7 @@ export class ExercisesComponent implements OnInit {
 
 
   DeleteExercise() {
-
+    
     this.ReqService.deleteExercise(this.Workout_name, this.toDelete).subscribe((data) => {
       this.deleted = true;
       this.formShow3 = false;
@@ -93,11 +93,8 @@ export class ExercisesComponent implements OnInit {
       this.exercise_data.exercises = temp;
       // delete this.exercise_data.exercises[this.toDelete]
 
-
       this.toDelete = "";
     })
-
-
   }
 
   setDelete(name: string) {
