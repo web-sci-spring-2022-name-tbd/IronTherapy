@@ -20,13 +20,13 @@ export class HistoryComponent implements OnInit {
         var name = element.name;
         name = name.toLowerCase();
 
-        if (name.includes("back")) {
+        if (name.indexOf("back") != -1) {
           this.photo_data.push("../../assets/images/back_photo.jpg");
-        } else if (name.includes("chest")) {
+        } else if (name.indexOf("chest") != -1) {
           this.photo_data.push("../../assets/images/chest.jpg");
-        } else if (name.includes("legs")) {
+        } else if (name.indexOf("legs") != -1) {
           this.photo_data.push("../../assets/images/gym-deadlift.jpg");
-        } else if (name.includes("abs")) {
+        } else if (name.indexOf("abs") != -1)  {
           this.photo_data.push("../../assets/images/abs.jpg");
         } else {
           this.photo_data.push("../../assets/images/c_own.jpg");
