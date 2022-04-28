@@ -206,8 +206,7 @@ router.put('/deleteSet', async (req, res) => {
       // no auth stuff yet
     });
 
-    let data_2 = data;
-    let temp = data_2.exercises;
+    let temp = data.exercises;
     let count = 0;
     data.exercises.forEach(exercise => {
       
@@ -243,12 +242,12 @@ router.delete('/deleteExercise', async (req, res) => {
     name: name
   })
 
-  let data_2 = data;
+  
 
   let temp = []
   // console.log(data.exercises)
 
-  data_2.exercises.forEach(exercise_ => {
+  data.exercises.forEach(exercise_ => {
     if (exercise_.name != exercise) {
       temp.push(exercise_)
     } else {
