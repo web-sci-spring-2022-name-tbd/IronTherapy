@@ -595,7 +595,47 @@ For a User with UID 1234, we search for the workout data based on their UID and 
 ## Notes
 - If the User does not have the specific `Workout` instance when requested then nothing will be returned.
 
+## Update a Workout Name
 
+Update a Workout Name to an existing Workout of the currently Authenticated User.
+
+**URL** : `/workout/:name`
+
+**Method** : `PUT`
+
+**Auth required** : YES
+
+**Permissions required** : None
+
+## Success Response
+
+**Code** : `200 OK`
+
+**Content examples**
+
+For a User with UID 1234, when they create a workout from the 
+start workout page they have to change the workout name. The user changed the template name of Back Workout to Best Back Plan The old
+json looks like:
+```json
+{
+  "uid": "1234",
+  "name": "Back Workout",
+  "date": "4/24/22",
+  "exercises": []
+}
+```
+and after the request it looks like:
+```json
+{
+  "uid": "1234",
+  "name": "Best Back Plan",
+  "date": "4/24/22",
+  "exercises": []
+}
+```
+## Notes
+
+- Returns status code 500 if workout is not found
 
 
 # Delete an Exercise
@@ -628,3 +668,57 @@ For a User with UID 1234, we search for the workout data based on their UID and 
 
 ## Notes
 - If the User does not have the specific `Workout` instance when requested then nothing will be returned.
+## Create a Workout
+
+Create a Workout Entry for the currently Authenticated User.
+
+**URL** : `/workout/:name`
+
+**Method** : `POST`
+
+**Auth required** : YES
+
+**Permissions required** : None
+
+## Success Response
+
+**Code** : `200 OK`
+
+**Content examples**
+
+For a User with UID 1234, when they create a workout with the template name Back Workout in the url. The workout
+entry is below gets created for that user.
+```json
+{
+  "uid": "1234",
+  "name": "Back Workout",
+  "date": "4/24/22",
+  "exercises": [{
+        "name": "Pull Ups",
+        "set": []
+      },
+      {
+        "name": "Back Extension",
+        "set": []
+      },
+      {
+        "name": "Pull-down",
+        "set": []
+      },
+      {
+        "name": "Rows",
+        "set": []
+      },
+      {
+        "name": "Bent Over Row",
+        "set": []
+      },
+      {
+        "name": "Renegade Row",
+        "set": []
+      }]
+}
+```
+## Notes
+
+- If the workout does not match a template it leaves exercises blank
