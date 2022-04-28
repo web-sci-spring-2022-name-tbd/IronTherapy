@@ -115,6 +115,35 @@ router.put('/deleteSet', async (req, res) => {
   }
 });
 
+router.put("/addExercise", async (req, res) => {
+  const { exercise_name } = req.body;
+  const { name } = req.body;
+
+  let data = await Workout.findOne({
+    uid: req.user.user_id,
+    name: name
+  })
+
+  let temp = data.exercises;
+  let update = {
+    name: exercise_name,
+    set: []
+  }
+  temp.push(update);
+  console.log("Adding new exercise...");
+
+  Workout.findOneAndUpdate({
+    name: name
+  }, {
+    exercises: temp
+  }, (err, doc, res_) => {
+    if (err) return res.status(500).json({ error: err.message });
+    console.log(`added exercise ${exercise_name} to workout ${name}`);
+    res.status(200).json({ success: true })
+  })
+
+});
+
 
 //update workout name
 router.put("/:name", async (req, res) => {
@@ -132,6 +161,36 @@ router.put("/:name", async (req, res) => {
     res.status(200).json({success1: true})
   })
 });
+
+
+router.delete('/deleteExercise', async (req, res) => {
+  const name = req.query.name;
+  const exercise = req.query.exercise;
+  let data = await Workout.findOne({
+    uid: req.user.user_id,
+    name: name
+  })
+
+  let temp = []
+  data.exercises.forEach(exercise_ => {
+    if (exercise_.name != exercise) {
+      temp.push(exercise_)
+    } else {
+      
+    }
+  })
+
+  Workout.findOneAndUpdate({
+    name: name
+  }, {
+    exercises: temp
+  }, (err, doc, res_) => {
+    if (err) return res.status(500).json({ error: err.message });
+    console.log(`deleted exercise ${exercise} from workout ${name}`);
+    res.status(200).json({ success: true })
+  })
+})
+
 
 //Create new workout with that name
 router.post('/:name', async (req, res) => {
@@ -234,63 +293,5 @@ router.post('/:name', async (req, res) => {
   }
 });
 
-router.delete('/deleteExercise', async (req, res) => {
-  const name = req.query.name;
-  const exercise = req.query.exercise;
-  let data = await Workout.findOne({
-    uid: req.user.user_id,
-    name: name
-  })
-
-  let temp = []
-  data.exercises.forEach(exercise_ => {
-    if (exercise_.name != exercise) {
-      temp.push(exercise_)
-    } else {
-      
-    }
-  })
-
-  Workout.findOneAndUpdate({
-    name: name
-  }, {
-    exercises: temp
-  }, (err, doc, res_) => {
-    if (err) return res.status(500).json({ error: err.message });
-    console.log(`deleted exercise ${exercise} from workout ${name}`);
-    res.status(200).json({ success: true })
-  })
-
-
-})
-
-router.put("/addExercise", async (req, res) => {
-  const { exercise_name } = req.body;
-  const { name } = req.body;
-
-  let data = await Workout.findOne({
-    uid: req.user.user_id,
-    name: name
-  })
-
-  let temp = data.exercises;
-  let update = {
-    name: exercise_name,
-    set: []
-  }
-  temp.push(update);
-  console.log("Adding new exercise...");
-
-  Workout.findOneAndUpdate({
-    name: name
-  }, {
-    exercises: temp
-  }, (err, doc, res_) => {
-    if (err) return res.status(500).json({ error: err.message });
-    console.log(`added exercise ${exercise_name} to workout ${name}`);
-    res.status(200).json({ success: true })
-  })
-
-});
 
 module.exports = router;
