@@ -46,6 +46,10 @@ export class AuthService {
     try {
       const user = await this.afAuth.currentUser;
       token = await user?.getIdToken(true);
+      if (!token) {
+        let cookie = JSON.parse(localStorage.getItem('user')!);
+        token = cookie.stsTokenManager.accessToken;
+      }
     } catch (e) {
       console.error(e);
     }
@@ -61,6 +65,7 @@ export class AuthService {
       );
 
       localStorage.setItem('user', JSON.stringify(result.user));
+
       this.SetUserData(result.user);
       this.router.navigate(['dashboard']);
     } catch (e) {
