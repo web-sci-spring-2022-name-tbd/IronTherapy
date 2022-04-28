@@ -145,7 +145,6 @@ router.put('/addSet', async (req, res) => {
     // console.log(update)
     // console.log(exercise_name)
     const { name } = req.body;
-    console.log(req.body)
     // console.log(name)
     // const { exercise_name } = req.params.exercise_name;
     // res.status(200).json(req.body);
@@ -201,18 +200,14 @@ router.put('/deleteSet', async (req, res) => {
     // const { exercise_name } = req.params.exercise_name;
     // res.status(200).json(req.body);
 
-    console.log("This is the uid: ");
-    console.log(req.user.user_id);
     let data = await Workout.findOne({
       uid: req.user.user_id,
       name: name
       // no auth stuff yet
     });
 
-    console.log(data);
     let data_2 = data;
     let temp = data_2.exercises;
-    console.log(temp);
     let count = 0;
     data.exercises.forEach(exercise => {
       
@@ -257,7 +252,7 @@ router.delete('/deleteExercise', async (req, res) => {
     if (exercise_.name != exercise) {
       temp.push(exercise_)
     } else {
-      console.log("deleting")
+      
     }
   })
 
