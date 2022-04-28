@@ -487,47 +487,46 @@ For a User with UID 1234, we search for a specific workout by workout name that 
 
 ```json
 {
-  "uid": 1234,
-  "name": "Workout One",
-  "date": "2/1/22",
-  "exercises": [{
-    "name": "Bench Press",
-    "sets": [{
-      "pounds": 150,
-      "reps": 10,
+    "uid": 1234,
+    "name": "Workout One",
+    "date": "2/1/22",
+    "exercises": [{
+      "name": "Bench Press",
+      "sets": [{
+        "pounds": 150,
+        "reps": 10,
+      }, {
+        "pounds": 150,
+        "reps": 10,
+      }, {
+        "pounds": 150,
+        "reps": 10,
+      }],
     }, {
-      "pounds": 150,
-      "reps": 10,
+      "name": "Overhead Squat",
+      "sets": [{
+        "pounds": 150,
+        "reps": 10,
+      }, {
+        "pounds": 150,
+        "reps": 10,
+      }, {
+        "pounds": 150,
+        "reps": 10,
+      }],
     }, {
-      "pounds": 150,
-      "reps": 10,
-    }],
-  }, {
-    "name": "Overhead Squat",
-    "sets": [{
-      "pounds": 150,
-      "reps": 10,
-    }, {
-      "pounds": 150,
-      "reps": 10,
-    }, {
-      "pounds": 150,
-      "reps": 10,
-    }],
-  }, {
-    "name": "Bicep Curl",
-    "sets": [{
-      "pounds": 150,
-      "reps": 10,
-    }, {
-      "pounds": 150,
-      "reps": 10,
-    }, {
-      "pounds": 150,
-      "reps": 10,
+      "name": "Bicep Curl",
+      "sets": [{
+        "pounds": 150,
+        "reps": 10,
+      }, {
+        "pounds": 150,
+        "reps": 10,
+      }, {
+        "pounds": 150,
+        "reps": 10,
+      }]
     }]
-  }]
-}]
 }
 ```
 
