@@ -8,7 +8,6 @@ const querystring = require('querystring')
 // Get all workout for a user
 router.get("/", async (req, res) => {
   try {
-    // Need to put in firebase auth stuff
     const data = await Workout.find({
       uid: req.user.user_id
     });
@@ -21,8 +20,6 @@ router.get("/", async (req, res) => {
 //get workout based on name
 router.get("/:name", async (req, res) => {
   try {
-    // Need to put in firebase auth stuff
-    console.log(req.user.user_id);
     const data = await Workout.findOne({
       // stuff with uid from firebase here
       uid: req.user.user_id,

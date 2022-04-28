@@ -18,6 +18,8 @@ export class HistoryComponent implements OnInit {
       this.workouts_data = data;
       data.forEach(element => {
         var name = element.name;
+        name = name.toLowerCase();
+
         if (name.includes("back")) {
           this.photo_data.push("../../assets/images/back_photo.jpg");
         } else if (name.includes("chest")) {
