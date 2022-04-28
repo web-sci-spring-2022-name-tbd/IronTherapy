@@ -304,3 +304,327 @@ Make default goals endpoint here that checks to see if they have any goals for t
 ## Notes
 
 - If the user has any goals when this is called no new goals are added but all the users goals are still returned
+
+
+
+
+
+
+
+# Workouts
+
+## Get all Workouts for Current User
+
+Get the Workouts of the currently Authenticated User.
+
+**URL** : `/workouts`
+
+**Method** : `GET`
+
+**Auth required** : YES
+
+**Permissions required** : None
+
+## Success Response
+
+**Code** : `200 OK`
+
+**Content examples**
+
+For a User with UID 1234, we search for all workouts that is labeled with the UID and return them.
+
+```json
+{
+  "uid": 1234,
+  "name": "Workout One",
+  "date": "2/1/22",
+  "exercises": [{
+    "name": "Bench Press",
+    "sets": [{
+      "pounds": 150,
+      "reps": 10,
+    }, {
+      "pounds": 150,
+      "reps": 10,
+    }, {
+      "pounds": 150,
+      "reps": 10,
+    }],
+  }, {
+    "name": "Overhead Squat",
+    "sets": [{
+      "pounds": 150,
+      "reps": 10,
+    }, {
+      "pounds": 150,
+      "reps": 10,
+    }, {
+      "pounds": 150,
+      "reps": 10,
+    }],
+  }, {
+    "name": "Bicep Curl",
+    "sets": [{
+      "pounds": 150,
+      "reps": 10,
+    }, {
+      "pounds": 150,
+      "reps": 10,
+    }, {
+      "pounds": 150,
+      "reps": 10,
+    }]
+  }]
+}], 
+[{
+  "uid": 1234,
+  "name": "Workout Two",
+  "date": "2/1/22",
+  "exercises": [{
+    "name": "Bench Press",
+    "sets": [{
+      "pounds": 150,
+      "reps": 10,
+    }, {
+      "pounds": 150,
+      "reps": 10,
+    }, {
+      "pounds": 150,
+      "reps": 10,
+    }],
+  }, {
+    "name": "Overhead Squat",
+    "sets": [{
+      "pounds": 150,
+      "reps": 10,
+    }, {
+      "pounds": 150,
+      "reps": 10,
+    }, {
+      "pounds": 150,
+      "reps": 10,
+    }],
+  }, {
+    "name": "Bicep Curl",
+    "sets": [{
+      "pounds": 150,
+      "reps": 10,
+    }, {
+      "pounds": 150,
+      "reps": 10,
+    }, {
+      "pounds": 150,
+      "reps": 10,
+    }]
+  }]
+}]
+}
+```
+
+
+## Notes
+- If the User does not have any `Workouts` instance when requested then nothing will be returned.
+
+
+
+
+# Workout
+
+## Gets a specific workout for the user
+
+Get a specific workout of the currently Authenticated User.
+
+**URL** : `/workouts/:name`
+
+**Method** : `GET`
+
+**Auth required** : YES
+
+**Permissions required** : None
+
+## Success Response
+
+**Code** : `200 OK`
+
+**Content examples**
+
+For a User with UID 1234, we search for a specific workout by workout name that is labeled with the UID and return them. For example if the user is looking for "Workout One" they would use this endpoint and get this result.
+
+```json
+{
+  "uid": 1234,
+  "name": "Workout One",
+  "date": "2/1/22",
+  "exercises": [{
+    "name": "Bench Press",
+    "sets": [{
+      "pounds": 150,
+      "reps": 10,
+    }, {
+      "pounds": 150,
+      "reps": 10,
+    }, {
+      "pounds": 150,
+      "reps": 10,
+    }],
+  }, {
+    "name": "Overhead Squat",
+    "sets": [{
+      "pounds": 150,
+      "reps": 10,
+    }, {
+      "pounds": 150,
+      "reps": 10,
+    }, {
+      "pounds": 150,
+      "reps": 10,
+    }],
+  }, {
+    "name": "Bicep Curl",
+    "sets": [{
+      "pounds": 150,
+      "reps": 10,
+    }, {
+      "pounds": 150,
+      "reps": 10,
+    }, {
+      "pounds": 150,
+      "reps": 10,
+    }]
+  }]
+}], 
+}
+```
+
+
+## Notes
+- If the User does not have the specific `Workout` instance when requested then nothing will be returned.
+
+
+
+# Add a Set
+
+## Adds a set to a specific exercise within a workout
+
+Adds a set to a specific exercise from a workout of the currently Authenticated User.
+
+**URL** : `/workouts/addSet`
+
+**Method** : `PUT`
+
+**Auth required** : YES
+
+**Permissions required** : None
+
+## Success Response
+
+**Code** : `200 OK`
+
+**Content examples**
+
+For a User with UID 1234, we search for the workout that we are modifying and then add onto the new set and saving that to the database.
+
+
+## Notes
+- If the User does not have the specific `Workout` instance when requested then nothing will be returned.
+
+
+
+# Delete a Set
+
+## Deletes a set to a specific exercise within a workout
+
+Deletes a set to a specific exercise from a workout of the currently Authenticated User.
+
+**URL** : `/workouts/deleteSet`
+
+**Method** : `PUT`
+
+**Auth required** : YES
+
+**Permissions required** : None
+
+## Success Response
+
+**Code** : `200 OK`
+
+**Content examples**
+
+For a User with UID 1234, we search for the workout that we are modifying and then deleting the specific set using the sets data to look it up within the workout data and saving that to the database.
+
+
+```json
+{
+  message: "updated exercise ${exercise_name} for ${req.user.name} (delete)`"
+}
+```
+
+## Notes
+- If the User does not have the specific `Workout` instance when requested then nothing will be returned.
+
+
+
+# Add an Exercise
+
+## Adds an Exercise to a specific workout
+
+Adds an Exercise to a specific workout of the currently Authenticated User.
+
+**URL** : `/workouts/addExercise`
+
+**Method** : `PUT`
+
+**Auth required** : YES
+
+**Permissions required** : None
+
+## Success Response
+
+**Code** : `200 OK`
+
+**Content examples**
+
+For a User with UID 1234, we search for the workout data based on their UID and the workout name within the body. We then add on to that workout data the new exercise component and save that to our database.
+
+```json
+{
+  message: "`added exercise ${exercise_name} to workout ${name}`"
+}
+```
+
+## Notes
+- If the User does not have the specific `Workout` instance when requested then nothing will be returned.
+
+
+
+
+# Delete an Exercise
+
+## Delete an Exercise to a specific workout
+
+Deletes an Exercise to a specific workout of the currently Authenticated User.
+
+**URL** : `/workouts/addExercise`
+
+**Method** : `DELETE`
+
+**Auth required** : YES
+
+**Permissions required** : None
+
+## Success Response
+
+**Code** : `200 OK`
+
+**Content examples**
+
+For a User with UID 1234, we search for the workout data based on their UID and the workout name within the body. We then create a new exercise array without the exercise that we want to delete and we save that to our workout data.
+
+```json
+{
+  message: "deleted exercise ${exercise} from workout ${name}"
+}
+```
+
+## Notes
+- If the User does not have the specific `Workout` instance when requested then nothing will be returned.

@@ -130,7 +130,6 @@ router.put("/addExercise", async (req, res) => {
     set: []
   }
   temp.push(update);
-  console.log("Adding new exercise...");
 
   Workout.findOneAndUpdate({
     name: name
