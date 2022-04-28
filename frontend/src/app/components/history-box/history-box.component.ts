@@ -20,7 +20,6 @@ export class HistoryBoxComponent implements OnInit {
 
   openArea() {
     var el = <HTMLElement>document.getElementById('message_' + this.num_id)
-    console.log(el.style.display)
     if (<String>el.style.display === 'block') {
       el.style.display = 'none';
       var btn = <HTMLElement>document.getElementById('close_btn_' + this.num_id)

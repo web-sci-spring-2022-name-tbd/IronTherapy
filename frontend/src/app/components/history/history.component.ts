@@ -18,13 +18,15 @@ export class HistoryComponent implements OnInit {
       this.workouts_data = data;
       data.forEach(element => {
         var name = element.name;
-        if (name.includes("back")) {
+        name = name.toLowerCase();
+
+        if (name.indexOf("back") != -1) {
           this.photo_data.push("../../assets/images/back_photo.jpg");
-        } else if (name.includes("chest")) {
+        } else if (name.indexOf("chest") != -1) {
           this.photo_data.push("../../assets/images/chest.jpg");
-        } else if (name.includes("legs")) {
+        } else if (name.indexOf("legs") != -1) {
           this.photo_data.push("../../assets/images/gym-deadlift.jpg");
-        } else if (name.includes("abs")) {
+        } else if (name.indexOf("abs") != -1)  {
           this.photo_data.push("../../assets/images/abs.jpg");
         } else {
           this.photo_data.push("../../assets/images/c_own.jpg");
