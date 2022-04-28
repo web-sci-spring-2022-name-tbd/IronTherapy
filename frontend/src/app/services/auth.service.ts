@@ -20,7 +20,7 @@ export class AuthService {
   ) {
     /* Saving user data in localstorage when
     logged in and setting up null when logged out */
-    this.afAuth.authState.subscribe(async (user) => {
+    this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
@@ -44,7 +44,7 @@ export class AuthService {
   async getToken(): Promise<string | undefined> {
     let token: string | undefined;
     try {
-      let user = await this.afAuth.currentUser;
+      const user = await this.afAuth.currentUser;
       token = await user?.getIdToken(true);
       if (!token) {
         let cookie = JSON.parse(localStorage.getItem('user')!);
