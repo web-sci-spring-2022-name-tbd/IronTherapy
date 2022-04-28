@@ -129,7 +129,7 @@ Add a new goal for a given user if a goal with the same exercise doesn't exist.
 
 ```json
 {
-  message: "Goal created"
+  "message": "Goal created"
 }
 ```
 
@@ -189,7 +189,7 @@ Add a new goal for a given user if a goal with the same exercise doesn't exist.
 
 ```json
 {
-  message: "Goal created"
+  "message": "Goal created"
 }
 ```
 
@@ -220,7 +220,7 @@ Updates the target and current values of the goal
 
 ```json
 {
-  message: "Goal updated"
+  "message": "Goal updated"
 }
 ```
 
@@ -250,7 +250,7 @@ Deletes a specific goal of a used based on exercise.
 
 ```json
 {
-  message: "Goal deleted"
+  "message": "Goal deleted"
 }
 ```
 
@@ -334,91 +334,126 @@ Get the Workouts of the currently Authenticated User.
 For a User with UID 1234, we search for all workouts that is labeled with the UID and return them.
 
 ```json
-{
-  "uid": 1234,
-  "name": "Workout One",
-  "date": "2/1/22",
-  "exercises": [{
-    "name": "Bench Press",
-    "sets": [{
-      "pounds": 150,
-      "reps": 10,
-    }, {
-      "pounds": 150,
-      "reps": 10,
-    }, {
-      "pounds": 150,
-      "reps": 10,
-    }],
-  }, {
-    "name": "Overhead Squat",
-    "sets": [{
-      "pounds": 150,
-      "reps": 10,
-    }, {
-      "pounds": 150,
-      "reps": 10,
-    }, {
-      "pounds": 150,
-      "reps": 10,
-    }],
-  }, {
-    "name": "Bicep Curl",
-    "sets": [{
-      "pounds": 150,
-      "reps": 10,
-    }, {
-      "pounds": 150,
-      "reps": 10,
-    }, {
-      "pounds": 150,
-      "reps": 10,
-    }]
-  }]
-}], 
-[{
-  "uid": 1234,
-  "name": "Workout Two",
-  "date": "2/1/22",
-  "exercises": [{
-    "name": "Bench Press",
-    "sets": [{
-      "pounds": 150,
-      "reps": 10,
-    }, {
-      "pounds": 150,
-      "reps": 10,
-    }, {
-      "pounds": 150,
-      "reps": 10,
-    }],
-  }, {
-    "name": "Overhead Squat",
-    "sets": [{
-      "pounds": 150,
-      "reps": 10,
-    }, {
-      "pounds": 150,
-      "reps": 10,
-    }, {
-      "pounds": 150,
-      "reps": 10,
-    }],
-  }, {
-    "name": "Bicep Curl",
-    "sets": [{
-      "pounds": 150,
-      "reps": 10,
-    }, {
-      "pounds": 150,
-      "reps": 10,
-    }, {
-      "pounds": 150,
-      "reps": 10,
-    }]
-  }]
-}]
-}
+[
+  {
+    "uid": 1234,
+    "name": "Workout One",
+    "date": "2/1/22",
+    "exercises": [
+      {
+        "name": "Bench Press",
+        "sets": [
+            {
+              "pounds": 150,
+              "reps": 10
+            },
+            {
+              "pounds": 150,
+              "reps": 10
+            },
+            {
+              "pounds": 150,
+              "reps": 10
+            }
+        ]
+      },
+    {
+      "name": "Overhead Squat",
+      "sets": [
+        {
+         "pounds": 150,
+         "reps": 10
+        },
+        {
+          "pounds": 150,
+          "reps": 10
+        },
+        {
+          "pounds": 150,
+          "reps": 10
+        }
+      ]
+    },
+    {
+      "name": "Bicep Curl",
+      "sets": [
+        {
+          "pounds": 150,
+          "reps": 10
+        },
+        {
+          "pounds": 150,
+          "reps": 10
+        },
+        {
+          "pounds": 150,
+          "reps": 10
+        }
+      ]
+    }
+  ]
+},
+[
+    {
+        "uid": 1234,
+        "name": "Workout Two",
+        "date": "2/1/22",
+        "exercises": [
+        {
+          "name": "Bench Press",
+          "sets": [
+            {
+              "pounds": 150,
+              "reps": 10
+            },
+            {
+              "pounds": 150,
+             "reps": 10
+            },
+            {
+              "pounds": 150,
+              "reps": 10
+            }
+          ]
+        },
+        {
+          "name": "Overhead Squat",
+          "sets": [
+            {
+              "pounds": 150,
+              "reps": 10
+            },
+            {
+              "pounds": 150,
+              "reps": 10
+            },
+            {
+              "pounds": 150,
+              "reps": 10
+            }
+          ]
+        },
+        {
+          "name": "Bicep Curl",
+          "sets": [
+            {
+              "pounds": 150,
+              "reps": 10
+            },
+            {
+              "pounds": 150,
+              "reps": 10
+            },
+            {
+              "pounds": 150,
+              "reps": 10
+            }
+          ]
+        }
+      ]
+    }
+  ]
+]
 ```
 
 
@@ -555,7 +590,7 @@ For a User with UID 1234, we search for the workout that we are modifying and th
 
 ```json
 {
-  message: "updated exercise ${exercise_name} for ${req.user.name} (delete)`"
+  "message": "updated exercise ${exercise_name} for ${req.user.name} (delete)`"
 }
 ```
 
@@ -588,7 +623,7 @@ For a User with UID 1234, we search for the workout data based on their UID and 
 
 ```json
 {
-  message: "`added exercise ${exercise_name} to workout ${name}`"
+  "message": "`added exercise ${exercise_name} to workout ${name}`"
 }
 ```
 
@@ -662,7 +697,7 @@ For a User with UID 1234, we search for the workout data based on their UID and 
 
 ```json
 {
-  message: "deleted exercise ${exercise} from workout ${name}"
+  "message": "deleted exercise ${exercise} from workout ${name}"
 }
 ```
 
@@ -745,16 +780,16 @@ For any authenticated user /exercises endpoint:
 
 ```json
 [
-  'Pull Ups',       'Bicep Curls',
-  'Renegade Row',   'Deadlift',
-  'Back Extension', 'Tricep Extension',
-  'Hammer Curls',   'Overhead Squat',
-  'Bench Press',    'Rows',
-  'Back Extension', 'Bent Over Row',
-  'Barbell Squat',  'Shoulder Press',
-  "Farmer's Walk",  'Overhead Lunge',
-  'Pull-down',      'Weighted Step Up',
-  'Clean and Jerk', 'Squat'
+  "Pull Ups",       "Bicep Curls",
+  "Renegade Row",   "Deadlift",
+  "Back Extension", "Tricep Extension",
+  "Hammer Curls",   "Overhead Squat",
+  "Bench Press",    "Rows",
+  "Back Extension", "Bent Over Row",
+  "Barbell Squat",  "Shoulder Press",
+  "Farmer's Walk",  "Overhead Lunge",
+  "Pull-down",      "Weighted Step Up",
+  "Clean and Jerk", "Squat"
 ]
 ```
 
