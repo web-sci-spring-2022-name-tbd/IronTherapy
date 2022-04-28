@@ -49,13 +49,6 @@ export class RequestsService {
   getWorkout(workoutName: string): Observable<Workout> {
     let url: string = `http://localhost:3000/workouts/${workoutName}`;
 
-    // return this.http.get<Workout>(url, {
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     // need to put the auth header in here
-
-    //   },
-    // });
     return from(this.authService.getToken()).pipe(
       switchMap((token) => {
         return this.http.get<Workout>(url, {
@@ -85,7 +78,7 @@ export class RequestsService {
 
   // Update a sets for a user
   updateSet(name: string, exercise_name: string, update: { pounds: Number, reps: Number }): Observable<{ message: string, exercise: Exercise }> {
-    let url: string = `http://localhost:3000/workouts/`;
+    let url: string = `http://localhost:3000/workouts/addSet`;
 
     return from(this.authService.getToken()).pipe(
       switchMap((token) => {

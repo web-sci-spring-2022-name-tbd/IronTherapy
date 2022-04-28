@@ -52,7 +52,6 @@ test() {
   }
 
   submitAdd(pounds: string, reps: string) {
-    console.log(`adding set number ${this.data[0]} with pounds = ${pounds} and reps = ${reps}`)
 
     this.request.updateSet(this.workout_name, this.exercise_name, {pounds: parseInt(pounds), reps: parseInt(reps)}).subscribe((data) => {
       this.formShow = false;
