@@ -75,7 +75,21 @@ export class RequestsService {
       })
     );
   }
+  
+  putWorkout(workoutName: String, workout_rename: String): Observable<String> {
+    let url: string = `http://localhost:3000/workouts/${workoutName}`;
 
+    return from(this.authService.getToken()).pipe(
+      switchMap((token) => {
+        return this.http.put<String>(url, { name: workout_rename }, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: 'Bearer ' + token,
+          },
+        });
+      })
+    );
+  }
   // Update a sets for a user
   updateSet(name: string, exercise_name: string, update: { pounds: Number, reps: Number }): Observable<{ message: string, exercise: Exercise }> {
     let url: string = `http://localhost:3000/workouts/addSet`;
