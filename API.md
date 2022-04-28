@@ -527,7 +527,7 @@ For a User with UID 1234, we search for a specific workout by workout name that 
       "reps": 10,
     }]
   }]
-}], 
+}]
 }
 ```
 
