@@ -722,3 +722,43 @@ entry is below gets created for that user.
 ## Notes
 
 - If the workout does not match a template it leaves exercises blank
+
+## Get all Exercises
+
+Get all exercise names stored in the database,
+
+**URL** : `/exercises`
+
+**Method** : `GET`
+
+**Auth required** : YES
+
+**Permissions required** : None
+
+## Success Response
+
+**Code** : `200 OK`
+
+**Content examples**
+
+For any authenticated user /exercises endpoint:
+
+```json
+[
+  'Pull Ups',       'Bicep Curls',
+  'Renegade Row',   'Deadlift',
+  'Back Extension', 'Tricep Extension',
+  'Hammer Curls',   'Overhead Squat',
+  'Bench Press',    'Rows',
+  'Back Extension', 'Bent Over Row',
+  'Barbell Squat',  'Shoulder Press',
+  "Farmer's Walk",  'Overhead Lunge',
+  'Pull-down',      'Weighted Step Up',
+  'Clean and Jerk', 'Squat'
+]
+```
+
+## Notes
+
+- None
+

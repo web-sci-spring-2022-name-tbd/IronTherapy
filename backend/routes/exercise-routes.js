@@ -7,19 +7,8 @@ router.get("/", async (req, res) => {
 
     let toReturn = (await Exercise.find({})).map((exercise) => exercise.name);
     console.log("Got all exercises");
+    console.log(toReturn)
     res.status(200).json(toReturn);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-router.get("/:name", async (req, res) => {
-  try {
-    // Need to put in firebase auth stuff
-    const data = await Exercise.findOne({
-      name: req.params.name,
-    });
-    res.json(data);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
