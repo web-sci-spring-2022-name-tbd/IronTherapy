@@ -21,7 +21,6 @@ router.get("/", async (req, res) => {
 router.get("/:name", async (req, res) => {
   try {
     const data = await Workout.findOne({
-      // stuff with uid from firebase here
       uid: req.user.user_id,
       name: req.params.name,
     });
@@ -38,12 +37,11 @@ router.put('/addSet', async (req, res) => {
     let data = await Workout.findOne({
       uid: req.user.user_id,
       name: name
-      // no auth stuff yet
     });
 
     data.exercises.forEach(async (exercise) => {
       if (exercise.name == exercise_name) {
-        exercise.sets.push({ pounds: update.pounds, reps: update.reps })  // or maybe update[0] depending on what update turns out to be
+        exercise.sets.push({ pounds: update.pounds, reps: update.reps })  
 
         // Update the goal for this set if it exists and current weight > this weight
         try {
@@ -70,7 +68,7 @@ router.put('/addSet', async (req, res) => {
     });
 
     await Workout.findOneAndUpdate({
-      // uid: req.user.user_id,
+      uid: req.user.user_id,
       name: name,
     }, data);
 
@@ -80,6 +78,43 @@ router.put('/addSet', async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+router.put('/deleteSet', async (req, res) => {
+  try {
+    const { update } = req.body;
+    const { exercise_name } = req.body;
+    const { name } = req.body;
+
+    let data = await Workout.findOne({
+      uid: req.user.user_id,
+      name: name
+    });
+
+    let temp = data.exercises;
+    let count = 0;
+    data.exercises.forEach(exercise => {
+
+      if (exercise.name == exercise_name) {
+        temp[count]["sets"] = update; 
+        return;
+      }
+      count++;
+    });
+
+    await Workout.findOneAndUpdate({
+      uid: req.user.user_id,
+      name: name,
+    }, {
+      exercises: temp,
+    });
+    console.log(`updated exercise ${exercise_name} for ${req.user.name} (delete)`)
+    res.status(200).json({ message: "exercise updated", exercise: temp });
+  } catch (error) {
+    console.log("Error updating a exercise: " + error.message);
+    res.status(500).json({ message: error.message });
+  }
+});
+
 
 //update workout name
 router.put("/:name", async (req, res) => {
@@ -199,54 +234,6 @@ router.post('/:name', async (req, res) => {
   }
 });
 
-router.put('/deleteSet', async (req, res) => {
-  try {
-
-    const { update } = req.body;
-    const { exercise_name } = req.body;
-    // console.log(update)
-    // console.log(exercise_name)
-    const { name } = req.body;
-    // console.log(name)
-    // const { exercise_name } = req.params.exercise_name;
-    // res.status(200).json(req.body);
-
-    let data = await Workout.findOne({
-      uid: req.user.user_id,
-      name: name
-      // no auth stuff yet
-    });
-
-    console.log(data);
-
-    let temp = data.exercises;
-    let count = 0;
-    data.exercises.forEach(exercise => {
-
-      if (exercise.name == exercise_name) {
-        temp[count]["sets"] = update;  // or maybe update[0] depending on what update turns out to be
-        return;
-      }
-      count++;
-    });
-
-    await Workout.findOneAndUpdate({
-      // uid: req.user.user_id,
-      uid: req.user.user_id,
-      name: name,
-    }, {
-      exercises: temp,
-    });
-    console.log(`updated exercise ${exercise_name} for ${req.user.name} (delete)`)
-    // console.log("Updated a exercise for " + req.user.name);
-    res.status(200).json({ message: "exercise updated", exercise: temp });
-  } catch (error) {
-    console.log("Error updating a exercise: " + error.message);
-    res.status(500).json({ message: error.message });
-  }
-});
-
-
 router.delete('/deleteExercise', async (req, res) => {
   const name = req.query.name;
   const exercise = req.query.exercise;
@@ -255,11 +242,7 @@ router.delete('/deleteExercise', async (req, res) => {
     name: name
   })
 
-  
-
   let temp = []
-  // console.log(data.exercises)
-
   data.exercises.forEach(exercise_ => {
     if (exercise_.name != exercise) {
       temp.push(exercise_)
@@ -283,16 +266,11 @@ router.delete('/deleteExercise', async (req, res) => {
 
 router.put("/addExercise", async (req, res) => {
   const { exercise_name } = req.body;
-  // console.log(update)
-  // console.log(exercise_name)
   const { name } = req.body;
-  // console.log(name)
-  // const { exercise_name } = req.params.exercise_name;
-  // res.status(200).json(req.body);
 
   let data = await Workout.findOne({
+    uid: req.user.user_id,
     name: name
-    // no auth stuff yet
   })
 
   let temp = data.exercises;
@@ -314,6 +292,5 @@ router.put("/addExercise", async (req, res) => {
   })
 
 });
-
 
 module.exports = router;

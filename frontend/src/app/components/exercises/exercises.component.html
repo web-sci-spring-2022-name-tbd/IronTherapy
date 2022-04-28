@@ -19,8 +19,11 @@
       <br/>
       <h1 class="setHeader">Add an Exercise</h1>
       <label for="Pounds"><b>Exercise Name</b></label>
-      <input type="text" placeholder="Enter the new Exercise name" name="exercise_name" required #exercise_name>
-      
+      <select class="form-select" aria-label="Default select example" required #exercise_name>
+        <option selected>The New Exercise name</option>
+        <option *ngFor="let exer of exercises;">{{exer}}</option>
+      </select>
+
       <button type="button"  class="btn btn-primary setbtn" (click)="AddExercise(exercise_name.value)">Add this Exercise</button>
     </div>
 
